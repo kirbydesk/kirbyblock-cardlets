@@ -8,7 +8,7 @@
 		"kirby-plugin"
 	],
 	"license": "Proprietary",
-	"homepage": "https://github.com/chrfickinger/kirby-cardlets",
+	"homepage": "https://github.com/chrfickinger/kirbyblock-cardlets",
 	"authors": [
 		{
 			"name": "Christian Fickinger",
