@@ -1,24 +1,25 @@
 {
 	"name": "chrfickinger/kirbyblock-cardlets",
-	"description": "Kirby Block Cardlets",
+	"description": "Kirbyblock Cardlets",
 	"type": "kirby-plugin",
-	"keywords": [
-			"kirby",
-			"kirby-plugin"
-	],
-	"license": "MIT",
 	"version": "1.0.0",
+	"keywords": [
+		"kirby",
+		"kirby-plugin"
+	],
+	"license": "Proprietary",
+	"homepage": "https://github.com/chrfickinger/kirby-cardlets",
 	"authors": [
-			{
-					"name": "Christian Fickinger",
-					"email": "mail@christianfickinger.de",
-					"homepage": "https://christianfickinger.de"
-			}
+		{
+			"name": "Christian Fickinger",
+			"email": "mail@christianfickinger.de",
+			"homepage": "https://christianfickinger.de"
+		}
 	],
 	"extra": {
-			"installer-name": "kirbyblock-cardlets"
+		"installer-name": "kirbyblock-cardlets"
 	},
 	"require": {
-			"chrfickinger/kirby-fields": "^1.0"
+		"chrfickinger/kirby-fields": "^1.0"
 	}
 }
