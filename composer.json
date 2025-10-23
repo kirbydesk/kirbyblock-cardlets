@@ -2,12 +2,11 @@
 	"name": "chrfickinger/kirbyblock-cardlets",
 	"description": "Kirbyblock Cardlets",
 	"type": "kirby-plugin",
-	"version": "1.0.0",
 	"keywords": [
 		"kirby",
 		"kirby-plugin"
 	],
-	"license": "Proprietary",
+	"license": "proprietary",
 	"homepage": "https://github.com/chrfickinger/kirbyblock-cardlets",
 	"authors": [
 		{
@@ -20,6 +19,7 @@
 		"installer-name": "kirbyblock-cardlets"
 	},
 	"require": {
-		"chrfickinger/kirby-fields": "^1.0"
+		"getkirby/composer-installer": "^1.2",
+		"chrfickinger/kirby-fields": "dev-main"
 	}
 }
