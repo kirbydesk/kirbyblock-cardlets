@@ -1,25 +1,25 @@
 {
-	"name": "chrfickinger/kirbyblock-cardlets",
-	"description": "Kirbyblock Cardlets",
+	"name": "kirbydesk/block-cardlets",
+	"description": "Cardlets Block for Kirby CMS",
 	"type": "kirby-plugin",
 	"keywords": [
 		"kirby",
 		"kirby-plugin"
 	],
 	"license": "proprietary",
-	"homepage": "https://github.com/chrfickinger/kirbyblock-cardlets",
+	"homepage": "https://github.com/kirbydesk/block-cardlets",
 	"authors": [
 		{
 			"name": "Christian Fickinger",
-			"email": "mail@christianfickinger.de",
+			"email": "kirby@christianfickinger.de",
 			"homepage": "https://christianfickinger.de"
 		}
 	],
 	"extra": {
-		"installer-name": "kirbyblock-cardlets"
+		"installer-name": "block-cardlets"
 	},
 	"require": {
 		"getkirby/composer-installer": "^1.2",
-		"chrfickinger/kirby-fields": "dev-main"
+		"kirbydesk/fields": "dev-main"
 	}
 }
