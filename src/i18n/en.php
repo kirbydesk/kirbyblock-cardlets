@@ -1,4 +1,4 @@
 <?php return array(
 
-	'kdblockcardlets.title' => 'Cardlets',
+	'kirbyblock-cardlets.name' => 'Cardlets',
 );
