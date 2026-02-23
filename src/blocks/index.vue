@@ -24,22 +24,15 @@
 				>
 
 				<!-- Tagline -->
-				<pwTagline v-if="settings.tagline" :value="content.tagline" />
+				<pwTagline v-if="settings.tagline" :value="content.tagline" :alignDefault="fieldDefaults['align-tagline']" />
 
 				<!-- Heading -->
-				<pwHeading v-if="settings.heading" :value="content.heading" :data-level="content.level" />
+				<pwHeading v-if="settings.heading" :value="content.heading" :data-level="content.level" :alignDefault="fieldDefaults['align-heading']" />
 
-				<!-- Textarea -->
-				<pwTextarea v-if="content.textmode === 'textarea'" :value="content.texttextarea" />
+				<!-- Editor -->
+				<pwEditor v-if="settings.editor" :content="content" :alignDefault="fieldDefaults['align-editor']" />
 
-				<!-- Writer -->
-				<pwWriter	v-if="content.textmode === 'writer'" :value="content.textwriter" :align="content.textwriteralignment" />
-
-				<!-- Markdown -->
-				<pwMarkdown	v-if="content.textmode === 'markdown'" :value="content.textmarkdown" :align="content.textmarkdownalignment" />
-
-				<!-- Buttons -->
-				<pwButtons v-if="settings.buttons" :value="content.buttons" :align="content.buttonsalignment" />
+				<!-- Blocks -->
 
 			</div>
 		</div>
@@ -47,13 +40,10 @@
 </template>
 
 <script>
-import pwBlockinfo from '@/../../kirby-pagewizard/src/components/blockinfo.vue'
-import pwTagline from '@/../../kirby-pagewizard/src/components/tagline.vue'
-import pwHeading from '@/../../kirby-pagewizard/src/components/heading.vue'
-import pwTextarea from '@/../../kirby-pagewizard/src/components/textarea.vue'
-import pwWriter from '@/../../kirby-pagewizard/src/components/writer.vue'
-import pwMarkdown from '@/../../kirby-pagewizard/src/components/markdown.vue'
-import pwButtons from '@/../../kirby-pagewizard/src/components/buttons.vue'
+import pwBlockinfo from '@/../../kirby-pagewizard/src/components/blockinfo.vue';
+import pwTagline from '@/../../kirby-pagewizard/src/components/tagline.vue';
+import pwHeading from '@/../../kirby-pagewizard/src/components/heading.vue';
+import pwEditor from '@/../../kirby-pagewizard/src/components/editor.vue';
 import pwGridStyle from '@/../../kirby-pagewizard/src/mixins/gridStyle.js';
 import pwColorStyle from '@/../../kirby-pagewizard/src/mixins/colorStyle.js';
 
@@ -62,21 +52,20 @@ export default {
 		pwBlockinfo,
 		pwTagline,
 		pwHeading,
-		pwTextarea,
-		pwWriter,
-		pwMarkdown,
-		pwButtons
+		pwEditor
 	},
 	mixins: [pwGridStyle, pwColorStyle],
 	data() {
 		return {
-			settings: {}
+			settings: {},
+			fieldDefaults: {}
 		}
 	},
 	async created() {
 		try {
 			const response = await this.$api.get('pagewizard/settings/pwcardlets');
 			this.settings = response.settings;
+			this.fieldDefaults = response.fields || {};
 		} catch (e) {
 			this.settings = {};
 		}

@@ -2,19 +2,16 @@
 
     /* -------------- Config --------------*/
     $config   = pwConfig::load('pwcardlets');
-    $settings = $config['settings'];
-    $defaults = $config['defaults'];
-
-    /* -------------- Text Mode --------------*/
-    $mode    = $defaults['text-mode'] ?? null;
-    $mode    = is_string($mode) ? strtolower(trim($mode)) : null;
-    $allowed = ['textarea', 'writer', 'markdown'];
-    $type    = in_array($mode, $allowed, true) ? $mode : 'textarea';
+		$settings    = $config['settings'];
+		$tabSettings = $config['tabs'];
+		$defaults    = $config['defaults'];
+		$fields      = $config['fields'];
+		$editor      = $config['editor'];
 
     /* -------------- Allowed Fields --------------*/
-    $defaultHeading = !empty($settings['heading']);
-    $defaultTagline = !empty($settings['tagline']);
-		$defaultButtons = !empty($settings['buttons']);
+		$defaultTagline = !empty($settings['tagline']);
+		$defaultHeading = !empty($settings['heading']);
+		$defaultEditor = !empty($settings['editor']);
 
 		/* -------------- Tabs --------------*/
     $tabs = [];
@@ -28,47 +25,19 @@
 		if ($defaultTagline) {
 			$contentFields['tagline'] = [
 				'extends' => 'pagewizard/fields/tagline',
+				'align'   => $fields['align-tagline']
 			];
 		}
 		/* -------------- Heading --------------*/
 		if ($defaultHeading) {
 			$contentFields['heading'] = [
 				'extends' => 'pagewizard/fields/heading',
+				'align'   => $fields['align-heading']
 			];
 		}
-		/* -------------- Texts --------------*/
-		$contentFields['textTextarea'] = [
-			'extends' => 'pagewizard/fields/text-textarea',
-			'when'    => ['textMode' => 'textarea'],
-		];
-		$contentFields['textWriterAlignment'] = [
-			'type' => 'pwalign',
-			'default' => $defaults['text-alignment'] ?? 'left',
-			'when'    => ['textMode' => 'writer'],
-		];
-		$contentFields['textWriter'] = [
-			'extends' => 'pagewizard/fields/text-writer',
-			'when'    => ['textMode' => 'writer'],
-		];
-		$contentFields['textMarkdownAlignment'] = [
-			'type' => 'pwalign',
-			'default' => $defaults['text-alignment'] ?? 'left',
-			'when'    => ['textMode' => 'markdown'],
-		];
-		$contentFields['textMarkdown'] = [
-			'extends' => 'pagewizard/fields/text-markdown',
-			'when'    => ['textMode' => 'markdown'],
-		];
-
-		/* -------------- Buttons --------------*/
-		if ($defaultButtons) {
-			$contentFields['buttonsAlignment'] = [
-				'type' => 'pwalign',
-				'default' => $defaults['buttons-alignment'] ?? 'left',
-			];
-			$contentFields['buttons'] = [
-				'extends' => 'blocks/pwButtons',
-			];
+		/* -------------- Editor --------------*/
+		if ($defaultEditor) {
+			$contentFields['editor'] = pwEditor::contentField($defaults, $editor, $settings, $fields);
 		}
 
 		$tabs['content'] = [
@@ -83,7 +52,7 @@
 		$tabs['style'] = pwStyle::options('pwcardlets', $defaults);
 
 		/* -------------- Common Tabs (grid, spacing, theme) --------------*/
-		pwConfig::buildTabs('pwcardlets', $defaults, $settings, $tabs);
+		pwConfig::buildTabs('pwcardlets', $defaults, $tabSettings, $tabs);
 
 		/* -------------- Settings Tab --------------*/
 		$tabs['settings'] = pwSettings::options('pwcardlets', $defaults);

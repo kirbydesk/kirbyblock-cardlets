@@ -47,14 +47,12 @@ if (!empty($settings['heading'])):
 	snippet('heading', ['content' => $block]);
 endif;
 
-// Text
-snippet('text', ['content' => $block]);
-
-// Buttons
-if (!empty($settings['buttons'])):
-	snippet('buttons', ['content' => $block]);
+// Editor
+if (!empty($settings['editor'])):
+	snippet('editor', ['content' => $block]);
 endif;
 
+// Blocks
 
 echo '</div></div>'."\n"; // End Grid
 echo '</section>'."\n";

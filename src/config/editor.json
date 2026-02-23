@@ -1,0 +1,9 @@
+{
+  "default-mode": "textarea",
+  "marks": ["bold", "italic", "underline", "strike", "link"],
+  "nodes": [],
+  "headings": [],
+  "toolbar": {
+    "inline": false
+  }
+}

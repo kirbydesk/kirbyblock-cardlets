@@ -25,6 +25,7 @@ svg[data-v-26526d24] {
 div.pwTagline[data-v-2287a490] {
   font-size: var(--text-sm);
 	line-height: var(--text-line-height);
+	text-transform: uppercase;
 	margin-bottom: var(--spacing-1);
 	color: var(--pw-color-tagline, inherit);
 &[data-align="left"][data-v-2287a490] {
@@ -211,23 +212,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
-.k-button-group[data-v-7bc2765d] {
-	margin: var(--spacing-4) 0 var(--spacing-2);
-	display: flex;
-	flex-wrap: wrap;
-	gap: var(--spacing-2);
-&[data-align="left"][data-v-7bc2765d] { justify-content: flex-start;
-}
-&[data-align="center"][data-v-7bc2765d] { justify-content: center;
-}
-&[data-align="right"][data-v-7bc2765d] { justify-content: flex-end;
-}
-}
-button[data-v-7bc2765d] {
-	padding: var(--spacing-4) var(--spacing-2);
-	background-color: var(--pw-color-button-background, var(--color-gray-600));
-	color: var(--pw-color-button-text, white);
-.k-button-text.placeholder[data-v-7bc2765d] {
-		opacity: 0.5;
-}
+div.pwEditor[data-v-abf2a9f7] {
+	margin-bottom: var(--spacing-4);
 }

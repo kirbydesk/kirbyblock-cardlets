@@ -1,6 +1,10 @@
 {
-  "heading": true,
-  "tagline": true,
-  "buttons": true,
-  "tab-grid": true
+  "fields": {
+    "tagline": true,
+    "heading": true,
+    "editor": ["textarea", "writer"]
+  },
+  "tabs": {
+    "grid": true
+  }
 }
