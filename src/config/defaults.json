@@ -13,7 +13,7 @@
   },
   "style": {
     "style": "default",
-    "background-size": "content"
+    "block-size": "content"
   },
   "grid": {
     "grid-size-sm": 12,
