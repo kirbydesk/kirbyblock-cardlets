@@ -1,5 +1,5 @@
 {
-  "fields": {
+  "content": {
     "align-tagline": "left",
     "align-heading": "left",
     "align-editor": "left",
@@ -9,10 +9,14 @@
     "padding-top": true,
     "padding-right": true,
     "padding-bottom": true,
-    "padding-left": true
+    "padding-left": true,
+    "radius-top-left": false,
+    "radius-top-right": false,
+    "radius-bottom-left": false,
+    "radius-bottom-right": false
   },
   "style": {
-    "style": "default",
+    "theme": "default",
     "block-size": "content"
   },
   "grid": {

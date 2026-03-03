@@ -1,10 +1,30 @@
 {
   "fields": {
-    "tagline": true,
-    "heading": true,
-    "editor": ["textarea", "writer"]
+    "content": {
+      "tagline": true,
+      "heading": true,
+      "editor": [
+        "textarea",
+        "writer"
+      ]
+    },
+    "layout": {
+      "padding": true,
+      "radius": true
+    },
+    "style": {
+      "theme": true
+    },
+    "settings": {
+      "fragment": true,
+      "block-size": true,
+      "margin": true
+    }
   },
   "tabs": {
-    "grid": true
+    "layout": true,
+    "style": true,
+    "grid": true,
+    "settings": true
   }
 }

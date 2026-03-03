@@ -119,12 +119,16 @@ var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "sy
       align() {
         const { align = this.alignDefault } = this.parsedData;
         return align;
+      },
+      size() {
+        const { size = "normal" } = this.parsedData;
+        return size;
       }
     }
   };
   var _sfc_render$5 = function render() {
     var _vm = this, _c = _vm._self._c;
-    return _c("div", { staticClass: "pwHeading", attrs: { "data-align": _vm.align, "data-lvl": _vm.level } }, [_vm.text ? _c("div", { domProps: { "innerHTML": _vm._s(_vm.text) } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.heading.placeholder")) + " ")])]);
+    return _c("div", { staticClass: "pwHeading", attrs: { "data-align": _vm.align, "data-lvl": _vm.level, "data-size": _vm.size } }, [_vm.text ? _c("div", { domProps: { "innerHTML": _vm._s(_vm.text) } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.heading.placeholder")) + " ")])]);
   };
   var _sfc_staticRenderFns$5 = [];
   _sfc_render$5._withStripped = true;
@@ -141,7 +145,8 @@ var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "sy
   const _sfc_main$4 = {
     props: {
       value: String,
-      align: { type: String, default: "left" }
+      align: { type: String, default: "left" },
+      size: { type: String, default: null }
     },
     computed: {
       text() {
@@ -157,7 +162,7 @@ var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "sy
   };
   var _sfc_render$4 = function render() {
     var _vm = this, _c = _vm._self._c;
-    return _c("div", { staticClass: "pwtext", attrs: { "data-align": _vm.align } }, [_vm.text ? _c("div", { domProps: { "innerHTML": _vm._s(_vm.nl2br(_vm.text)) } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.text-textarea.placeholder")) + " ")])]);
+    return _c("div", { staticClass: "pwtext", attrs: { "data-align": _vm.align, "data-size": _vm.size } }, [_vm.text ? _c("div", { domProps: { "innerHTML": _vm._s(_vm.nl2br(_vm.text)) } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.text-textarea.placeholder")) + " ")])]);
   };
   var _sfc_staticRenderFns$4 = [];
   _sfc_render$4._withStripped = true;
@@ -174,12 +179,13 @@ var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "sy
   const _sfc_main$3 = {
     props: {
       value: String,
-      align: { type: String, default: "left" }
+      align: { type: String, default: "left" },
+      size: { type: String, default: null }
     }
   };
   var _sfc_render$3 = function render() {
     var _vm = this, _c = _vm._self._c;
-    return _c("div", { staticClass: "pwtext", attrs: { "data-align": _vm.align } }, [_vm.value ? _c("div", { domProps: { "innerHTML": _vm._s(_vm.value) } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.text-writer.placeholder")) + " ")])]);
+    return _c("div", { staticClass: "pwtext", attrs: { "data-align": _vm.align, "data-size": _vm.size } }, [_vm.value ? _c("div", { domProps: { "innerHTML": _vm._s(_vm.value) } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.text-writer.placeholder")) + " ")])]);
   };
   var _sfc_staticRenderFns$3 = [];
   _sfc_render$3._withStripped = true;
@@ -1299,7 +1305,8 @@ Please report this to https://github.com/markedjs/marked.`, e) {
   const _sfc_main$2 = {
     props: {
       value: String,
-      align: { type: String, default: "left" }
+      align: { type: String, default: "left" },
+      size: { type: String, default: null }
     },
     computed: {
       renderedMarkdown() {
@@ -1310,7 +1317,7 @@ Please report this to https://github.com/markedjs/marked.`, e) {
   };
   var _sfc_render$2 = function render() {
     var _vm = this, _c = _vm._self._c;
-    return _c("div", { staticClass: "pwMarkdown", attrs: { "data-align": _vm.align } }, [_vm.value ? _c("div", { domProps: { "innerHTML": _vm._s(_vm.renderedMarkdown) } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.text-markdown.placeholder")) + " ")])]);
+    return _c("div", { staticClass: "pwMarkdown", attrs: { "data-align": _vm.align, "data-size": _vm.size } }, [_vm.value ? _c("div", { domProps: { "innerHTML": _vm._s(_vm.renderedMarkdown) } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.text-markdown.placeholder")) + " ")])]);
   };
   var _sfc_staticRenderFns$2 = [];
   _sfc_render$2._withStripped = true;
@@ -1341,7 +1348,7 @@ Please report this to https://github.com/markedjs/marked.`, e) {
         try {
           const data = typeof val === "string" ? JSON.parse(val) : val;
           const mode = data.mode || "textarea";
-          return { mode, text: data[mode] || "", align: data.align || this.alignDefault };
+          return { mode, text: data[mode] || "", align: data.align || this.alignDefault, size: data.size || null };
         } catch (e) {
           return { mode: "textarea", text: "", align: this.alignDefault };
         }
@@ -1354,12 +1361,15 @@ Please report this to https://github.com/markedjs/marked.`, e) {
       },
       align() {
         return this.parsed.align || this.alignDefault;
+      },
+      size() {
+        return this.parsed.size || null;
       }
     }
   };
   var _sfc_render$1 = function render() {
     var _vm = this, _c = _vm._self._c;
-    return _c("div", { staticClass: "pwEditor" }, [_vm.mode === "textarea" ? _c("pw-textarea", { attrs: { "value": _vm.text, "align": _vm.align } }) : _vm.mode === "writer" ? _c("pw-writer", { attrs: { "value": _vm.text, "align": _vm.align } }) : _vm.mode === "markdown" ? _c("pw-markdown", { attrs: { "value": _vm.text, "align": _vm.align } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.text-textarea.placeholder")) + " ")])], 1);
+    return _c("div", { staticClass: "pwEditor" }, [_vm.mode === "textarea" ? _c("pw-textarea", { attrs: { "value": _vm.text, "align": _vm.align, "size": _vm.size } }) : _vm.mode === "writer" ? _c("pw-writer", { attrs: { "value": _vm.text, "align": _vm.align, "size": _vm.size } }) : _vm.mode === "markdown" ? _c("pw-markdown", { attrs: { "value": _vm.text, "align": _vm.align, "size": _vm.size } }) : _c("div", { staticClass: "placeholder" }, [_vm._v(" " + _vm._s(_vm.$t("pw.field.text-textarea.placeholder")) + " ")])], 1);
   };
   var _sfc_staticRenderFns$1 = [];
   _sfc_render$1._withStripped = true;
@@ -1369,7 +1379,7 @@ Please report this to https://github.com/markedjs/marked.`, e) {
     _sfc_staticRenderFns$1,
     false,
     null,
-    "abf2a9f7"
+    null
   );
   __component__$1.options.__file = "/Users/christian/Projects/kirbydesk/site/plugins/kirby-pagewizard/src/components/editor.vue";
   const pwEditor = __component__$1.exports;
@@ -1405,7 +1415,7 @@ Please report this to https://github.com/markedjs/marked.`, e) {
     computed: {
       colorVars() {
         if (!this.colors) return {};
-        const style = this.content.style || "default";
+        const style = this.content.theme || "default";
         const vars = {};
         if (style === "custom") {
           for (const [key, value] of Object.entries(this.colors.default)) {

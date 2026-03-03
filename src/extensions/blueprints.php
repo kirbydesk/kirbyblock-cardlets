@@ -2,7 +2,7 @@
 
     /* -------------- Config --------------*/
     $config   = pwConfig::load('pwcardlets');
-		$settings    = $config['settings'];
+		$settings    = $config['content'];
 		$tabSettings = $config['tabs'];
 		$defaults    = $config['defaults'];
 		$fields      = $config['fields'];
@@ -46,16 +46,16 @@
 		];
 
 		/* -------------- Layout Tab --------------*/
-		$tabs['layout'] = pwLayout::options('pwcardlets', $defaults);
+		pwConfig::addTab($tabs, 'layout', $tabSettings['layout'] ?? true, pwLayout::options('pwcardlets', $defaults, [], $config['layout'] ?? []));
 
 		/* -------------- Style Tab --------------*/
-		$tabs['style'] = pwStyle::options('pwcardlets', $defaults);
+		pwConfig::addTab($tabs, 'style', $tabSettings['style'] ?? true, pwStyle::options('pwcardlets', $defaults, [], $config['style'] ?? []));
 
-		/* -------------- Common Tabs (grid, spacing, theme) --------------*/
-		pwConfig::buildTabs('pwcardlets', $defaults, $tabSettings, $tabs);
+		/* -------------- Grid Tab --------------*/
+		pwConfig::addTab($tabs, 'grid', $tabSettings['grid'] ?? false, pwGrid::layout('pwcardlets', $defaults));
 
 		/* -------------- Settings Tab --------------*/
-		$tabs['settings'] = pwSettings::options('pwcardlets', $defaults);
+		pwConfig::addTab($tabs, 'settings', $tabSettings['settings'] ?? true, pwSettings::options('pwcardlets', $defaults, [], $config['settings'] ?? []));
 
 		/* -------------- Blueprint --------------*/
 		return [
