@@ -1,12 +1,25 @@
 {
-  "fields": {
+  "tabs": {
+    "layout": true,
+    "style": true,
+    "grid": true,
+    "settings": true
+  },
+	"fields": {
     "content": {
-      "tagline": true,
-      "heading": true,
-      "editor": [
-        "textarea",
-        "writer"
-      ]
+      "tagline": {
+        "align": [ "left", "center", "right" ]
+      },
+      "heading": {
+        "align": [ "left", "center", "right" ],
+        "level": [ "h1", "h2", "h3", "h4" ],
+        "sizes": [ "xs", "sm", "md", "lg", "xl", "2xl", "3xl" ]
+      },
+      "editor": {
+        "mode": [ "textarea", "writer" ],
+        "align": [ "left", "center", "right" ],
+        "sizes": [ "normal", "large" ]
+      }
     },
     "layout": {
       "padding": true,
@@ -20,11 +33,5 @@
       "block-size": true,
       "margin": true
     }
-  },
-  "tabs": {
-    "layout": true,
-    "style": true,
-    "grid": true,
-    "settings": true
   }
 }

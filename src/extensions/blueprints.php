@@ -1,17 +1,14 @@
 <?php return [ 'blocks/pwcardlets' => function () {
 
     /* -------------- Config --------------*/
-    $config   = pwConfig::load('pwcardlets');
-		$settings    = $config['content'];
-		$tabSettings = $config['tabs'];
-		$defaults    = $config['defaults'];
-		$fields      = $config['fields'];
-		$editor      = $config['editor'];
+    $config       = pwConfig::load('pwcardlets');
+		$settings     = $config['content'];
+		$tabSettings  = $config['tabs'];
+		$defaults     = $config['defaults'];
+		$fields       = $config['fields'];
+		$editor       = $config['editor'];
+		$fieldOptions = $config['field-options'];
 
-    /* -------------- Allowed Fields --------------*/
-		$defaultTagline = !empty($settings['tagline']);
-		$defaultHeading = !empty($settings['heading']);
-		$defaultEditor = !empty($settings['editor']);
 
 		/* -------------- Tabs --------------*/
     $tabs = [];
@@ -22,22 +19,33 @@
 		];
 
 		/* -------------- Tagline --------------*/
-		if ($defaultTagline) {
+		if (!empty($settings['tagline'])) {
 			$contentFields['tagline'] = [
-				'extends' => 'pagewizard/fields/tagline',
-				'align'   => $fields['align-tagline']
+				'extends'      => 'pagewizard/fields/tagline',
+				'align'        => $fields['align-tagline'],
+				'alignOptions' => $fieldOptions['tagline']['align'] ?? null,
 			];
 		}
 		/* -------------- Heading --------------*/
-		if ($defaultHeading) {
+		if (!empty($settings['heading'])) {
 			$contentFields['heading'] = [
-				'extends' => 'pagewizard/fields/heading',
-				'align'   => $fields['align-heading']
+				'extends'      => 'pagewizard/fields/heading',
+				'align'        => $fields['align-heading'],
+				'level'        => $fields['level-heading'] ?? null,
+				'size'         => $fields['size-heading'] ?? null,
+				'sizeOptions'  => $fieldOptions['heading']['sizes'] ?? null,
+				'alignOptions' => $fieldOptions['heading']['align'] ?? null,
+				'levelOptions' => $fieldOptions['heading']['level'] ?? null,
 			];
 		}
 		/* -------------- Editor --------------*/
-		if ($defaultEditor) {
-			$contentFields['editor'] = pwEditor::contentField($defaults, $editor, $settings, $fields);
+		if (!empty($settings['editor'])) {
+			$contentFields['editor'] = pwEditor::contentField($editor, $settings);
+			$contentFields['editor']['align']        = $fields['align-editor'] ?? null;
+			$contentFields['editor']['size']         = $fields['size-editor'] ?? null;
+			$contentFields['editor']['alignOptions'] = $fieldOptions['editor']['align'] ?? null;
+			$contentFields['editor']['sizeOptions']  = $fieldOptions['editor']['sizes'] ?? null;
+			$contentFields['editor']['defaultMode'] = $fields['mode-editor'] ?? null;
 		}
 
 		$tabs['content'] = [
