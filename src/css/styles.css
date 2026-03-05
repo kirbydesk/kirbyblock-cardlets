@@ -1,3 +1,168 @@
+/*------------------------------------------------------------------------------------------------
+	Variant colors (overwrites default colors when variant style is active)
+------------------------------------------------------------------------------------------------*/
+section[data-block="cardlets"][data-style="variant"] {
+
+	[data-block="item"]{
+		background-color: #FAFAFA;
+		border: none !important;
+
+		[data-field="tagline"] {
+			color: #1D548B;
+		}
+		[data-field="heading"] {
+			color: #262626;
+		}
+		[data-field="textarea"] {
+			color: #262626;
+		}
+	}
+}
+
 section[data-block="cardlets"] {
 
+	/* -------------- Colors --------------*/
+	[data-block="item"] {
+		color: #262626;
+		background-color: #FAFAFA;
+		border-color: #E0E0E0;
+	}
+
+	/* -------------- Tagline Margins--------------*/
+	[data-field="tagline"] {
+		+ [data-field="heading"] {
+			margin-top: 0.5rem;
+		}
+		+ [data-field="textarea"],
+		+ [data-field="writer"],
+		+ [data-field="markdown"] {
+			margin-top: 0.3rem;
+		}
+		+ [data-block="items"] {
+			margin-top: 1rem;
+		}
+	}
+	/* -------------- Heading Margins--------------*/
+	[data-field="heading"] {
+		+ [data-field="textarea"],
+		+ [data-field="writer"],
+		+ [data-field="markdown"] {
+			margin-top: 0.5rem;
+		}
+		+ [data-block="items"] {
+			margin-top: 1.2rem;
+		}
+	}
+	/* -------------- Texts Margins--------------*/
+	[data-field="textarea"],
+	[data-field="writer"],
+	[data-field="markdown"] {
+		+ [data-block="items"] {
+			margin-top: 2rem;
+		}
+	}
+
+	/* -------------- Items--------------*/
+	[data-block="items"] {
+		[data-block="item"] {
+			display: block;
+			border-width: 1px;
+			border-style: solid;
+			margin-bottom: 1.5rem;
+
+			/* Item radius */
+			&[data-radius-top-left] {
+				border-top-left-radius: 12px;
+			}
+			&[data-radius-top-right] {
+				border-top-right-radius: 12px;
+			}
+			&[data-radius-bottom-left] {
+				border-bottom-left-radius: 12px;
+			}
+			&[data-radius-bottom-right] {
+				border-bottom-right-radius: 12px;
+			}
+
+			/* Image radius */
+			&[data-radius-top-left] figure > div, &[data-radius-top-left] img {
+				border-top-left-radius: 12px;
+			}
+			&[data-radius-top-right] figure > div, &[data-radius-top-right] img {
+				border-top-right-radius: 12px;
+			}
+			&[data-radius-bottom-left] figure > div, &[data-radius-bottom-left] img {
+				border-bottom-left-radius: 0;
+			}
+			&[data-radius-bottom-right] figure > div, &[data-radius-bottom-right] img {
+				border-bottom-right-radius: 0;
+			}
+
+			/* Image Content */
+			[data-field="content"] {
+				padding: .6rem;
+			}
+		}
+	}
+}
+
+/* Columns - Small (from 640px) */
+@media (min-width: 640px) {
+	section[data-block="cardlets"] div[data-block="items"] {
+		display: grid;
+		gap: 1.5rem;
+		margin-bottom: 1.5rem;
+
+		[data-block="item"] {
+			margin-bottom: 0;
+		}
+	}
+	section[data-block="cardlets"] div[data-block="items"][data-columns-sm="1"] { grid-template-columns: repeat(1, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-sm="2"] { grid-template-columns: repeat(2, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-sm="3"] { grid-template-columns: repeat(3, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-sm="4"] { grid-template-columns: repeat(4, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-sm="5"] { grid-template-columns: repeat(5, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-sm="6"] { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* Columns - Medium (from 768px) */
+@media (min-width: 768px) {
+	section[data-block="cardlets"] div[data-block="items"] {
+		gap: 2rem;
+		margin-bottom: 2rem;
+	}
+	section[data-block="cardlets"] div[data-block="items"][data-columns-md="1"] { grid-template-columns: repeat(1, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-md="2"] { grid-template-columns: repeat(2, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-md="3"] { grid-template-columns: repeat(3, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-md="4"] { grid-template-columns: repeat(4, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-md="5"] { grid-template-columns: repeat(5, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-md="6"] { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* Columns - Large (from 1024px) */
+@media (min-width: 1024px) {
+	section[data-block="cardlets"] div[data-block="items"] {
+		gap: 2.5rem;
+		margin-bottom: 2.5rem;
+	}
+	section[data-block="cardlets"] div[data-block="items"][data-columns-lg="1"] { grid-template-columns: repeat(1, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-lg="2"] { grid-template-columns: repeat(2, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-lg="3"] { grid-template-columns: repeat(3, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-lg="4"] { grid-template-columns: repeat(4, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-lg="5"] { grid-template-columns: repeat(5, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-lg="6"] { grid-template-columns: repeat(6, 1fr); }
+}
+
+/* Columns - Extra Large (from 1280px) */
+@media (min-width: 1280px) {
+	section[data-block="cardlets"] div[data-block="items"] {
+		gap: 2.5rem;
+		margin-bottom: 2.5rem;
+	}
+	section[data-block="cardlets"] div[data-block="items"][data-columns-xl="1"] { grid-template-columns: repeat(1, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-xl="2"] { grid-template-columns: repeat(2, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-xl="3"] { grid-template-columns: repeat(3, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-xl="4"] { grid-template-columns: repeat(4, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-xl="5"] { grid-template-columns: repeat(5, 1fr); }
+	section[data-block="cardlets"] div[data-block="items"][data-columns-xl="6"] { grid-template-columns: repeat(6, 1fr); }
 }

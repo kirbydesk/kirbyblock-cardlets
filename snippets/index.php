@@ -61,6 +61,123 @@ if (!empty($settings['editor'])):
 endif;
 
 // Blocks
+$items = $block->blocks()->toBlocks();
+if ($items->count() > 0):
+
+	echo '<div data-block="items"';
+	echo ' data-columns-sm="'.$block->columnssm()->value().'"';
+	echo ' data-columns-md="'.$block->columnsmd()->value().'"';
+	echo ' data-columns-lg="'.$block->columnslg()->value().'"';
+	echo ' data-columns-xl="'.$block->columnsxl()->value().'"';
+	echo ' data-align="'.$block->blocksalignment()->value().'"';
+	echo '>'."\n";
+
+	foreach ($items as $item):
+		$itemHeading  = json_decode($item->heading()->value(),     true) ?? [];
+		$itemTagline  = json_decode($item->tagline()->value(),     true) ?? [];
+		$itemEditor   = json_decode($item->description()->value(), true) ?? [];
+
+		$htmltag = 'div';
+		$link = null;
+
+		// Link Available?
+		$link = $item->linkinternal()->value();
+		if (!empty($link)) :
+			try {
+				// Page link
+				if (Str::startsWith($link, 'page://')):
+					$url = $item->linkinternal()->toPage()?->url() ?? '';
+
+				// File link
+				elseif (Str::startsWith($link, 'file://')):
+					$url = $item->linkinternal()->toFile()?->url() ?? '';
+
+				// Email link
+				elseif (Str::startsWith($link, 'mailto:') || Str::startsWith($link, 'email:')):
+					$url = Str::startsWith($link, 'mailto:') ? $link : 'mailto:' . Str::after($link, 'email:');
+
+				// Tel link
+				elseif (Str::startsWith($link, 'tel:')):
+					$url = $link;
+
+				// Anchor link
+				elseif (Str::startsWith($link, '#') || Str::startsWith($link, 'anchor:')):
+					$url = Str::startsWith($link, '#') ? $link : '#' . Str::after($link, 'anchor:');
+
+				// Fallback
+				else:
+					$url = $link;
+				endif;
+
+			} catch (Exception $e) {
+				$url = '';
+			}
+
+			// Aria attributes
+			$ariaLabel = $item->arialabel()->isNotEmpty() ? ' aria-label="' . esc($item->arialabel()->value()) . '"' : '';
+			$ariaDescribedby = $item->ariadescribedby()->isNotEmpty() ? ' aria-describedby="' . esc($item->ariadescribedby()->value()) . '"' : '';
+
+			// Build link
+			$htmltag 	= 'a';
+			$link = ' href="'.$url.'"'.$ariaLabel.$ariaDescribedby;
+		endif;
+
+
+		// Start Item output
+		if (
+			(!empty($settings['item-tagline']) && !empty($itemTagline['text'])) ||
+			(!empty($settings['item-heading']) && !empty($itemHeading['text'])) ||
+			(!empty($settings['item-editor']) && !empty($itemEditor[$itemEditor['mode'] ?? 'textarea'] ?? ''))
+		):
+			echo '<'.$htmltag.$link.' data-block="item"';
+				// Radius enabled ?
+				if (!empty($settings['item-radius'])):
+					echo ' data-radius-top-left="'.$item->radiustopleft()->value().'"';
+					echo ' data-radius-top-right="'.$item->radiustopright()->value().'"';
+					echo ' data-radius-bottom-left="'.$item->radiusbottomleft()->value().'"';
+					echo ' data-radius-bottom-right="'.$item->radiusbottomright()->value().'"';
+				endif;
+			echo '>'."\n";
+
+			// Image
+			snippet('image', [
+				'file' => $item->image(),
+				'size' => null,
+				'alignment' => null,
+			]);
+
+			//Content
+			echo '<div data-field="content">'."\n";
+
+				// Tagline
+				if (!empty($settings['item-tagline']) && !empty($itemTagline['text'])):
+					echo '<div data-field="tagline" data-align="'.($itemTagline['align'] ?? null).'">'.$itemTagline['text'].'</div>'."\n";
+				endif;
+
+				// Heading
+				if (!empty($settings['item-heading']) && !empty($itemHeading['text'])):
+					echo '<div data-field="heading" data-align="'.($itemHeading['align'] ?? null).'">'.$itemHeading['text'].'</div>'."\n";
+				endif;
+
+				// Description
+				if (!empty($settings['item-editor'])):
+					$mode = $itemEditor['mode'] ?? 'textarea';
+					$text = $itemEditor[$mode] ?? '';
+					if (!empty($text)):
+						echo '<div data-field="textarea" data-align="'.($itemEditor['align'] ?? null).'">'.$text.'</div>'."\n";
+					endif;
+				endif;
+
+			echo '</div>'."\n"; // End Content
+
+			echo '</'.$htmltag.'>'."\n"; // End Item
+
+		endif; // End Item output
+
+	endforeach;
+
+	echo '</div>'."\n"; // End Items
+endif;
 
 echo '</div></div>'."\n"; // End Grid
 echo '</section>'."\n";

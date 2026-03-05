@@ -2,22 +2,32 @@
   "content": {
     "tagline": { "align": "left" },
     "heading": { "align": "left", "level": "h2", "size": "lg" },
-    "editor":  { "align": "left", "size": "normal", "mode": "textarea" },
-    "blocks":  { "align": "left" }
+    "editor": { "align": "left", "size": "normal", "mode": "textarea" },
+    "blocks": { "align": "left" },
+    "item-tagline": { "align": "left" },
+    "item-heading": { "align": "left" },
+    "item-editor": { "align": "left", "mode": "textarea" },
+		"item-radius-top-left": false,
+    "item-radius-top-right": false,
+    "item-radius-bottom-left": false,
+    "item-radius-bottom-right": false
   },
   "layout": {
     "padding-top": true,
     "padding-right": true,
     "padding-bottom": true,
     "padding-left": true,
+		"columns-sm": "2",
+    "columns-md": "2",
+    "columns-lg": "4",
+    "columns-xl": "4",
     "radius-top-left": false,
     "radius-top-right": false,
     "radius-bottom-left": false,
     "radius-bottom-right": false
   },
   "style": {
-    "theme": "default",
-    "block-size": "content"
+    "theme": "default"
   },
   "grid": {
     "grid-size-sm": 12,
@@ -30,7 +40,8 @@
     "grid-offset-xl": 1
   },
   "settings": {
+		"block-size": "content",
     "margin-top": false,
-    "margin-bottom": true
+    "margin-bottom": false
   }
 }
