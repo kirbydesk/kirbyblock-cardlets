@@ -4,7 +4,6 @@
 section[data-block="cardlets"][data-style="variant"] {
 
 	[data-block="item"]{
-		background-color: #FAFAFA;
 		border: none !important;
 
 		[data-field="tagline"] {
@@ -16,6 +15,9 @@ section[data-block="cardlets"][data-style="variant"] {
 		[data-field="textarea"] {
 			color: #262626;
 		}
+		[data-field="content"] {
+			background-color: #FAFAFA;
+		}
 	}
 }
 
@@ -24,8 +26,8 @@ section[data-block="cardlets"] {
 	/* -------------- Colors --------------*/
 	[data-block="item"] {
 		color: #262626;
-		background-color: #FAFAFA;
 		border-color: #E0E0E0;
+		background-color: #FAFAFA;
 	}
 
 	/* -------------- Tagline Margins--------------*/
@@ -71,30 +73,30 @@ section[data-block="cardlets"] {
 			margin-bottom: 1.5rem;
 
 			/* Item radius */
-			&[data-radius-top-left] {
+			&[data-radius-top-left="true"] {
 				border-top-left-radius: 12px;
 			}
-			&[data-radius-top-right] {
+			&[data-radius-top-right="true"] {
 				border-top-right-radius: 12px;
 			}
-			&[data-radius-bottom-left] {
+			&[data-radius-bottom-left="true"] {
 				border-bottom-left-radius: 12px;
 			}
-			&[data-radius-bottom-right] {
+			&[data-radius-bottom-right="true"] {
 				border-bottom-right-radius: 12px;
 			}
 
 			/* Image radius */
-			&[data-radius-top-left] figure > div, &[data-radius-top-left] img {
+			&[data-radius-top-left="true"] figure > div, &[data-radius-top-left="true"] img {
 				border-top-left-radius: 12px;
 			}
-			&[data-radius-top-right] figure > div, &[data-radius-top-right] img {
+			&[data-radius-top-right="true"] figure > div, &[data-radius-top-right="true"] img {
 				border-top-right-radius: 12px;
 			}
-			&[data-radius-bottom-left] figure > div, &[data-radius-bottom-left] img {
+			&[data-radius-bottom-left="true"] figure > div, &[data-radius-bottom-left="true"] img {
 				border-bottom-left-radius: 0;
 			}
-			&[data-radius-bottom-right] figure > div, &[data-radius-bottom-right] img {
+			&[data-radius-bottom-right="true"] figure > div, &[data-radius-bottom-right="true"] img {
 				border-bottom-right-radius: 0;
 			}
 
