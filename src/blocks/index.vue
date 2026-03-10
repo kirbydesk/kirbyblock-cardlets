@@ -17,9 +17,9 @@
 			<div
 				class="pwGridItem"
 				:style="gridVars"
-				:data-paddingtop="content.paddingtop === true ? 'true' : null"
+				:data-paddingtop="content.paddingtop || null"
 				:data-paddingright="content.paddingright === true ? 'true' : null"
-				:data-paddingbottom="content.paddingbottom === true ? 'true' : null"
+				:data-paddingbottom="content.paddingbottom || null"
 				:data-paddingleft="content.paddingleft === true ? 'true' : null"
 				>
 
