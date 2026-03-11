@@ -13,10 +13,10 @@
     "item-radius-bottom-right": false
   },
   "layout": {
-    "padding-top": "large",
-    "padding-right": "large",
-    "padding-bottom": true,
+    "padding-top": "small",
+    "padding-bottom": "small",
     "padding-left": true,
+    "padding-right": true,
 		"columns-sm": "2",
     "columns-md": "2",
     "columns-lg": "4",

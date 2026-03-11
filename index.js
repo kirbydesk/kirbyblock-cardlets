@@ -1385,6 +1385,11 @@ Please report this to https://github.com/markedjs/marked.`, e) {
       src: String,
       srcset: String,
       size: String,
+      radius: String,
+      radiustopleft: [Boolean, String],
+      radiustopright: [Boolean, String],
+      radiusbottomleft: [Boolean, String],
+      radiusbottomright: [Boolean, String],
       alignment: {
         type: String,
         default: "left"
@@ -1407,6 +1412,7 @@ Please report this to https://github.com/markedjs/marked.`, e) {
       },
       computedRatio() {
         var _a2;
+        if (this.radius === "round") return "1/1";
         const ratio = (_a2 = this.imageContent) == null ? void 0 : _a2.imageratio;
         if (!ratio || ratio === "auto") return null;
         return ratio;
@@ -1414,6 +1420,22 @@ Please report this to https://github.com/markedjs/marked.`, e) {
       computedZoom() {
         var _a2;
         return ((_a2 = this.imageContent) == null ? void 0 : _a2.imagezoom) || false;
+      },
+      radiusStyle() {
+        if (this.radius === "round") {
+          return { borderRadius: "9999px", overflow: "hidden" };
+        }
+        if (this.radius === "custom") {
+          const isTrue = (v2) => v2 === true || v2 === "true";
+          return {
+            borderTopLeftRadius: isTrue(this.radiustopleft) ? "15px" : "0",
+            borderTopRightRadius: isTrue(this.radiustopright) ? "15px" : "0",
+            borderBottomRightRadius: isTrue(this.radiusbottomright) ? "15px" : "0",
+            borderBottomLeftRadius: isTrue(this.radiusbottomleft) ? "15px" : "0",
+            overflow: "hidden"
+          };
+        }
+        return {};
       }
     },
     async mounted() {
@@ -1435,10 +1457,7 @@ Please report this to https://github.com/markedjs/marked.`, e) {
   };
   var _sfc_render$2 = function render() {
     var _vm = this, _c = _vm._self._c;
-    return _vm.src.length ? _c("div", { staticClass: "wrap", attrs: { "data-align": _vm.alignment } }, [_c("div", { staticClass: "image" }, [_c("div", { staticClass: "pattern", class: _vm.size }, [_c("figure", { class: _vm.computedRatio ? ["k-frame", "k-image-frame", "k-image", { zoom: _vm.computedZoom }] : ["k-image", "ratio-auto", { zoom: _vm.computedZoom }], style: _vm.computedRatio ? {
-      "--fit": _vm.computedCrop ? "cover" : "contain",
-      "--ratio": _vm.computedRatio
-    } : {} }, [_c("img", { attrs: { "src": _vm.src, "srcset": _vm.srcset } }), _c("div", [_c("k-icon", { attrs: { "type": "search" } })], 1)])])]), _vm.count > 1 ? _c("div", { staticClass: "controls" }, [_c("div", { staticClass: "dots", class: _vm.size }, _vm._l(_vm.count, function(n) {
+    return _vm.src.length ? _c("div", { staticClass: "wrap", attrs: { "data-align": _vm.alignment } }, [_c("div", { staticClass: "image" }, [_c("div", { staticClass: "pattern", class: _vm.size, style: _vm.radiusStyle }, [_c("figure", { class: _vm.computedRatio ? ["k-frame", "k-image-frame", "k-image", { zoom: _vm.computedZoom }] : ["k-image", "ratio-auto", { zoom: _vm.computedZoom }], style: { ..._vm.computedRatio ? { "--fit": _vm.computedCrop ? "cover" : "contain", "--ratio": _vm.computedRatio } : {}, ..._vm.radiusStyle } }, [_c("img", { attrs: { "src": _vm.src, "srcset": _vm.srcset } }), _c("div", [_c("k-icon", { attrs: { "type": "search" } })], 1)])])]), _vm.count > 1 ? _c("div", { staticClass: "controls" }, [_c("div", { staticClass: "dots", class: _vm.size }, _vm._l(_vm.count, function(n) {
       return _c("span", { key: n, staticClass: "dot" });
     }), 0)]) : _vm._e()]) : _vm._e();
   };
@@ -1591,7 +1610,7 @@ Please report this to https://github.com/markedjs/marked.`, e) {
   };
   var _sfc_render$1 = function render() {
     var _vm = this, _c = _vm._self._c;
-    return _c("div", { staticClass: "pwPreview", style: _vm.colorVars, attrs: { "data-kirbyblock": "cardlets", "data-margintop": _vm.content.margintop === true ? "true" : null, "data-marginbottom": _vm.content.marginbottom === true ? "true" : null }, on: { "dblclick": _vm.open } }, [_c("pwBlockinfo", { attrs: { "value": _vm.$t("kirbyblock-cardlets.name"), "icon": "cardlets" } }), _c("div", { staticClass: "pwGrid" }, [_c("div", { staticClass: "pwGridItem", style: _vm.gridVars, attrs: { "data-paddingtop": _vm.content.paddingtop === true ? "true" : null, "data-paddingright": _vm.content.paddingright === true ? "true" : null, "data-paddingbottom": _vm.content.paddingbottom === true ? "true" : null, "data-paddingleft": _vm.content.paddingleft === true ? "true" : null } }, [_c("div", { staticClass: "contents" }, [_vm.settings.tagline ? _c("pwTagline", { attrs: { "value": _vm.content.tagline, "alignDefault": _vm.fieldDefaults["align-tagline"] } }) : _vm._e(), _vm.settings.heading ? _c("pwHeading", { attrs: { "value": _vm.content.heading, "data-level": _vm.content.level, "alignDefault": _vm.fieldDefaults["align-heading"], "sizeDefault": _vm.fieldDefaults["size-heading"] } }) : _vm._e(), _vm.settings.editor ? _c("pwEditor", { attrs: { "content": _vm.content, "alignDefault": _vm.fieldDefaults["align-editor"] } }) : _vm._e(), _vm.blockItems.length ? _c("div", { staticClass: "pwItems", attrs: { "data-align": _vm.content.blocksalignment || _vm.fieldDefaults["align-blocks"] } }, _vm._l(_vm.blockItems, function(item) {
+    return _c("div", { staticClass: "pwPreview", style: _vm.colorVars, attrs: { "data-kirbyblock": "cardlets", "data-margintop": _vm.content.margintop === true ? "true" : null, "data-marginbottom": _vm.content.marginbottom === true ? "true" : null }, on: { "dblclick": _vm.open } }, [_c("pwBlockinfo", { attrs: { "value": _vm.$t("kirbyblock-cardlets.name"), "icon": "cardlets" } }), _c("div", { staticClass: "pwGrid" }, [_c("div", { staticClass: "pwGridItem", style: _vm.gridVars, attrs: { "data-paddingtop": _vm.content.paddingtop || null, "data-paddingright": _vm.content.paddingright === true ? "true" : null, "data-paddingbottom": _vm.content.paddingbottom || null, "data-paddingleft": _vm.content.paddingleft === true ? "true" : null } }, [_c("div", { staticClass: "contents" }, [_vm.settings.tagline ? _c("pwTagline", { attrs: { "value": _vm.content.tagline, "alignDefault": _vm.fieldDefaults["align-tagline"] } }) : _vm._e(), _vm.settings.heading ? _c("pwHeading", { attrs: { "value": _vm.content.heading, "data-level": _vm.content.level, "alignDefault": _vm.fieldDefaults["align-heading"], "sizeDefault": _vm.fieldDefaults["size-heading"] } }) : _vm._e(), _vm.settings.editor ? _c("pwEditor", { attrs: { "content": _vm.content, "alignDefault": _vm.fieldDefaults["align-editor"] } }) : _vm._e(), _vm.blockItems.length ? _c("div", { staticClass: "pwItems", attrs: { "data-align": _vm.content.blocksalignment || _vm.fieldDefaults["align-blocks"] } }, _vm._l(_vm.blockItems, function(item) {
       var _a2, _b, _c2, _d, _e2, _f, _g, _h, _i, _j, _k;
       return _c("div", { key: item.id, staticClass: "pwItem", class: { "ishidden": item.isHidden }, attrs: { "data-radius-top-left": item.content.radiustopleft === true ? "true" : null, "data-radius-top-right": item.content.radiustopright === true ? "true" : null, "data-radius-bottom-right": item.content.radiusbottomright === true ? "true" : null, "data-radius-bottom-left": item.content.radiusbottomleft === true ? "true" : null } }, [((_b = (_a2 = item.content) == null ? void 0 : _a2.image) == null ? void 0 : _b[0]) ? _c("div", { staticClass: "pwImage" }, [_c("pwImage", { attrs: { "src": ((_e2 = (_d = (_c2 = item.content) == null ? void 0 : _c2.image) == null ? void 0 : _d[0]) == null ? void 0 : _e2.url) || "", "srcset": ((_i = (_h = (_g = (_f = item.content) == null ? void 0 : _f.image) == null ? void 0 : _g[0]) == null ? void 0 : _h.image) == null ? void 0 : _i.srcset) || "", "image": ((_k = (_j = item.content) == null ? void 0 : _j.image) == null ? void 0 : _k[0]) || null } })], 1) : _vm._e(), _c("div", { staticClass: "pwContent" }, [_vm.settings["item-tagline"] !== false ? _c("div", [_vm.parseTaglineText(item.content.tagline) ? _c("div", { staticClass: "pwTagline" }, [_vm._v(_vm._s(_vm.parseTaglineText(item.content.tagline)))]) : _c("div", { staticClass: "placeholder" }, [_vm._v(_vm._s(_vm.$t("kirbyblock-cardlets.item.tagline.placeholder")))])]) : _vm._e(), _vm.settings["item-heading"] !== false ? _c("div", [_vm.parseHeadingText(item.content.heading) ? _c("div", { staticClass: "pwHeading" }, [_vm._v(_vm._s(_vm.parseHeadingText(item.content.heading)))]) : _c("div", { staticClass: "placeholder" }, [_vm._v(_vm._s(_vm.$t("kirbyblock-cardlets.item.heading.placeholder")))])]) : _vm._e(), _vm.settings["item-editor"] !== false ? _c("div", [_vm.parseEditorText(item.content.description) ? _c("div", { staticClass: "pwText" }, [_vm._v(_vm._s(_vm.parseEditorText(item.content.description)))]) : _c("div", { staticClass: "placeholder" }, [_vm._v(_vm._s(_vm.$t("kirbyblock-cardlets.item.description.placeholder")))])]) : _vm._e()])]);
     }), 0) : _vm._e()], 1)])])], 1);
