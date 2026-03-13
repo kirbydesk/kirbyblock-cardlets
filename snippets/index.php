@@ -73,9 +73,12 @@ if ($items->count() > 0):
 	echo '>'."\n";
 
 	foreach ($items as $item):
-		$itemHeading  = json_decode($item->heading()->value(),     true) ?? [];
-		$itemTagline  = json_decode($item->tagline()->value(),     true) ?? [];
-		$itemEditor   = json_decode($item->description()->value(), true) ?? [];
+		$itemHeadingRaw = $item->heading()->value();
+		$itemHeading    = ($itemHeadingRaw === null || $itemHeadingRaw === '') ? [] : (json_decode($itemHeadingRaw, true) ?? []);
+		$itemTaglineRaw = $item->tagline()->value();
+		$itemTagline    = ($itemTaglineRaw === null || $itemTaglineRaw === '') ? [] : (json_decode($itemTaglineRaw, true) ?? []);
+		$itemEditorRaw  = $item->description()->value();
+		$itemEditor     = ($itemEditorRaw === null || $itemEditorRaw === '') ? [] : (json_decode($itemEditorRaw, true) ?? []);
 
 		$htmltag = 'div';
 		$link = null;

@@ -1408,6 +1408,7 @@ Please report this to https://github.com/markedjs/marked.`, e) {
     computed: {
       computedCrop() {
         var _a2;
+        if (this.radius === "round") return true;
         return ((_a2 = this.imageContent) == null ? void 0 : _a2.imagecrop) || false;
       },
       computedRatio() {
