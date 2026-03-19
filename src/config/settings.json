@@ -43,10 +43,10 @@
 			"padding-bottom": { "default": "large" },
 			"padding-left": { "default": true },
 			"padding-right": { "default": true },
-			"columns-sm": { "default": "2" },
-			"columns-md": { "default": "2" },
-			"columns-lg": { "default": "4" },
-			"columns-xl": { "default": "4" },
+			"columns-sm": { "options": ["1", "2", "3", "4", "5"], "default": "2" },
+			"columns-md": { "options": ["1", "2", "3", "4", "5"], "default": "2" },
+			"columns-lg": { "options": ["1", "2", "3", "4", "5"], "default": "4" },
+			"columns-xl": { "options": ["1", "2", "3", "4", "5"], "default": "4" },
 			"radius": "enabled",
 			"radius-top-left": { "default": false },
 			"radius-top-right": { "default": false },
@@ -67,8 +67,7 @@
 			"grid-offset-xl": { "default": 0 }
 		},
 		"settings": {
-			"fragment": "enabled",
-			"block-size": { "default": "content" },
+			"block-size": { "options": ["content", "fullscreen"], "required": true, "fixed": true, "default": "content" },
 			"margin-top": { "default": false },
 			"margin-bottom": { "default": false }
 		}
