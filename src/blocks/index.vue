@@ -17,10 +17,10 @@
 			<div
 				class="pwGridItem"
 				:style="gridVars"
-				:data-paddingtop="content.paddingtop || null"
-				:data-paddingright="content.paddingright === true ? 'true' : null"
-				:data-paddingbottom="content.paddingbottom || null"
-				:data-paddingleft="content.paddingleft === true ? 'true' : null"
+				:data-paddingtop="content.paddingtop || defaults['padding-top'] || null"
+				:data-paddingright="(content.paddingright !== undefined ? content.paddingright : defaults['padding-right']) === true ? 'true' : null"
+				:data-paddingbottom="content.paddingbottom || defaults['padding-bottom'] || null"
+				:data-paddingleft="(content.paddingleft !== undefined ? content.paddingleft : defaults['padding-left']) === true ? 'true' : null"
 				>
 
 				<div class="contents">
@@ -95,7 +95,8 @@ export default {
 	data() {
 		return {
 			settings: {},
-			fieldDefaults: {}
+			fieldDefaults: {},
+			defaults: {}
 		}
 	},
 	methods: {
@@ -143,6 +144,7 @@ export default {
 			const response = await this.$api.get('pagewizard/settings/pwcardlets');
 			this.settings = response.settings;
 			this.fieldDefaults = response.fields || {};
+			this.defaults = response.defaults || {};
 		} catch (e) {
 			this.settings = {};
 		}

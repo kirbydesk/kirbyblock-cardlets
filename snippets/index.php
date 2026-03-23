@@ -17,16 +17,16 @@ endif;
 echo '<section';
 echo ' data-block="cardlets"';
 echo ' data-block-id="b'.$block->id().'"';
-echo ' data-margin-top="'.$block->margintop()->value().'"';
-echo ' data-margin-bottom="'.$block->marginbottom()->value().'"';
+echo ' data-margin-top="'.($block->margintop()->toBool() ? 'true' : 'false').'"';
+echo ' data-margin-bottom="'.($block->marginbottom()->toBool() ? 'true' : 'false').'"';
 echo ' data-padding-top="'.$block->paddingtop()->value().'"';
-echo ' data-padding-right="'.$block->paddingright()->value().'"';
+echo ' data-padding-right="'.($block->paddingright()->toBool() ? 'true' : 'false').'"';
 echo ' data-padding-bottom="'.$block->paddingbottom()->value().'"';
-echo ' data-padding-left="'.$block->paddingleft()->value().'"';
-echo ' data-radius-top-left="'.$block->radiustopleft()->value().'"';
-echo ' data-radius-top-right="'.$block->radiustopright()->value().'"';
-echo ' data-radius-bottom-right="'.$block->radiusbottomright()->value().'"';
-echo ' data-radius-bottom-left="'.$block->radiusbottomleft()->value().'"';
+echo ' data-padding-left="'.($block->paddingleft()->toBool() ? 'true' : 'false').'"';
+echo ' data-radius-top-left="'.($block->radiustopleft()->toBool() ? 'true' : 'false').'"';
+echo ' data-radius-top-right="'.($block->radiustopright()->toBool() ? 'true' : 'false').'"';
+echo ' data-radius-bottom-right="'.($block->radiusbottomright()->toBool() ? 'true' : 'false').'"';
+echo ' data-radius-bottom-left="'.($block->radiusbottomleft()->toBool() ? 'true' : 'false').'"';
 echo ' data-style="'.$block->theme()->value().'"';
 echo ' data-block-size="'.$block->blocksize()->value().'"';
 e(!empty($settings['buttons']) && $block->content()->theme()->value() === 'custom' && $block->buttonstyle()->value() !== 'default', ' data-button-style="' . $block->buttonstyle()->value() . '"');
@@ -135,10 +135,10 @@ if ($items->count() > 0):
 			echo '<'.$htmltag.$link.' data-block="item"';
 				// Radius enabled ?
 				if (!empty($settings['item-radius'])):
-					echo ' data-radius-top-left="'.$item->radiustopleft()->value().'"';
-					echo ' data-radius-top-right="'.$item->radiustopright()->value().'"';
-					echo ' data-radius-bottom-left="'.$item->radiusbottomleft()->value().'"';
-					echo ' data-radius-bottom-right="'.$item->radiusbottomright()->value().'"';
+					echo ' data-radius-top-left="'.($item->radiustopleft()->toBool() ? 'true' : 'false').'"';
+					echo ' data-radius-top-right="'.($item->radiustopright()->toBool() ? 'true' : 'false').'"';
+					echo ' data-radius-bottom-left="'.($item->radiusbottomleft()->toBool() ? 'true' : 'false').'"';
+					echo ' data-radius-bottom-right="'.($item->radiusbottomright()->toBool() ? 'true' : 'false').'"';
 				endif;
 			echo '>'."\n";
 
