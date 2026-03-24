@@ -69,7 +69,7 @@
 		"settings": {
 			"block-size": { "options": ["content", "fullscreen"], "required": true, "fixed": true, "default": "content" },
 			"margin-top": { "default": false },
-			"margin-bottom": { "default": false }
+			"margin-bottom": { "default": true }
 		}
 	}
 }
