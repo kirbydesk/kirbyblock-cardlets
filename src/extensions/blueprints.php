@@ -36,6 +36,8 @@
 				'sizeOptions'  => $fieldOptions['heading']['sizes'] ?? null,
 				'alignOptions' => $fieldOptions['heading']['align'] ?? null,
 				'levelOptions' => $fieldOptions['heading']['level'] ?? null,
+				'textbackground'        => $fields['textbackground-heading'] ?? null,
+				'textbackgroundOptions' => $fieldOptions['heading']['textbackground'] ?? null,
 			];
 		}
 		/* -------------- Editor --------------*/
@@ -146,6 +148,8 @@
 				'sizeOptions'  => $fieldOptions['item-heading']['sizes'] ?? $fieldOptions['heading']['sizes'] ?? null,
 				'alignOptions' => $fieldOptions['item-heading']['align'] ?? $fieldOptions['heading']['align'] ?? null,
 				'levelOptions' => $fieldOptions['item-heading']['level'] ?? $fieldOptions['heading']['level'] ?? null,
+				'textbackground'        => $fields['textbackground-item-heading'] ?? $fields['textbackground-heading'] ?? null,
+				'textbackgroundOptions' => $fieldOptions['item-heading']['textbackground'] ?? $fieldOptions['heading']['textbackground'] ?? null,
 			];
 		}
 
