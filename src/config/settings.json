@@ -36,9 +36,7 @@
 				"align": { "options": ["left", "center", "right"], "default": "left" },
 				"sizes": { "options": ["normal", "lg", "xl", "2xl", "3xl"], "default": "normal" }
 			},
-			"blocks": {
-				"align": { "default": "left" }
-			},
+			"blocks": "enabled",
 			"item-tagline": {
 				"align": { "options": ["left", "center", "right"], "default": "left" }
 			},

@@ -71,7 +71,6 @@ if ($items->count() > 0):
 	echo ' data-columns-md="'.$block->columnsmd()->value().'"';
 	echo ' data-columns-lg="'.$block->columnslg()->value().'"';
 	echo ' data-columns-xl="'.$block->columnsxl()->value().'"';
-	echo ' data-align="'.$block->blocksalignment()->value().'"';
 	echo '>'."\n";
 
 	foreach ($items as $item):

@@ -50,12 +50,6 @@
 			$contentFields['editor']['defaultMode'] = $fields['mode-editor'] ?? null;
 		}
 		/* -------------- Blocks --------------*/
-		$contentFields['blocksAlignment'] = [
-			'type'         => 'pwalign',
-			'align'        => $fields['align-blocks'],
-			'default'      => $fields['align-blocks'],
-			'alignOptions' => $fieldOptions['blocks']['align'] ?? null,
-		];
 		$contentFields['blocks'] = [
 			'extends'   => 'pagewizard/fields/blocks',
 			'label'   => 'kirbyblock-cardlets.items',
