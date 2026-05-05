@@ -2,11 +2,55 @@
 /*------------------------------------------------------------------------------------------------
 	Variant colors (overwrites default colors when variant style is active)
 ------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------------------------------------------
+	Item theme colors (default)
+-----------------------------------------------------------------------------*/
+section[data-block="cardlets"] [data-block="item"] {
+	background-color: var(--pwcardlets-item-background);
+	color: var(--pwcardlets-item-text);
+}
+section[data-block="cardlets"] [data-block="item"] a:not(.pw-card-link) {
+	color: var(--pwcardlets-item-link);
+}
+section[data-block="cardlets"] [data-block="item"] a:not(.pw-card-link):hover {
+	color: var(--pwcardlets-item-link-hover);
+}
+section[data-block="cardlets"] [data-block="item"] a:not(.pw-card-link):active {
+	color: var(--pwcardlets-item-link-active);
+}
+
+/*-----------------------------------------------------------------------------
+	Item theme colors (variant)
+-----------------------------------------------------------------------------*/
 section[data-block="cardlets"][data-style="variant"] [data-block="item"] {
 	background-color: var(--pwcardlets-item-background-variant);
+	color: var(--pwcardlets-item-text-variant);
 }
+section[data-block="cardlets"][data-style="variant"] [data-block="item"] a:not(.pw-card-link) {
+	color: var(--pwcardlets-item-link-variant);
+}
+section[data-block="cardlets"][data-style="variant"] [data-block="item"] a:not(.pw-card-link):hover {
+	color: var(--pwcardlets-item-link-hover-variant);
+}
+section[data-block="cardlets"][data-style="variant"] [data-block="item"] a:not(.pw-card-link):active {
+	color: var(--pwcardlets-item-link-active-variant);
+}
+
+/*-----------------------------------------------------------------------------
+	Item theme colors (variant2)
+-----------------------------------------------------------------------------*/
 section[data-block="cardlets"][data-style="variant2"] [data-block="item"] {
 	background-color: var(--pwcardlets-item-background-variant2);
+	color: var(--pwcardlets-item-text-variant2);
+}
+section[data-block="cardlets"][data-style="variant2"] [data-block="item"] a:not(.pw-card-link) {
+	color: var(--pwcardlets-item-link-variant2);
+}
+section[data-block="cardlets"][data-style="variant2"] [data-block="item"] a:not(.pw-card-link):hover {
+	color: var(--pwcardlets-item-link-hover-variant2);
+}
+section[data-block="cardlets"][data-style="variant2"] [data-block="item"] a:not(.pw-card-link):active {
+	color: var(--pwcardlets-item-link-active-variant2);
 }
 
 section[data-block="cardlets"] {

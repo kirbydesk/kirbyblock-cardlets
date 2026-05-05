@@ -23,5 +23,9 @@
 	'prw.valuegroup.items'         => 'Items',
 	'prw.prop.item-padding'        => 'Padding',
 	'prw.prop.item-radius'         => 'Radius',
-	'prw.prop.item-background'     => 'Background'
+	'prw.prop.item-background'     => 'Background',
+	'prw.prop.item-text'           => 'Text',
+	'prw.prop.item-link'           => 'Link',
+	'prw.prop.item-link-hover'     => 'Link <span class="pw-state-pill pw-state-hover">:Hover</span>',
+	'prw.prop.item-link-active'    => 'Link <span class="pw-state-pill pw-state-active">:Active</span>'
 );
