@@ -3,10 +3,7 @@
 	"values": {
 		"items": {
 			"vars": {
-				"item-padding-top":    { "value": "1rem", "unit": "rem", "step": 0.1, "min": 0, "max": 20 },
-				"item-padding-right":  { "value": "1rem", "unit": "rem", "step": 0.1, "min": 0, "max": 20 },
-				"item-padding-bottom": { "value": "1rem", "unit": "rem", "step": 0.1, "min": 0, "max": 20 },
-				"item-padding-left":   { "value": "1rem", "unit": "rem", "step": 0.1, "min": 0, "max": 20 },
+				"item-padding":        { "value": ["1rem", "1rem", "1rem", "1rem"], "unit": "rem", "step": 0.1, "min": 0, "max": 20, "suffixes": ["-top", "-right", "-bottom", "-left"], "labels": ["pw.option.top", "pw.option.right", "pw.option.bottom", "pw.option.left"] },
 				"item-radius":         { "value": ["1.5rem", "1.5rem", "1.5rem", "1.5rem"], "unit": "rem", "step": 0.1, "min": 0, "max": 20, "suffixes": ["-top-left", "-top-right", "-bottom-left", "-bottom-right"], "labels": ["pw.option.top-left", "pw.option.top-right", "pw.option.bottom-left", "pw.option.bottom-right"] },
 				"item-border-width":   { "value": "1px", "unit": "px", "step": 1, "min": 0, "max": 20 }
 			},
