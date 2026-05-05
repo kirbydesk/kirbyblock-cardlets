@@ -17,5 +17,14 @@
 	'kirbyblock-cardlets.item.radius-bottom-right.help' => 'Defines the radius of the bottom right corner of this cardlet.',
 	'kirbyblock-cardlets.item.radius-top-left.help' => 'Defines the radius of the top left corner of this cardlet.',
 	'kirbyblock-cardlets.item.radius-top-right.help' => 'Defines the radius of the top right corner of this cardlet.',
-	'kirbyblock-cardlets.items' => 'Cardlets'
+	'kirbyblock-cardlets.items' => 'Cardlets',
+
+	/* -------------- Layout-Tab labels (rendered by pw-block-values) --------------*/
+	'prw.valuegroup.items'         => 'Items',
+	'prw.prop.item-padding-top'    => 'Padding Top',
+	'prw.prop.item-padding-bottom' => 'Padding Bottom',
+	'prw.prop.item-padding-left'   => 'Padding Left',
+	'prw.prop.item-padding-right'  => 'Padding Right',
+	'prw.prop.item-radius'         => 'Radius',
+	'prw.prop.item-background'     => 'Background'
 );
