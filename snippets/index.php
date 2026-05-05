@@ -1,8 +1,10 @@
 <?php
 
 // Config
-$config   = pwConfig::load('pwcardlets');
-$settings = $config['content'];
+$config    = pwConfig::load('pwcardlets');
+$settings  = $config['content'];
+$defaults  = $config['defaults'];
+$layoutVis = $config['layout'];
 
 // Custom Background
 if ($block->content()->theme()->value() === 'custom'):
@@ -133,8 +135,13 @@ if ($items->count() > 0):
 			(!empty($settings['item-editor']) && !empty($itemEditor[$itemEditor['mode'] ?? 'textarea'] ?? ''))
 		):
 			echo '<'.$htmltag.$link.' data-block="item"';
+				echo ' data-padding-top="'.($defaults['item-padding-top'] ?? 'small').'"';
+				echo ' data-padding-right="'.(!empty($defaults['item-padding-right']) ? 'true' : 'false').'"';
+				echo ' data-padding-bottom="'.($defaults['item-padding-bottom'] ?? 'small').'"';
+				echo ' data-padding-left="'.(!empty($defaults['item-padding-left']) ? 'true' : 'false').'"';
+				echo ' data-style="'.($defaults['item-background'] ?? 'default').'"';
 				// Radius enabled ?
-				if (!empty($settings['item-radius'])):
+				if (!empty($layoutVis['item-radius'])):
 					echo ' data-radius-top-left="'.($item->radiustopleft()->toBool() ? 'true' : 'false').'"';
 					echo ' data-radius-top-right="'.($item->radiustopright()->toBool() ? 'true' : 'false').'"';
 					echo ' data-radius-bottom-left="'.($item->radiusbottomleft()->toBool() ? 'true' : 'false').'"';

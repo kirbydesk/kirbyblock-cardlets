@@ -173,7 +173,7 @@
 					'label'  => 'pw.tab.content',
 					'fields' => $itemFields,
 				],
-				...(!empty($settings['item-radius']) ? ['layout' => [
+				...(!empty($layoutVis['item-radius']) ? ['layout' => [
 					'label'  => 'pw.tab.layout',
 					'fields' => [
 						'headlineCardletRadius' => [
@@ -183,25 +183,25 @@
 						],
 						'radiusTopLeft' => [
 							'extends' => 'pagewizard/fields/toggle',
-							'default' => $fields['item-radius-top-left'] ?? false,
+							'default' => $defaults['item-radius-top-left'] ?? false,
 							'label' => 'pw.field.radius-top-left',
 							'help' => 'kirbyblock-cardlets.item.radius-top-left.help'
 						],
 						'radiusTopRight' => [
 							'extends' => 'pagewizard/fields/toggle',
-							'default' => $fields['item-radius-top-right'] ?? false,
+							'default' => $defaults['item-radius-top-right'] ?? false,
 							'label' => 'pw.field.radius-top-right',
 							'help' => 'kirbyblock-cardlets.item.radius-top-right.help'
 						],
 						'radiusBottomLeft' => [
 							'extends' => 'pagewizard/fields/toggle',
-							'default' => $fields['item-radius-bottom-left'] ?? false,
+							'default' => $defaults['item-radius-bottom-left'] ?? false,
 							'label' => 'pw.field.radius-bottom-left',
 							'help' => 'kirbyblock-cardlets.item.radius-bottom-left.help'
 						],
 						'radiusBottomRight' => [
 							'extends' => 'pagewizard/fields/toggle',
-							'default' => $fields['item-radius-bottom-right'] ?? false,
+							'default' => $defaults['item-radius-bottom-right'] ?? false,
 							'label' => 'pw.field.radius-bottom-right',
 							'help' => 'kirbyblock-cardlets.item.radius-bottom-right.help'
 						]

@@ -31,12 +31,7 @@
 				"mode": { "options": ["textarea"], "default": "textarea" },
 				"align": { "options": ["left", "center", "right"], "default": "left" },
 				"sizes": false
-			},
-			"item-radius": "enabled",
-			"item-radius-top-left": { "default": false },
-			"item-radius-top-right": { "default": false },
-			"item-radius-bottom-left": { "default": false },
-			"item-radius-bottom-right": { "default": false }
+			}
 		},
 		"layout": {
 			"padding": "enabled",
@@ -52,7 +47,18 @@
 			"radius-top-left": { "default": false },
 			"radius-top-right": { "default": false },
 			"radius-bottom-left": { "default": false },
-			"radius-bottom-right": { "default": false }
+			"radius-bottom-right": { "default": false },
+			"item-padding": "enabled",
+			"item-padding-top": { "default": "small" },
+			"item-padding-bottom": { "default": "small" },
+			"item-padding-left": { "default": true },
+			"item-padding-right": { "default": true },
+			"item-background": { "options": ["default", "variant", "variant2"], "default": "default" },
+			"item-radius": "enabled",
+			"item-radius-top-left": { "default": false },
+			"item-radius-top-right": { "default": false },
+			"item-radius-bottom-left": { "default": false },
+			"item-radius-bottom-right": { "default": false }
 		},
 		"style": {
 			"theme": { "options": ["default", "variant", "variant2", "custom"], "required": true, "default": "default" }
