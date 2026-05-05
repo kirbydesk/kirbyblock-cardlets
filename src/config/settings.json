@@ -42,13 +42,13 @@
 			},
 			"item-heading": {
 				"align": { "options": ["left", "center", "right"], "default": "left" },
-				"level": false,
-				"sizes": false
+				"level": { "options": ["h1", "h2", "h3", "h4"], "default": "h3" },
+				"sizes": { "options": ["xs", "sm", "md", "lg", "xl", "2xl", "3xl"], "default": "md" }
 			},
 			"item-editor": {
-				"mode": { "options": ["textarea"], "default": "textarea" },
+				"mode": { "options": ["textarea", "writer"], "default": "textarea" },
 				"align": { "options": ["left", "center", "right"], "default": "left" },
-				"sizes": false
+				"sizes": { "options": ["normal", "lg", "xl", "2xl", "3xl"], "default": "normal" }
 			}
 		},
 		"layout": {

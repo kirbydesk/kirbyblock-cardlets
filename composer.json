@@ -1,6 +1,6 @@
 {
 	"name": "kirbydesk/kirbyblock-cardlets",
-	"version": "1.0.15",
+	"version": "1.0.16",
 	"description": "Cardlets Block for Kirby CMS",
 	"type": "kirby-plugin",
 	"keywords": [
