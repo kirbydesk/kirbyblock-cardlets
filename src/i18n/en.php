@@ -18,6 +18,7 @@
 	'kirbyblock-cardlets.item.radius-top-left.help' => 'Defines the radius of the top left corner of this cardlet.',
 	'kirbyblock-cardlets.item.radius-top-right.help' => 'Defines the radius of the top right corner of this cardlet.',
 	'kirbyblock-cardlets.items' => 'Cardlets',
+	'kirbyblock-cardlets.item.cta' => 'Read more',
 
 	/* -------------- Layout-Tab labels (rendered by pw-block-values) --------------*/
 	'prw.valuegroup.items'         => 'Items',

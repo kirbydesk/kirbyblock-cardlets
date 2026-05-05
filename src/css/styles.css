@@ -49,6 +49,68 @@ section[data-block="cardlets"][data-style="variant2"] [data-block="item"] {
 		border-color: var(--pwcardlets-item-border-color-variant2);
 	}
 }
+
+/*-----------------------------------------------------------------------------
+	CTA — visual call-to-action at the end of the card content.
+	link-style="text"   → underlined arrow link
+	link-style="button" → filled pill button
+-----------------------------------------------------------------------------*/
+section[data-block="cardlets"] [data-block="item"] [data-field="cta"] {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4em;
+	margin-top: 0.5em;
+	font-weight: 500;
+}
+
+/* Text style: trailing arrow */
+section[data-block="cardlets"] [data-block="item"][data-link-style="text"] [data-field="cta"] {
+	color: var(--pwcardlets-item-link);
+}
+section[data-block="cardlets"] [data-block="item"][data-link-style="text"] [data-field="cta"]::after {
+	content: "→";
+}
+section[data-block="cardlets"][data-style="variant"] [data-block="item"][data-link-style="text"] [data-field="cta"] {
+	color: var(--pwcardlets-item-link-variant);
+}
+section[data-block="cardlets"][data-style="variant2"] [data-block="item"][data-link-style="text"] [data-field="cta"] {
+	color: var(--pwcardlets-item-link-variant2);
+}
+section[data-block="cardlets"] [data-block="item"][data-link-style="text"]:hover [data-field="cta"] {
+	color: var(--pwcardlets-item-link-hover);
+}
+section[data-block="cardlets"][data-style="variant"] [data-block="item"][data-link-style="text"]:hover [data-field="cta"] {
+	color: var(--pwcardlets-item-link-hover-variant);
+}
+section[data-block="cardlets"][data-style="variant2"] [data-block="item"][data-link-style="text"]:hover [data-field="cta"] {
+	color: var(--pwcardlets-item-link-hover-variant2);
+}
+
+/* Button style: filled pill that uses link colour as background */
+section[data-block="cardlets"] [data-block="item"][data-link-style="button"] [data-field="cta"] {
+	padding: 0.5em 1em;
+	border-radius: 999px;
+	background-color: var(--pwcardlets-item-link);
+	color: var(--pwcardlets-item-background);
+	transition: background-color 0.2s ease;
+}
+section[data-block="cardlets"][data-style="variant"] [data-block="item"][data-link-style="button"] [data-field="cta"] {
+	background-color: var(--pwcardlets-item-link-variant);
+	color: var(--pwcardlets-item-background-variant);
+}
+section[data-block="cardlets"][data-style="variant2"] [data-block="item"][data-link-style="button"] [data-field="cta"] {
+	background-color: var(--pwcardlets-item-link-variant2);
+	color: var(--pwcardlets-item-background-variant2);
+}
+section[data-block="cardlets"] [data-block="item"][data-link-style="button"]:hover [data-field="cta"] {
+	background-color: var(--pwcardlets-item-link-hover);
+}
+section[data-block="cardlets"][data-style="variant"] [data-block="item"][data-link-style="button"]:hover [data-field="cta"] {
+	background-color: var(--pwcardlets-item-link-hover-variant);
+}
+section[data-block="cardlets"][data-style="variant2"] [data-block="item"][data-link-style="button"]:hover [data-field="cta"] {
+	background-color: var(--pwcardlets-item-link-hover-variant2);
+}
 section[data-block="cardlets"][data-style="variant2"] [data-block="item"] a:not(.pw-card-link) {
 	color: var(--pwcardlets-item-link-variant2);
 }

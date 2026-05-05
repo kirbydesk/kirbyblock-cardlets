@@ -176,6 +176,13 @@ if ($items->count() > 0):
 					endif;
 				endif;
 
+				// CTA — visual indicator at the end of the card content. The
+				// click is captured by the surrounding <a> so this stays a
+				// non-interactive <span>. Rendered only when a link is set.
+				if (!empty($link)):
+					echo '<span data-field="cta">'.t('kirbyblock-cardlets.item.cta', 'Read more').'</span>'."\n";
+				endif;
+
 			echo '</div>'."\n"; // End Content
 
 			echo '</'.$htmltag.'>'."\n"; // End Item
