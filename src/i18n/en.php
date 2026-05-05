@@ -21,10 +21,7 @@
 
 	/* -------------- Layout-Tab labels (rendered by pw-block-values) --------------*/
 	'prw.valuegroup.items'         => 'Items',
-	'prw.prop.item-padding-top'    => 'Padding Top',
-	'prw.prop.item-padding-bottom' => 'Padding Bottom',
-	'prw.prop.item-padding-left'   => 'Padding Left',
-	'prw.prop.item-padding-right'  => 'Padding Right',
+	'prw.prop.item-padding'        => 'Padding',
 	'prw.prop.item-radius'         => 'Radius',
 	'prw.prop.item-background'     => 'Background'
 );

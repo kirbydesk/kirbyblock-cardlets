@@ -135,10 +135,6 @@ if ($items->count() > 0):
 			(!empty($settings['item-editor']) && !empty($itemEditor[$itemEditor['mode'] ?? 'textarea'] ?? ''))
 		):
 			echo '<'.$htmltag.$link.' data-block="item"';
-				echo ' data-padding-top="'.($defaults['item-padding-top'] ?? 'small').'"';
-				echo ' data-padding-right="'.(!empty($defaults['item-padding-right']) ? 'true' : 'false').'"';
-				echo ' data-padding-bottom="'.($defaults['item-padding-bottom'] ?? 'small').'"';
-				echo ' data-padding-left="'.(!empty($defaults['item-padding-left']) ? 'true' : 'false').'"';
 				// Radius enabled ?
 				if (!empty($layoutVis['item-radius'])):
 					echo ' data-radius-top-left="'.($item->radiustopleft()->toBool() ? 'true' : 'false').'"';

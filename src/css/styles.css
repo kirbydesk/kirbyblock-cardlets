@@ -72,15 +72,8 @@ section[data-block="cardlets"] {
 			border-width: 1px;
 			border-style: solid;
 			margin-bottom: 1.5rem;
+			padding: var(--pwcardlets-item-padding);
 			background-color: var(--pwcardlets-item-background);
-
-			/* Item padding (rem values from wizard's Layout > Werte editor) */
-			&[data-padding-top="small"]    { padding-top:    var(--pwcardlets-item-padding-top-small); }
-			&[data-padding-top="large"]    { padding-top:    var(--pwcardlets-item-padding-top-large); }
-			&[data-padding-bottom="small"] { padding-bottom: var(--pwcardlets-item-padding-bottom-small); }
-			&[data-padding-bottom="large"] { padding-bottom: var(--pwcardlets-item-padding-bottom-large); }
-			&[data-padding-left="true"]    { padding-left:   var(--pwcardlets-item-padding-left); }
-			&[data-padding-right="true"]   { padding-right:  var(--pwcardlets-item-padding-right); }
 
 			/* Item radius (rem values from wizard's Layout > Werte editor) */
 			&[data-radius-top-left="true"]     { border-top-left-radius:     var(--pwcardlets-item-radius-top-left); }
