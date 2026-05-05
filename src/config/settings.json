@@ -4,8 +4,10 @@
 		"items": {
 			"vars": {
 				"item-padding":        { "value": "1.5rem", "unit": "rem", "step": 0.1, "min": 0, "max": 20 },
-				"item-radius":         { "value": ["1.5rem", "1.5rem", "1.5rem", "1.5rem"], "unit": "rem", "step": 0.1, "min": 0, "max": 20, "suffixes": ["-top-left", "-top-right", "-bottom-left", "-bottom-right"], "labels": ["pw.option.top-left", "pw.option.top-right", "pw.option.bottom-left", "pw.option.bottom-right"] },
-				"item-background":     { "value": "#FFFFFF", "type": "color" }
+				"item-radius":         { "value": ["1.5rem", "1.5rem", "1.5rem", "1.5rem"], "unit": "rem", "step": 0.1, "min": 0, "max": 20, "suffixes": ["-top-left", "-top-right", "-bottom-left", "-bottom-right"], "labels": ["pw.option.top-left", "pw.option.top-right", "pw.option.bottom-left", "pw.option.bottom-right"] }
+			},
+			"colors": {
+				"item-background": { "default": "#FFFFFF", "variant": "#F5F5F5", "variant2": "#1D548B" }
 			}
 		}
 	},

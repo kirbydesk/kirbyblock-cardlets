@@ -2,24 +2,11 @@
 /*------------------------------------------------------------------------------------------------
 	Variant colors (overwrites default colors when variant style is active)
 ------------------------------------------------------------------------------------------------*/
-section[data-block="cardlets"][data-style="variant"] {
-
-	[data-block="item"]{
-		border: none !important;
-
-		[data-field="tagline"] {
-			color: #1D548B;
-		}
-		[data-field="heading"] {
-			color: #262626;
-		}
-		[data-field="textarea"] {
-			color: #262626;
-		}
-		[data-field="content"] {
-			background-color: #FAFAFA;
-		}
-	}
+section[data-block="cardlets"][data-style="variant"] [data-block="item"] {
+	background-color: var(--pwcardlets-item-background-variant);
+}
+section[data-block="cardlets"][data-style="variant2"] [data-block="item"] {
+	background-color: var(--pwcardlets-item-background-variant2);
 }
 
 section[data-block="cardlets"] {
