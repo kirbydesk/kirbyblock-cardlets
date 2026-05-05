@@ -25,6 +25,9 @@ section[data-block="cardlets"] [data-block="item"] a:not(.pw-card-link):active {
 section[data-block="cardlets"][data-style="variant"] [data-block="item"] {
 	background-color: var(--pwcardlets-item-background-variant);
 	color: var(--pwcardlets-item-text-variant);
+	&[data-border="true"] {
+		border-color: var(--pwcardlets-item-border-color-variant);
+	}
 }
 section[data-block="cardlets"][data-style="variant"] [data-block="item"] a:not(.pw-card-link) {
 	color: var(--pwcardlets-item-link-variant);
@@ -42,6 +45,9 @@ section[data-block="cardlets"][data-style="variant"] [data-block="item"] a:not(.
 section[data-block="cardlets"][data-style="variant2"] [data-block="item"] {
 	background-color: var(--pwcardlets-item-background-variant2);
 	color: var(--pwcardlets-item-text-variant2);
+	&[data-border="true"] {
+		border-color: var(--pwcardlets-item-border-color-variant2);
+	}
 }
 section[data-block="cardlets"][data-style="variant2"] [data-block="item"] a:not(.pw-card-link) {
 	color: var(--pwcardlets-item-link-variant2);
@@ -100,17 +106,31 @@ section[data-block="cardlets"] {
 	[data-block="items"] {
 		[data-block="item"] {
 			display: block;
-			border-width: 1px;
-			border-style: solid;
 			margin-bottom: 1.5rem;
-			padding: var(--pwcardlets-item-padding);
+			overflow: hidden;
 			background-color: var(--pwcardlets-item-background);
+
+			/* Border (toggle in Items > Defaults) */
+			border-style: solid;
+			border-width: 0;
+			&[data-border="true"] {
+				border-width: var(--pwcardlets-item-border-width);
+				border-color: var(--pwcardlets-item-border-color);
+			}
 
 			/* Item radius (rem values from wizard's Layout > Werte editor) */
 			&[data-radius-top-left="true"]     { border-top-left-radius:     var(--pwcardlets-item-radius-top-left); }
 			&[data-radius-top-right="true"]    { border-top-right-radius:    var(--pwcardlets-item-radius-top-right); }
 			&[data-radius-bottom-left="true"]  { border-bottom-left-radius:  var(--pwcardlets-item-radius-bottom-left); }
 			&[data-radius-bottom-right="true"] { border-bottom-right-radius: var(--pwcardlets-item-radius-bottom-right); }
+
+			/* Content wrapper carries the 4-side padding (drives spacing to image + edges) */
+			[data-field="content"] {
+				padding-top:    var(--pwcardlets-item-padding-top);
+				padding-right:  var(--pwcardlets-item-padding-right);
+				padding-bottom: var(--pwcardlets-item-padding-bottom);
+				padding-left:   var(--pwcardlets-item-padding-left);
+			}
 
 			/* Image radius matches the item corners */
 			&[data-radius-top-left="true"] figure > div,

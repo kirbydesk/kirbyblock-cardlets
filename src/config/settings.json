@@ -3,15 +3,20 @@
 	"values": {
 		"items": {
 			"vars": {
-				"item-padding":        { "value": "1.5rem", "unit": "rem", "step": 0.1, "min": 0, "max": 20 },
-				"item-radius":         { "value": ["1.5rem", "1.5rem", "1.5rem", "1.5rem"], "unit": "rem", "step": 0.1, "min": 0, "max": 20, "suffixes": ["-top-left", "-top-right", "-bottom-left", "-bottom-right"], "labels": ["pw.option.top-left", "pw.option.top-right", "pw.option.bottom-left", "pw.option.bottom-right"] }
+				"item-padding-top":    { "value": "1rem", "unit": "rem", "step": 0.1, "min": 0, "max": 20 },
+				"item-padding-right":  { "value": "1rem", "unit": "rem", "step": 0.1, "min": 0, "max": 20 },
+				"item-padding-bottom": { "value": "1rem", "unit": "rem", "step": 0.1, "min": 0, "max": 20 },
+				"item-padding-left":   { "value": "1rem", "unit": "rem", "step": 0.1, "min": 0, "max": 20 },
+				"item-radius":         { "value": ["1.5rem", "1.5rem", "1.5rem", "1.5rem"], "unit": "rem", "step": 0.1, "min": 0, "max": 20, "suffixes": ["-top-left", "-top-right", "-bottom-left", "-bottom-right"], "labels": ["pw.option.top-left", "pw.option.top-right", "pw.option.bottom-left", "pw.option.bottom-right"] },
+				"item-border-width":   { "value": "1px", "unit": "px", "step": 1, "min": 0, "max": 20 }
 			},
 			"colors": {
-				"item-background":  { "default": "#FFFFFF", "variant": "#F5F5F5", "variant2": "#1D548B" },
-				"item-text":        { "default": "#262626", "variant": "#262626", "variant2": "#FFFFFF" },
-				"item-link":        { "default": "#1D548B", "variant": "#1D548B", "variant2": "#8CBAE7" },
-				"item-link-hover":  { "default": "#1A4E7A", "variant": "#1A4E7A", "variant2": "#7AA9D0" },
-				"item-link-active": { "default": "#163F5C", "variant": "#163F5C", "variant2": "#6680A8" }
+				"item-background":   { "default": "#FFFFFF", "variant": "#F5F5F5", "variant2": "#1D548B" },
+				"item-text":         { "default": "#262626", "variant": "#262626", "variant2": "#FFFFFF" },
+				"item-link":         { "default": "#1D548B", "variant": "#1D548B", "variant2": "#8CBAE7" },
+				"item-link-hover":   { "default": "#1A4E7A", "variant": "#1A4E7A", "variant2": "#7AA9D0" },
+				"item-link-active":  { "default": "#163F5C", "variant": "#163F5C", "variant2": "#6680A8" },
+				"item-border-color": { "default": "#E0E0E0", "variant": "#E0E0E0", "variant2": "#FFFFFF40" }
 			}
 		}
 	},
@@ -67,7 +72,9 @@
 			"item-radius-top-left": { "default": false },
 			"item-radius-top-right": { "default": false },
 			"item-radius-bottom-left": { "default": false },
-			"item-radius-bottom-right": { "default": false }
+			"item-radius-bottom-right": { "default": false },
+			"item-link-style": { "options": ["text", "button"], "default": "text" },
+			"item-border": { "default": false }
 		},
 		"style": {
 			"theme": { "options": ["default", "variant", "variant2", "custom"], "required": true, "default": "default" }

@@ -135,6 +135,8 @@ if ($items->count() > 0):
 			(!empty($settings['item-editor']) && !empty($itemEditor[$itemEditor['mode'] ?? 'textarea'] ?? ''))
 		):
 			echo '<'.$htmltag.$link.' data-block="item"';
+				echo ' data-link-style="'.($defaults['item-link-style'] ?? 'text').'"';
+				echo ' data-border="'.(!empty($defaults['item-border']) ? 'true' : 'false').'"';
 				// Radius enabled ?
 				if (!empty($layoutVis['item-radius'])):
 					echo ' data-radius-top-left="'.($item->radiustopleft()->toBool() ? 'true' : 'false').'"';
@@ -144,14 +146,15 @@ if ($items->count() > 0):
 				endif;
 			echo '>'."\n";
 
-			// Image
+			// Image (sits flush against the card edge — no padding)
 			snippet('image', [
 				'file' => $item->image(),
 				'size' => null,
 				'alignment' => null,
 			]);
 
-			//Content
+			//Content (the four item-padding-* values apply HERE so they steer
+			// the gap between text and the card's edges / image)
 			echo '<div data-field="content">'."\n";
 
 				// Tagline

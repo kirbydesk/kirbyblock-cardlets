@@ -21,11 +21,18 @@
 
 	/* -------------- Layout-Tab labels (rendered by pw-block-values) --------------*/
 	'prw.valuegroup.items'         => 'Items',
-	'prw.prop.item-padding'        => 'Padding',
+	'prw.prop.item-padding-top'    => 'Padding Top',
+	'prw.prop.item-padding-right'  => 'Padding Right',
+	'prw.prop.item-padding-bottom' => 'Padding Bottom',
+	'prw.prop.item-padding-left'   => 'Padding Left',
 	'prw.prop.item-radius'         => 'Radius',
+	'prw.prop.item-border-width'   => 'Border Width',
 	'prw.prop.item-background'     => 'Background',
 	'prw.prop.item-text'           => 'Text',
 	'prw.prop.item-link'           => 'Link',
 	'prw.prop.item-link-hover'     => 'Link <span class="pw-state-pill pw-state-hover">:Hover</span>',
-	'prw.prop.item-link-active'    => 'Link <span class="pw-state-pill pw-state-active">:Active</span>'
+	'prw.prop.item-link-active'    => 'Link <span class="pw-state-pill pw-state-active">:Active</span>',
+	'prw.prop.item-border-color'   => 'Border',
+	'prw.prop.item-link-style'     => 'Link style',
+	'prw.prop.item-border'         => 'Border'
 );
