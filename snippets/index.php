@@ -133,8 +133,12 @@ if ($items->count() > 0):
 			(!empty($settings['item-heading']) && !empty($itemHeading['text'])) ||
 			(!empty($settings['item-editor']) && !empty($itemEditor[$itemEditor['mode'] ?? 'textarea'] ?? ''))
 		):
+			$itemLinkStyle = $defaults['item-link-style'] ?? 'text';
 			echo '<'.$htmltag.$link.' data-block="item"';
-				echo ' data-link-style="'.($defaults['item-link-style'] ?? 'text').'"';
+				echo ' data-link-style="'.$itemLinkStyle.'"';
+				if ($itemLinkStyle === 'button'):
+					echo ' data-button-style="'.($defaults['item-button-style'] ?? 'default').'"';
+				endif;
 				echo ' data-border="'.(!empty($defaults['item-border']) ? 'true' : 'false').'"';
 				// Radius enabled ?
 				if (!empty($layoutVis['item-radius'])):

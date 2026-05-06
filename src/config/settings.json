@@ -69,6 +69,7 @@
 			"item-radius-bottom-left": { "default": false },
 			"item-radius-bottom-right": { "default": false },
 			"item-link-style": { "options": ["text", "button"], "default": "text" },
+			"item-button-style": { "options": ["default", "variant", "variant2"], "default": "default" },
 			"item-border": { "default": false }
 		},
 		"style": {
