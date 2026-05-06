@@ -86,30 +86,66 @@ section[data-block="cardlets"][data-style="variant2"] [data-block="item"][data-l
 	color: var(--pwcardlets-item-link-hover-variant2);
 }
 
-/* Button style: filled pill that uses link colour as background */
+/* Button style: pulls structure (padding, radius, font) and colors from the
+   global button element. data-button-style="variant" / "variant2" picks one
+   of the three global button color sets. */
 section[data-block="cardlets"] [data-block="item"][data-link-style="button"] [data-field="cta"] {
-	padding: 0.5em 1em;
-	border-radius: 999px;
-	background-color: var(--pwcardlets-item-link);
-	color: var(--pwcardlets-item-background);
-	transition: background-color 0.2s ease;
+	font-family: var(--button-font-family);
+	font-size: var(--button-font-size);
+	font-weight: var(--button-font-weight);
+	line-height: var(--button-line-height);
+	letter-spacing: var(--button-letter-spacing);
+	text-transform: var(--button-text-transform);
+	font-style: var(--button-font-style);
+	padding: var(--button-padding);
+	border-radius: var(--button-border-radius);
+	border: 1px solid var(--element-button-border);
+	color: var(--element-button-text);
+	background-color: var(--element-button-background);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
 }
-section[data-block="cardlets"][data-style="variant"] [data-block="item"][data-link-style="button"] [data-field="cta"] {
-	background-color: var(--pwcardlets-item-link-variant);
-	color: var(--pwcardlets-item-background-variant);
+section[data-block="cardlets"] [data-block="item"][data-link-style="button"][data-button-style="variant"] [data-field="cta"] {
+	color: var(--element-button-text-variant);
+	background-color: var(--element-button-background-variant);
+	border-color: var(--element-button-border-variant);
 }
-section[data-block="cardlets"][data-style="variant2"] [data-block="item"][data-link-style="button"] [data-field="cta"] {
-	background-color: var(--pwcardlets-item-link-variant2);
-	color: var(--pwcardlets-item-background-variant2);
+section[data-block="cardlets"] [data-block="item"][data-link-style="button"][data-button-style="variant2"] [data-field="cta"] {
+	color: var(--element-button-text-variant2);
+	background-color: var(--element-button-background-variant2);
+	border-color: var(--element-button-border-variant2);
 }
+
 section[data-block="cardlets"] [data-block="item"][data-link-style="button"]:hover [data-field="cta"] {
-	background-color: var(--pwcardlets-item-link-hover);
+	color: var(--element-button-text-hover);
+	background-color: var(--element-button-background-hover);
+	border-color: var(--element-button-border-hover);
 }
-section[data-block="cardlets"][data-style="variant"] [data-block="item"][data-link-style="button"]:hover [data-field="cta"] {
-	background-color: var(--pwcardlets-item-link-hover-variant);
+section[data-block="cardlets"] [data-block="item"][data-link-style="button"][data-button-style="variant"]:hover [data-field="cta"] {
+	color: var(--element-button-text-hover-variant);
+	background-color: var(--element-button-background-hover-variant);
+	border-color: var(--element-button-border-hover-variant);
 }
-section[data-block="cardlets"][data-style="variant2"] [data-block="item"][data-link-style="button"]:hover [data-field="cta"] {
-	background-color: var(--pwcardlets-item-link-hover-variant2);
+section[data-block="cardlets"] [data-block="item"][data-link-style="button"][data-button-style="variant2"]:hover [data-field="cta"] {
+	color: var(--element-button-text-hover-variant2);
+	background-color: var(--element-button-background-hover-variant2);
+	border-color: var(--element-button-border-hover-variant2);
+}
+
+section[data-block="cardlets"] [data-block="item"][data-link-style="button"]:active [data-field="cta"] {
+	color: var(--element-button-text-active);
+	background-color: var(--element-button-background-active);
+	border-color: var(--element-button-border-active);
+}
+section[data-block="cardlets"] [data-block="item"][data-link-style="button"][data-button-style="variant"]:active [data-field="cta"] {
+	color: var(--element-button-text-active-variant);
+	background-color: var(--element-button-background-active-variant);
+	border-color: var(--element-button-border-active-variant);
+}
+section[data-block="cardlets"] [data-block="item"][data-link-style="button"][data-button-style="variant2"]:active [data-field="cta"] {
+	color: var(--element-button-text-active-variant2);
+	background-color: var(--element-button-background-active-variant2);
+	border-color: var(--element-button-border-active-variant2);
 }
 section[data-block="cardlets"][data-style="variant2"] [data-block="item"] a:not(.pw-card-link) {
 	color: var(--pwcardlets-item-link-variant2);
