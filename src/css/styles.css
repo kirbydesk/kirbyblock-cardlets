@@ -9,6 +9,9 @@ section[data-block="cardlets"] [data-block="item"] {
 	background-color: var(--pwcardlets-item-background);
 	color: var(--pwcardlets-item-text);
 }
+section[data-block="cardlets"] [data-block="item"][data-border="true"] {
+	border-color: var(--pwcardlets-item-border-color);
+}
 section[data-block="cardlets"] [data-block="item"] a:not(.pw-card-link) {
 	color: var(--pwcardlets-item-link);
 }
@@ -199,14 +202,13 @@ section[data-block="cardlets"] {
 			display: block;
 			margin-bottom: 1.5rem;
 			overflow: hidden;
-			background-color: var(--pwcardlets-item-background);
 
-			/* Border (toggle in Items > Defaults) */
+			/* Border (toggle in Items > Defaults). Color is set further up so
+			   variant/variant2 rules can override; only the width lives here. */
 			border-style: solid;
 			border-width: 0;
 			&[data-border="true"] {
 				border-width: var(--pwcardlets-item-border-width);
-				border-color: var(--pwcardlets-item-border-color);
 			}
 
 			/* Item radius (rem values from wizard's Layout > Werte editor) */
