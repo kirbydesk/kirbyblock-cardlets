@@ -8,8 +8,9 @@
 				"item-border-width":   { "value": "1px", "unit": "px", "step": 1, "min": 0, "max": 20 }
 			},
 			"colors": {
-				"item-background":   { "default": "#FFFFFF", "variant": "#F5F5F5", "variant2": "#1D548B" },
-				"item-text":         { "default": "#262626", "variant": "#262626", "variant2": "#FFFFFF" },
+				"item-background":    { "default": "#FFFFFF", "variant": "#F5F5F5", "variant2": "#1D548B" },
+				"item-text":          { "default": "#262626", "variant": "#262626", "variant2": "#FFFFFF" },
+				"item-tagline-text":  { "default": "#262626", "variant": "#262626", "variant2": "#FFFFFF" },
 				"item-link":         { "default": "#1D548B", "variant": "#1D548B", "variant2": "#8CBAE7" },
 				"item-link-hover":   { "default": "#1A4E7A", "variant": "#1A4E7A", "variant2": "#7AA9D0" },
 				"item-link-active":  { "default": "#163F5C", "variant": "#163F5C", "variant2": "#6680A8" },

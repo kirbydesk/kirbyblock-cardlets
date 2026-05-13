@@ -54,7 +54,7 @@
 							</div>
 
 							<div class="pwContent">
-								<div v-if="settings['item-tagline'] !== false">
+								<div v-if="settings['item-tagline'] !== false" :style="itemTaglineStyle">
 									<div class="pwTagline" v-if="parseTaglineText(item.content.tagline)">{{ parseTaglineText(item.content.tagline) }}</div>
 									<div class="placeholder" v-else>{{ $t('kirbyblock-cardlets.item.tagline.placeholder') }}</div>
 								</div>
@@ -140,14 +140,19 @@ export default {
 				return [];
 			}
 		},
-		itemStyle() {
-			if (!this.blockValues) return {};
+		pickItemColor() {
+			// Returns a function that resolves a color var for the active theme.
+			if (!this.blockValues) return () => null;
 			const theme = this.content.theme || 'default';
 			const colorDefs = this.blockValues.defaults?.items?.colors || {};
-			const varDefs = this.blockValues.defaults?.items?.vars || {};
+			const themeOv = (this.blockValues.overrides || {})[theme] || {};
+			return name => themeOv[name] || colorDefs[name]?.[theme] || null;
+		},
+		itemStyle() {
+			if (!this.blockValues) return {};
 			const ov = this.blockValues.overrides || {};
-			const themeOv = ov[theme] || {};
-			const pickColor = name => themeOv[name] || colorDefs[name]?.[theme] || null;
+			const varDefs = this.blockValues.defaults?.items?.vars || {};
+			const pickColor = this.pickItemColor;
 			const style = {};
 
 			const bg = pickColor('item-background');
@@ -165,6 +170,10 @@ export default {
 			}
 
 			return style;
+		},
+		itemTaglineStyle() {
+			const color = this.pickItemColor('item-tagline-text');
+			return color ? { color } : {};
 		}
 	},
 	async created() {
