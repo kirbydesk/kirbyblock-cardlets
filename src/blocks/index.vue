@@ -58,11 +58,11 @@
 									<div class="pwTagline" v-if="parseTaglineText(item.content.tagline)">{{ parseTaglineText(item.content.tagline) }}</div>
 									<div class="placeholder" v-else>{{ $t('kirbyblock-cardlets.item.tagline.placeholder') }}</div>
 								</div>
-								<div v-if="settings['item-heading'] !== false" :style="itemHeadingStyle">
+								<div v-if="settings['item-heading'] !== false">
 									<div class="pwHeading" v-if="parseHeadingText(item.content.heading)">{{ parseHeadingText(item.content.heading) }}</div>
 									<div class="placeholder" v-else>{{ $t('kirbyblock-cardlets.item.heading.placeholder') }}</div>
 								</div>
-								<div v-if="settings['item-editor'] !== false" :style="itemEditorStyle">
+								<div v-if="settings['item-editor'] !== false">
 									<div class="pwText" v-if="parseEditorText(item.content.description)">{{ parseEditorText(item.content.description) }}</div>
 									<div class="placeholder" v-else>{{ $t('kirbyblock-cardlets.item.description.placeholder') }}</div>
 								</div>
@@ -173,14 +173,6 @@ export default {
 		},
 		itemTaglineStyle() {
 			const color = this.pickItemColor('item-tagline-text');
-			return color ? { color } : {};
-		},
-		itemHeadingStyle() {
-			const color = this.pickItemColor('item-heading-text');
-			return color ? { color } : {};
-		},
-		itemEditorStyle() {
-			const color = this.pickItemColor('item-editor-text');
 			return color ? { color } : {};
 		}
 	},
