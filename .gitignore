@@ -3,3 +3,4 @@ Icon
 *.sublime-workspace
 /.vscode
 /.idea
+node_modules

@@ -39,6 +39,7 @@
 							:key="item.id"
 							class="pwItem"
 							:class="{'ishidden': item.isHidden}"
+							:style="itemStyle"
 							:data-radius-top-left="item.content.radiustopleft === true ? 'true' : null"
 							:data-radius-top-right="item.content.radiustopright === true ? 'true' : null"
 							:data-radius-bottom-right="item.content.radiusbottomright === true ? 'true' : null"
@@ -96,7 +97,8 @@ export default {
 		return {
 			settings: {},
 			fieldDefaults: {},
-			defaults: {}
+			defaults: {},
+			blockValues: null
 		}
 	},
 	methods: {
@@ -137,6 +139,32 @@ export default {
 			} catch(e) {
 				return [];
 			}
+		},
+		itemStyle() {
+			if (!this.blockValues) return {};
+			const theme = this.content.theme || 'default';
+			const colorDefs = this.blockValues.defaults?.items?.colors || {};
+			const varDefs = this.blockValues.defaults?.items?.vars || {};
+			const ov = this.blockValues.overrides || {};
+			const themeOv = ov[theme] || {};
+			const pickColor = name => themeOv[name] || colorDefs[name]?.[theme] || null;
+			const style = {};
+
+			const bg = pickColor('item-background');
+			if (bg) style.backgroundColor = bg;
+			const text = pickColor('item-text');
+			if (text) style.color = text;
+
+			// Border is a content-level toggle (defaults['item-border'])
+			const borderOn = this.defaults['item-border'] === true || this.fieldDefaults['item-border'] === true;
+			if (borderOn) {
+				const borderWidth = ov['item-border-width'] || varDefs['item-border-width']?.value;
+				const borderColor = pickColor('item-border-color');
+				if (borderWidth) { style.borderStyle = 'solid'; style.borderWidth = borderWidth; }
+				if (borderColor) style.borderColor = borderColor;
+			}
+
+			return style;
 		}
 	},
 	async created() {
@@ -147,6 +175,11 @@ export default {
 			this.defaults = response.defaults || {};
 		} catch (e) {
 			this.settings = {};
+		}
+		try {
+			this.blockValues = await this.$api.get('projectwizard/values/pwcardlets');
+		} catch (e) {
+			this.blockValues = null;
 		}
 	}
 }
