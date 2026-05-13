@@ -159,13 +159,6 @@ section[data-block="cardlets"][data-style="variant2"] [data-block="item"] a:not(
 
 section[data-block="cardlets"] {
 
-	/* -------------- Colors --------------*/
-	[data-block="item"] {
-		color: #262626;
-		border-color: #E0E0E0;
-		background-color: #FAFAFA;
-	}
-
 	/* -------------- Tagline Margins--------------*/
 	[data-field="tagline"] {
 		+ [data-field="heading"] {
