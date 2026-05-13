@@ -54,16 +54,16 @@
 							</div>
 
 							<div class="pwContent">
-								<div v-if="settings['item-tagline'] !== false" :style="itemTaglineStyle">
-									<div class="pwTagline" v-if="parseTaglineText(item.content.tagline)">{{ parseTaglineText(item.content.tagline) }}</div>
+								<div v-if="settings['item-tagline'] !== false">
+									<div class="pwTagline" :style="itemTaglineStyle" v-if="parseTaglineText(item.content.tagline)">{{ parseTaglineText(item.content.tagline) }}</div>
 									<div class="placeholder" v-else>{{ $t('kirbyblock-cardlets.item.tagline.placeholder') }}</div>
 								</div>
-								<div v-if="settings['item-heading'] !== false" :style="itemHeadingStyle">
-									<div class="pwHeading" v-if="parseHeadingText(item.content.heading)">{{ parseHeadingText(item.content.heading) }}</div>
+								<div v-if="settings['item-heading'] !== false">
+									<div class="pwHeading" :style="itemHeadingStyle" v-if="parseHeadingText(item.content.heading)">{{ parseHeadingText(item.content.heading) }}</div>
 									<div class="placeholder" v-else>{{ $t('kirbyblock-cardlets.item.heading.placeholder') }}</div>
 								</div>
-								<div v-if="settings['item-editor'] !== false" :style="itemEditorStyle">
-									<div class="pwText" v-if="parseEditorText(item.content.description)">{{ parseEditorText(item.content.description) }}</div>
+								<div v-if="settings['item-editor'] !== false">
+									<div class="pwText" :style="itemEditorStyle" v-if="parseEditorText(item.content.description)">{{ parseEditorText(item.content.description) }}</div>
 									<div class="placeholder" v-else>{{ $t('kirbyblock-cardlets.item.description.placeholder') }}</div>
 								</div>
 							</div>
