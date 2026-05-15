@@ -232,6 +232,10 @@
 						'linkAlign' => [
 							'extends' => 'pagewizard/fields/link-align'
 						],
+						'linkDecoration' => [
+							'extends' => 'pagewizard/fields/link-decoration',
+							'default' => $defaults['item-link-decoration'] ?? 'none'
+						],
 						'ariaLabel' => [
 							'extends' => 'pagewizard/fields/link-aria-label'
 						],

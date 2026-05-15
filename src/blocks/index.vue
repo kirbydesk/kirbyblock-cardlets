@@ -64,7 +64,7 @@
 								</div>
 								<div v-if="hasItemLink(item)" class="pwCta" :style="getCtaStyle(item)">
 									<span>{{ ctaText(item) }}</span>
-									<span v-if="ctaIconSvg" v-html="ctaIconWrapped"></span>
+									<span v-if="itemDecoSvg(item)" v-html="itemDecoSvg(item)"></span>
 								</div>
 							</div>
 						</div>
@@ -153,6 +153,13 @@ export default {
 			if (lt && String(lt).trim() !== '') return lt;
 			return this.$t('kirbyblock-cardlets.item.cta') || 'Read more';
 		},
+		itemDecoSvg(item) {
+			if ((this.defaults['item-link-style'] || 'text') !== 'text') return '';
+			const deco = (item.content && item.content.linkdecoration) || this.defaults['item-link-decoration'] || 'none';
+			const payload = this.linkIcons[deco];
+			if (!payload) return '';
+			return '<svg viewBox="0 0 24 24" aria-hidden="true" style="width:1em;height:1em;flex:0 0 auto">' + payload + '</svg>';
+		},
 		getCtaStyle(item) {
 			const linkStyle = this.defaults['item-link-style'] || 'text';
 			const align = (item.content && item.content.linkalign) || 'left';
@@ -178,7 +185,8 @@ export default {
 				style.background = 'rgba(0,0,0,0.1)';
 				style.color = 'inherit';
 			} else {
-				if (this.defaults['item-link-decoration'] === 'underline') {
+				const deco = (item.content && item.content.linkdecoration) || this.defaults['item-link-decoration'] || 'none';
+				if (deco === 'underline') {
 					style.textDecoration = 'underline';
 				}
 				style.color = this.pickItemColor('item-link') || 'inherit';
@@ -261,13 +269,8 @@ export default {
 			const color = this.pickItemColor('item-tagline-text');
 			return color ? { color } : {};
 		},
-		ctaIconSvg() {
-			if ((this.defaults['item-link-style'] || 'text') !== 'text') return '';
-			const key = this.defaults['item-link-icon'] || 'arrow';
-			return this.linkIcons[key] || '';
-		},
 		ctaIconWrapped() {
-			return '<svg viewBox="0 0 24 24" aria-hidden="true" style="width:1em;height:1em;flex:0 0 auto">' + this.ctaIconSvg + '</svg>';
+			return ''; // unused now — per-item icon handled inline below
 		},
 		itemHeadingStyle() {
 			const color = this.pickItemColor('item-heading-text');
