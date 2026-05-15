@@ -224,6 +224,9 @@
 							'width' => '1/1',
 							'required' => false
 						],
+						'linkText' => [
+							'extends' => 'pagewizard/fields/link-text'
+						],
 						'ariaLabel' => [
 							'extends' => 'pagewizard/fields/link-aria-label'
 						],

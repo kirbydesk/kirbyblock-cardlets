@@ -182,8 +182,12 @@ if ($items->count() > 0):
 				// CTA — visual indicator at the end of the card content. The
 				// click is captured by the surrounding <a> so this stays a
 				// non-interactive <span>. Rendered only when a link is set.
+				// User-entered linkText wins; otherwise fall back to the translation.
 				if (!empty($link)):
-					echo '<span data-field="cta">'.t('kirbyblock-cardlets.item.cta', 'Read more').'</span>'."\n";
+					$ctaText = $item->linkText()->isNotEmpty()
+						? $item->linkText()->value()
+						: t('kirbyblock-cardlets.item.cta', 'Read more');
+					echo '<span data-field="cta">'.esc($ctaText).'</span>'."\n";
 				endif;
 
 			echo '</div>'."\n"; // End Content
