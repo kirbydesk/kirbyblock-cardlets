@@ -181,12 +181,17 @@ export default {
 			const bg = pickColor('item-background');
 			if (bg) style.backgroundColor = bg;
 
-			const borderWidth = ov['item-border-width'] || varDefs['item-border-width']?.value;
-			const borderColor = pickColor('item-border-color');
-			if (borderWidth) {
-				style.borderStyle = 'solid';
-				style.borderWidth = borderWidth;
-				if (borderColor) style.borderColor = borderColor;
+			// Border honors the item-border toggle from the wizard defaults
+			// (mirrors data-border="true|false" on the frontend).
+			const borderOn = this.defaults['item-border'] === true || this.fieldDefaults['item-border'] === true;
+			if (borderOn) {
+				const borderWidth = ov['item-border-width'] || varDefs['item-border-width']?.value;
+				const borderColor = pickColor('item-border-color');
+				if (borderWidth) {
+					style.borderStyle = 'solid';
+					style.borderWidth = borderWidth;
+					if (borderColor) style.borderColor = borderColor;
+				}
 			}
 
 			const radiusArr = ov['item-radius'] || varDefs['item-radius']?.value;
