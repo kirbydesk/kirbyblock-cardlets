@@ -62,6 +62,7 @@
 									<div class="pwText" :style="itemEditorStyle" v-if="parseEditorText(item.content.description)">{{ parseEditorText(item.content.description) }}</div>
 									<div class="placeholder" v-else>{{ $t('kirbyblock-cardlets.item.description.placeholder') }}</div>
 								</div>
+								<div v-if="hasItemLink(item)" class="pwCta" :style="getCtaStyle(item)">{{ ctaText(item) }}</div>
 							</div>
 						</div>
 					</div>
@@ -124,6 +125,44 @@ export default {
 			} catch(e) {
 				return raw;
 			}
+		},
+		hasItemLink(item) {
+			return Boolean(item.content && item.content.linkinternal);
+		},
+		ctaText(item) {
+			const lt = item.content && item.content.linktext;
+			if (lt && String(lt).trim() !== '') return lt;
+			return this.$t('kirbyblock-cardlets.item.cta') || 'Read more';
+		},
+		getCtaStyle(item) {
+			const linkStyle = this.defaults['item-link-style'] || 'text';
+			const align = (item.content && item.content.linkalign) || 'left';
+			const style = {
+				display: 'flex',
+				width: 'max-content',
+				alignItems: 'center',
+				gap: '0.4em',
+				marginTop: '0.5em',
+				fontWeight: 500,
+			};
+			if (align === 'center') {
+				style.marginLeft = 'auto';
+				style.marginRight = 'auto';
+			} else if (align === 'right') {
+				style.marginLeft = 'auto';
+			} else {
+				style.marginRight = 'auto';
+			}
+			if (linkStyle === 'button') {
+				style.padding = '0.5em 1em';
+				style.borderRadius = '999px';
+				style.background = 'rgba(0,0,0,0.1)';
+				style.color = 'inherit';
+			} else {
+				style.textDecoration = 'underline';
+				style.color = this.pickItemColor('item-link') || 'inherit';
+			}
+			return style;
 		},
 		getItemStyle(item) {
 			// Block-wide style + per-item radius corners.
