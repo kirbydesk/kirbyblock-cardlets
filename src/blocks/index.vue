@@ -167,7 +167,9 @@ export default {
 				style.background = 'rgba(0,0,0,0.1)';
 				style.color = 'inherit';
 			} else {
-				style.textDecoration = 'underline';
+				if (this.defaults['item-link-underline'] === true) {
+					style.textDecoration = 'underline';
+				}
 				style.color = this.pickItemColor('item-link') || 'inherit';
 			}
 			return style;

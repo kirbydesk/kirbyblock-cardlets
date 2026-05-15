@@ -138,6 +138,8 @@ if ($items->count() > 0):
 				echo ' data-link-style="'.$itemLinkStyle.'"';
 				if ($itemLinkStyle === 'button'):
 					echo ' data-button-style="'.($defaults['item-button-style'] ?? 'default').'"';
+				elseif (!empty($defaults['item-link-underline'])):
+					echo ' data-underline="true"';
 				endif;
 				echo ' data-border="'.(!empty($defaults['item-border']) ? 'true' : 'false').'"';
 				// Radius enabled ?
