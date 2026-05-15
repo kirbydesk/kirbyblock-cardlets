@@ -158,12 +158,15 @@ export default {
 			const bg = pickColor('item-background');
 			if (bg) style.backgroundColor = bg;
 
-			// Border is a content-level toggle (defaults['item-border'])
-			const borderOn = this.defaults['item-border'] === true || this.fieldDefaults['item-border'] === true;
-			if (borderOn) {
-				const borderWidth = ov['item-border-width'] || varDefs['item-border-width']?.value;
-				const borderColor = pickColor('item-border-color');
-				if (borderWidth) { style.borderStyle = 'solid'; style.borderWidth = borderWidth; }
+			// Always render the configured border in the panel preview so the
+			// user can see how the chosen width/color looks while adjusting.
+			// (The frontend gates this on data-border="true" — that's a per-item
+			// runtime toggle and not directly observable here.)
+			const borderWidth = ov['item-border-width'] || varDefs['item-border-width']?.value;
+			const borderColor = pickColor('item-border-color');
+			if (borderWidth) {
+				style.borderStyle = 'solid';
+				style.borderWidth = borderWidth;
 				if (borderColor) style.borderColor = borderColor;
 			}
 
