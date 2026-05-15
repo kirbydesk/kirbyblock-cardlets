@@ -201,7 +201,28 @@ if ($items->count() > 0):
 						? $item->linkText()->value()
 						: t('kirbyblock-cardlets.item.cta', 'Read more');
 					$ctaAlign = $item->linkAlign()->or('left')->value();
-					echo '<span data-field="cta" data-align="'.$ctaAlign.'">'.esc($ctaText).'</span>'."\n";
+
+					// Pull the selected icon's SVG payload from the icon-select options
+					$iconSvg = '';
+					if ($itemLinkStyle === 'text'):
+						$iconKey = $defaults['item-link-icon'] ?? null;
+						$iconDef = $layoutVis['item-link-icon'] ?? null;
+						if ($iconKey && is_array($iconDef) && !empty($iconDef['options'])):
+							foreach ($iconDef['options'] as $opt):
+								if (is_array($opt) && ($opt['value'] ?? null) === $iconKey):
+									$iconSvg = $opt['svg'] ?? '';
+									break;
+								endif;
+							endforeach;
+						endif;
+					endif;
+
+					echo '<span data-field="cta" data-align="'.$ctaAlign.'">';
+					echo esc($ctaText);
+					if (!empty($iconSvg)):
+						echo '<svg viewBox="0 0 24 24" data-field="cta-icon" aria-hidden="true">'.$iconSvg.'</svg>';
+					endif;
+					echo '</span>'."\n";
 				endif;
 
 			echo '</div>'."\n"; // End Content

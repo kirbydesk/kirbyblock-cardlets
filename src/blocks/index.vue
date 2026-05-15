@@ -62,7 +62,10 @@
 									<div class="pwText" :style="itemEditorStyle" :data-size="parseEditorSize(item.content.description)" v-if="parseEditorText(item.content.description)">{{ parseEditorText(item.content.description) }}</div>
 									<div class="placeholder" v-else>{{ $t('kirbyblock-cardlets.item.description.placeholder') }}</div>
 								</div>
-								<div v-if="hasItemLink(item)" class="pwCta" :style="getCtaStyle(item)">{{ ctaText(item) }}</div>
+								<div v-if="hasItemLink(item)" class="pwCta" :style="getCtaStyle(item)">
+									<span>{{ ctaText(item) }}</span>
+									<span v-if="ctaIconSvg" v-html="ctaIconWrapped"></span>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -95,7 +98,15 @@ export default {
 			settings: {},
 			fieldDefaults: {},
 			defaults: {},
-			blockValues: null
+			blockValues: null,
+			// Mirrors the icon SVG library in src/config/settings.json so the panel
+			// preview can render the chosen CTA icon. Kept in sync manually.
+			linkIcons: {
+				'arrow':      "<path d='M5 12h14M13 5l7 7-7 7' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>",
+				'long-arrow': "<path d='M2 12h19m-5-5l5 5-5 5' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>",
+				'chevron':    "<polyline points='9 6 15 12 9 18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>",
+				'caret':      "<path d='M8 5l8 7-8 7z' fill='currentColor'/>"
+			}
 		}
 	},
 	methods: {
@@ -249,6 +260,14 @@ export default {
 		itemTaglineStyle() {
 			const color = this.pickItemColor('item-tagline-text');
 			return color ? { color } : {};
+		},
+		ctaIconSvg() {
+			if ((this.defaults['item-link-style'] || 'text') !== 'text') return '';
+			const key = this.defaults['item-link-icon'] || 'arrow';
+			return this.linkIcons[key] || '';
+		},
+		ctaIconWrapped() {
+			return '<svg viewBox="0 0 24 24" aria-hidden="true" style="width:1em;height:1em;flex:0 0 auto">' + this.ctaIconSvg + '</svg>';
 		},
 		itemHeadingStyle() {
 			const color = this.pickItemColor('item-heading-text');

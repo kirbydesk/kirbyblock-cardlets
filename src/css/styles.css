@@ -95,16 +95,17 @@ section[data-block="cardlets"] [data-block="item"] [data-field="cta"][data-align
 section[data-block="cardlets"] [data-block="item"] [data-field="cta"][data-align="center"] { margin-left: auto; margin-right: auto; }
 section[data-block="cardlets"] [data-block="item"] [data-field="cta"][data-align="right"]  { margin-left: auto; }
 
-/* Text style: trailing arrow, optional underline */
+/* Text style: link color, optional underline, trailing icon SVG */
 section[data-block="cardlets"] [data-block="item"][data-link-style="text"] [data-field="cta"] {
 	color: var(--pwcardlets-item-link);
 }
 section[data-block="cardlets"] [data-block="item"][data-link-style="text"][data-link-decoration="underline"] [data-field="cta"] {
 	text-decoration: underline;
 }
-section[data-block="cardlets"] [data-block="item"][data-link-style="text"] [data-field="cta"]::after {
-	content: "→";
-	text-decoration: none;
+section[data-block="cardlets"] [data-block="item"] [data-field="cta"] svg[data-field="cta-icon"] {
+	width: 1em;
+	height: 1em;
+	flex: 0 0 auto;
 }
 section[data-block="cardlets"][data-style="variant"] [data-block="item"][data-link-style="text"] [data-field="cta"] {
 	color: var(--pwcardlets-item-link-variant);

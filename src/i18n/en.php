@@ -35,6 +35,7 @@
 	'prw.prop.item-border-color'   => 'Border',
 	'prw.prop.item-link-style'      => 'Link style',
 	'prw.prop.item-link-decoration' => 'Link decoration',
+	'prw.prop.item-link-icon'       => 'Link icon',
 	'prw.prop.item-button-style'    => 'Button style',
 	'prw.prop.item-border'         => 'Border'
 );
