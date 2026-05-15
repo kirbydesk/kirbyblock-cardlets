@@ -55,11 +55,11 @@
 									<div class="placeholder" v-else>{{ $t('kirbyblock-cardlets.item.tagline.placeholder') }}</div>
 								</div>
 								<div v-if="settings['item-heading'] !== false">
-									<div class="pwHeading" :style="itemHeadingStyle" v-if="parseHeadingText(item.content.heading)">{{ parseHeadingText(item.content.heading) }}</div>
+									<div class="pwHeading" :style="itemHeadingStyle" :data-size="parseHeadingSize(item.content.heading)" v-if="parseHeadingText(item.content.heading)">{{ parseHeadingText(item.content.heading) }}</div>
 									<div class="placeholder" v-else>{{ $t('kirbyblock-cardlets.item.heading.placeholder') }}</div>
 								</div>
 								<div v-if="settings['item-editor'] !== false">
-									<div class="pwText" :style="itemEditorStyle" v-if="parseEditorText(item.content.description)">{{ parseEditorText(item.content.description) }}</div>
+									<div class="pwText" :style="itemEditorStyle" :data-size="parseEditorSize(item.content.description)" v-if="parseEditorText(item.content.description)">{{ parseEditorText(item.content.description) }}</div>
 									<div class="placeholder" v-else>{{ $t('kirbyblock-cardlets.item.description.placeholder') }}</div>
 								</div>
 								<div v-if="hasItemLink(item)" class="pwCta" :style="getCtaStyle(item)">{{ ctaText(item) }}</div>
@@ -117,6 +117,10 @@ export default {
 				return raw;
 			}
 		},
+		parseHeadingSize(raw) {
+			if (!raw) return null;
+			try { return JSON.parse(raw).size || null; } catch(e) { return null; }
+		},
 		parseEditorText(raw) {
 			if (!raw) return '';
 			try {
@@ -125,6 +129,10 @@ export default {
 			} catch(e) {
 				return raw;
 			}
+		},
+		parseEditorSize(raw) {
+			if (!raw) return null;
+			try { return JSON.parse(raw).size || null; } catch(e) { return null; }
 		},
 		hasItemLink(item) {
 			return Boolean(item.content && item.content.linkinternal);

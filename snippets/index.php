@@ -167,7 +167,15 @@ if ($items->count() > 0):
 
 				// Heading
 				if (!empty($settings['item-heading']) && !empty($itemHeading['text'])):
-					echo '<div data-field="heading" data-align="'.($itemHeading['align'] ?? null).'">'.$itemHeading['text'].'</div>'."\n";
+					$hLevel = $itemHeading['level'] ?? 'div';
+					$hSize  = $itemHeading['size']  ?? null;
+					$hAlign = $itemHeading['align'] ?? null;
+					$hTb    = ($itemHeading['textbackground'] ?? null) === 'enabled';
+					echo '<'.$hLevel.' data-field="heading" data-heading-size="'.$hSize.'" data-align="'.$hAlign.'">';
+					if ($hTb) echo '<span data-textbackground>';
+					echo $itemHeading['text'];
+					if ($hTb) echo '</span>';
+					echo '</'.$hLevel.'>'."\n";
 				endif;
 
 				// Description
@@ -175,7 +183,10 @@ if ($items->count() > 0):
 					$mode = $itemEditor['mode'] ?? 'textarea';
 					$text = $itemEditor[$mode] ?? '';
 					if (!empty($text)):
-						echo '<div data-field="textarea" data-align="'.($itemEditor['align'] ?? null).'">'.$text.'</div>'."\n";
+						$eSize  = $itemEditor['size']  ?? 'normal';
+						$eAlign = $itemEditor['align'] ?? null;
+						$rendered = $mode === 'markdown' ? kirbytext($text) : $text;
+						echo '<div data-field="'.$mode.'" data-align="'.$eAlign.'" data-editor-size="'.$eSize.'">'.$rendered.'</div>'."\n";
 					endif;
 				endif;
 
