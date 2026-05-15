@@ -33,8 +33,8 @@
 	'prw.prop.item-link-hover'     => 'Link <span class="pw-state-pill pw-state-hover">:Hover</span>',
 	'prw.prop.item-link-active'    => 'Link <span class="pw-state-pill pw-state-active">:Active</span>',
 	'prw.prop.item-border-color'   => 'Border',
-	'prw.prop.item-link-style'     => 'Link style',
-	'prw.prop.item-link-underline' => 'Underline',
-	'prw.prop.item-button-style'   => 'Button style',
+	'prw.prop.item-link-style'      => 'Link style',
+	'prw.prop.item-link-decoration' => 'Link decoration',
+	'prw.prop.item-button-style'    => 'Button style',
 	'prw.prop.item-border'         => 'Border'
 );

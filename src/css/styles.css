@@ -99,7 +99,7 @@ section[data-block="cardlets"] [data-block="item"] [data-field="cta"][data-align
 section[data-block="cardlets"] [data-block="item"][data-link-style="text"] [data-field="cta"] {
 	color: var(--pwcardlets-item-link);
 }
-section[data-block="cardlets"] [data-block="item"][data-link-style="text"][data-underline="true"] [data-field="cta"] {
+section[data-block="cardlets"] [data-block="item"][data-link-style="text"][data-link-decoration="underline"] [data-field="cta"] {
 	text-decoration: underline;
 }
 section[data-block="cardlets"] [data-block="item"][data-link-style="text"] [data-field="cta"]::after {
