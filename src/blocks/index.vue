@@ -153,7 +153,7 @@ export default {
 			const ov = this.blockValues.overrides || {};
 			const varDefs = this.blockValues.defaults?.items?.vars || {};
 			const pickColor = this.pickItemColor;
-			const style = {};
+			const style = { overflow: 'hidden' };
 
 			const bg = pickColor('item-background');
 			if (bg) style.backgroundColor = bg;
@@ -168,6 +168,24 @@ export default {
 				style.borderStyle = 'solid';
 				style.borderWidth = borderWidth;
 				if (borderColor) style.borderColor = borderColor;
+			}
+
+			// Per-corner radius using the same defaults toggles + value array
+			// the frontend reads. Suffix order in settings.json:
+			// [-top-left, -top-right, -bottom-left, -bottom-right]
+			const radiusArr = ov['item-radius'] || varDefs['item-radius']?.value;
+			if (Array.isArray(radiusArr)) {
+				const corners = [
+					['top-left',     0, 'borderTopLeftRadius'],
+					['top-right',    1, 'borderTopRightRadius'],
+					['bottom-left',  2, 'borderBottomLeftRadius'],
+					['bottom-right', 3, 'borderBottomRightRadius'],
+				];
+				for (const [suffix, idx, prop] of corners) {
+					if (this.defaults['item-radius-' + suffix] === true) {
+						style[prop] = radiusArr[idx];
+					}
+				}
 			}
 
 			return style;
