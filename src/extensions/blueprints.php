@@ -225,7 +225,8 @@
 							'required' => false
 						],
 						'linkText' => [
-							'extends' => 'pagewizard/fields/link-text'
+							'extends'     => 'pagewizard/fields/link-text',
+							'placeholder' => 'kirbyblock-cardlets.item.cta'
 						],
 						'ariaLabel' => [
 							'extends' => 'pagewizard/fields/link-aria-label'
