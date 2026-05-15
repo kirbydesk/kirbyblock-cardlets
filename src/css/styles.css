@@ -87,12 +87,8 @@ section[data-block="cardlets"] [data-block="item"] [data-field="cta"] {
 	width: max-content;
 	align-items: center;
 	gap: 0.4em;
-	margin-top: 0.5em;
-	font-weight: 500;
-}
-/* Text-style: push CTA to the bottom of the content (item is flex column above) */
-section[data-block="cardlets"] [data-block="item"][data-link-style="text"] [data-field="cta"] {
 	margin-top: auto;
+	font-weight: 500;
 }
 /* Horizontal alignment via margin-auto (works on block-level flex containers) */
 section[data-block="cardlets"] [data-block="item"] [data-field="cta"][data-align="left"]   { margin-right: auto; }
@@ -232,20 +228,17 @@ section[data-block="cardlets"] {
 	/* -------------- Items--------------*/
 	[data-block="items"] {
 		[data-block="item"] {
-			display: block;
+			display: flex;
+			flex-direction: column;
 			margin-bottom: 1.5rem;
 			overflow: hidden;
 
-			/* Text-style link: stick the CTA to the bottom so all "Read more" links
-			   in a row line up. Button style keeps its natural flow. */
-			&[data-link-style="text"] {
+			/* Stick the CTA to the bottom of the item so all links / buttons
+			   in a row line up on the same baseline (grid stretches items). */
+			[data-field="content"] {
+				flex: 1;
 				display: flex;
 				flex-direction: column;
-				[data-field="content"] {
-					flex: 1;
-					display: flex;
-					flex-direction: column;
-				}
 			}
 
 			/* Border (toggle in Items > Defaults). Color is set further up so
