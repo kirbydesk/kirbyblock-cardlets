@@ -39,11 +39,7 @@
 							:key="item.id"
 							class="pwItem"
 							:class="{'ishidden': item.isHidden}"
-							:style="itemStyle"
-							:data-radius-top-left="item.content.radiustopleft === true ? 'true' : null"
-							:data-radius-top-right="item.content.radiustopright === true ? 'true' : null"
-							:data-radius-bottom-right="item.content.radiusbottomright === true ? 'true' : null"
-							:data-radius-bottom-left="item.content.radiusbottomleft === true ? 'true' : null">
+							:style="getItemStyle(item)">
 
 							<div v-if="item.content?.image?.[0]" class="pwImage">
 								<pwImage
@@ -128,6 +124,30 @@ export default {
 			} catch(e) {
 				return raw;
 			}
+		},
+		getItemStyle(item) {
+			// Block-wide style + per-item radius corners.
+			// Per-corner toggle: per-item field wins when explicitly set,
+			// otherwise fall back to block-level defaults['item-radius-<corner>'].
+			const base = this.itemBaseStyle;
+			if (!base) return {};
+			const style = { ...base.style };
+			if (!base.radiusArr) return style;
+
+			const corners = [
+				['top-left',     0, 'borderTopLeftRadius',     'radiustopleft'],
+				['top-right',    1, 'borderTopRightRadius',    'radiustopright'],
+				['bottom-left',  2, 'borderBottomLeftRadius',  'radiusbottomleft'],
+				['bottom-right', 3, 'borderBottomRightRadius', 'radiusbottomright'],
+			];
+			for (const [suffix, idx, prop, contentKey] of corners) {
+				const perItem = item.content[contentKey];
+				const enabled = (perItem === true || perItem === false)
+					? perItem === true
+					: this.defaults['item-radius-' + suffix] === true;
+				if (enabled) style[prop] = base.radiusArr[idx];
+			}
+			return style;
 		}
 	},
 	computed: {
@@ -148,8 +168,11 @@ export default {
 			const themeOv = (this.blockValues.overrides || {})[theme] || {};
 			return name => themeOv[name] || colorDefs[name]?.[theme] || null;
 		},
-		itemStyle() {
-			if (!this.blockValues) return {};
+		itemBaseStyle() {
+			// Block-wide bits of the item style — bg, border, plus the radius
+			// values. Per-item overrides for the corner toggles are mixed in
+			// by getItemStyle(item) below.
+			if (!this.blockValues) return null;
 			const ov = this.blockValues.overrides || {};
 			const varDefs = this.blockValues.defaults?.items?.vars || {};
 			const pickColor = this.pickItemColor;
@@ -158,10 +181,6 @@ export default {
 			const bg = pickColor('item-background');
 			if (bg) style.backgroundColor = bg;
 
-			// Always render the configured border in the panel preview so the
-			// user can see how the chosen width/color looks while adjusting.
-			// (The frontend gates this on data-border="true" — that's a per-item
-			// runtime toggle and not directly observable here.)
 			const borderWidth = ov['item-border-width'] || varDefs['item-border-width']?.value;
 			const borderColor = pickColor('item-border-color');
 			if (borderWidth) {
@@ -170,25 +189,8 @@ export default {
 				if (borderColor) style.borderColor = borderColor;
 			}
 
-			// Per-corner radius using the same defaults toggles + value array
-			// the frontend reads. Suffix order in settings.json:
-			// [-top-left, -top-right, -bottom-left, -bottom-right]
 			const radiusArr = ov['item-radius'] || varDefs['item-radius']?.value;
-			if (Array.isArray(radiusArr)) {
-				const corners = [
-					['top-left',     0, 'borderTopLeftRadius'],
-					['top-right',    1, 'borderTopRightRadius'],
-					['bottom-left',  2, 'borderBottomLeftRadius'],
-					['bottom-right', 3, 'borderBottomRightRadius'],
-				];
-				for (const [suffix, idx, prop] of corners) {
-					if (this.defaults['item-radius-' + suffix] === true) {
-						style[prop] = radiusArr[idx];
-					}
-				}
-			}
-
-			return style;
+			return { style, radiusArr: Array.isArray(radiusArr) ? radiusArr : null };
 		},
 		itemTaglineStyle() {
 			const color = this.pickItemColor('item-tagline-text');
