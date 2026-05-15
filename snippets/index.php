@@ -134,8 +134,9 @@ if ($items->count() > 0):
 			(!empty($settings['item-editor']) && !empty($itemEditor[$itemEditor['mode'] ?? 'textarea'] ?? ''))
 		):
 			$itemLinkStyle = $defaults['item-link-style'] ?? 'text';
-			// Per-item decoration (falls back to block default 'item-link-decoration')
+			// Per-item decoration + icon (fallbacks to block-level defaults)
 			$itemDeco = $item->linkDecoration()->or($defaults['item-link-decoration'] ?? 'none')->value();
+			$itemIcon = $item->linkIcon()->or($defaults['item-link-icon'] ?? 'arrow')->value();
 			echo '<'.$htmltag.$link.' data-block="item"';
 				echo ' data-link-style="'.$itemLinkStyle.'"';
 				if ($itemLinkStyle === 'button'):
@@ -204,17 +205,17 @@ if ($items->count() > 0):
 						: t('kirbyblock-cardlets.item.cta', 'Read more');
 					$ctaAlign = $item->linkAlign()->or('left')->value();
 
-					// Pull the SVG payload for the chosen decoration (only when it's
-					// an icon value; 'none' and 'underline' have no SVG).
+					// Pull the SVG payload for the chosen icon (text-style only,
+					// and only when an icon — not 'none' — is selected).
 					$iconSvg = '';
-					if ($itemLinkStyle === 'text' && in_array($itemDeco, ['arrow', 'long-arrow', 'chevron', 'caret'], true)):
+					if ($itemLinkStyle === 'text' && in_array($itemIcon, ['arrow', 'long-arrow', 'chevron', 'caret'], true)):
 						$icons = [
 							'arrow'      => "<path d='M5 12h14M13 5l7 7-7 7' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>",
 							'long-arrow' => "<path d='M2 12h19m-5-5l5 5-5 5' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>",
 							'chevron'    => "<polyline points='9 6 15 12 9 18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>",
 							'caret'      => "<path d='M8 5l8 7-8 7z' fill='currentColor'/>",
 						];
-						$iconSvg = $icons[$itemDeco] ?? '';
+						$iconSvg = $icons[$itemIcon] ?? '';
 					endif;
 
 					echo '<span data-field="cta" data-align="'.$ctaAlign.'">';

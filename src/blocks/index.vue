@@ -155,8 +155,8 @@ export default {
 		},
 		itemDecoSvg(item) {
 			if ((this.defaults['item-link-style'] || 'text') !== 'text') return '';
-			const deco = (item.content && item.content.linkdecoration) || this.defaults['item-link-decoration'] || 'none';
-			const payload = this.linkIcons[deco];
+			const icon = (item.content && item.content.linkicon) || this.defaults['item-link-icon'] || 'arrow';
+			const payload = this.linkIcons[icon];
 			if (!payload) return '';
 			return '<svg viewBox="0 0 24 24" aria-hidden="true" style="width:1em;height:1em;flex:0 0 auto">' + payload + '</svg>';
 		},

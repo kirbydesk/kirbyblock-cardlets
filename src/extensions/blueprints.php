@@ -236,6 +236,10 @@
 							'extends' => 'pagewizard/fields/link-decoration',
 							'default' => $defaults['item-link-decoration'] ?? 'none'
 						],
+						'linkIcon' => [
+							'extends' => 'pagewizard/fields/link-icon',
+							'default' => $defaults['item-link-icon'] ?? 'arrow'
+						],
 						'ariaLabel' => [
 							'extends' => 'pagewizard/fields/link-aria-label'
 						],

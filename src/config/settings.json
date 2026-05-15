@@ -71,7 +71,8 @@
 			"item-radius-bottom-left": { "default": false },
 			"item-radius-bottom-right": { "default": false },
 			"item-link-style": { "options": ["text", "button"], "default": "text" },
-			"item-link-decoration": { "options": ["none", "underline", "arrow", "long-arrow", "chevron", "caret"], "default": "none" },
+			"item-link-decoration": { "options": ["none", "underline"], "default": "none" },
+			"item-link-icon": { "options": ["none", "arrow", "long-arrow", "chevron", "caret"], "default": "arrow" },
 			"item-button-style": { "options": ["default", "variant", "variant2"], "default": "default" },
 			"item-border": { "default": false }
 		},
