@@ -235,7 +235,11 @@ section[data-block="cardlets"] {
 				border-width: var(--pwcardlets-item-border-width);
 			}
 
-			/* Item radius (rem values from wizard's Layout > Werte editor) */
+			/* Item radius (rem values from wizard's Layout > Werte editor).
+			   The item's overflow:hidden handles clipping of image/content to
+			   the inner curve — no separate border-radius on the image needed,
+			   otherwise the image would get its own (larger) rounded corner
+			   sitting inside the border and the curves wouldn't match. */
 			&[data-radius-top-left="true"]     { border-top-left-radius:     var(--pwcardlets-item-radius-top-left); }
 			&[data-radius-top-right="true"]    { border-top-right-radius:    var(--pwcardlets-item-radius-top-right); }
 			&[data-radius-bottom-left="true"]  { border-bottom-left-radius:  var(--pwcardlets-item-radius-bottom-left); }
@@ -247,24 +251,6 @@ section[data-block="cardlets"] {
 				padding-right:  var(--pwcardlets-item-padding-right);
 				padding-bottom: var(--pwcardlets-item-padding-bottom);
 				padding-left:   var(--pwcardlets-item-padding-left);
-			}
-
-			/* Image radius matches the item corners */
-			&[data-radius-top-left="true"] figure > div,
-			&[data-radius-top-left="true"] img {
-				border-top-left-radius: var(--pwcardlets-item-radius-top-left);
-			}
-			&[data-radius-top-right="true"] figure > div,
-			&[data-radius-top-right="true"] img {
-				border-top-right-radius: var(--pwcardlets-item-radius-top-right);
-			}
-			&[data-radius-bottom-left="true"] figure > div,
-			&[data-radius-bottom-left="true"] img {
-				border-bottom-left-radius: 0;
-			}
-			&[data-radius-bottom-right="true"] figure > div,
-			&[data-radius-bottom-right="true"] img {
-				border-bottom-right-radius: 0;
 			}
 		}
 	}
