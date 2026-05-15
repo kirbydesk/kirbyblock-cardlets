@@ -265,6 +265,13 @@ section[data-block="cardlets"] {
 				padding-right:  var(--pwcardlets-item-padding-right);
 				padding-bottom: var(--pwcardlets-item-padding-bottom);
 				padding-left:   var(--pwcardlets-item-padding-left);
+
+				/* Minimum gap between the last text element and the CTA (matches
+				   the content's bottom padding for a symmetric feel). margin-top:
+				   auto on the CTA still drives the bottom-alignment across items. */
+				> *:has(+ [data-field="cta"]) {
+					margin-bottom: var(--pwcardlets-item-padding-bottom);
+				}
 			}
 		}
 	}
