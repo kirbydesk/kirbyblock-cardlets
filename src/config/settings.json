@@ -72,7 +72,16 @@
 			"item-radius-bottom-right": { "default": false },
 			"item-link-style": { "options": ["text", "button"], "default": "text" },
 			"item-link-decoration": { "options": ["none", "underline"], "default": "none" },
-			"item-link-icon": { "options": ["none", "arrow", "long-arrow", "chevron", "caret"], "default": "arrow" },
+			"item-link-icon": {
+				"type": "icon-select",
+				"default": "arrow",
+				"options": [
+					{ "value": "arrow",      "svg": "<path d='M5 12h14M13 5l7 7-7 7' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>" },
+					{ "value": "long-arrow", "svg": "<path d='M2 12h19m-5-5l5 5-5 5' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>" },
+					{ "value": "chevron",    "svg": "<polyline points='9 6 15 12 9 18' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>" },
+					{ "value": "caret",      "svg": "<path d='M8 5l8 7-8 7z' fill='currentColor'/>" }
+				]
+			},
 			"item-button-style": { "options": ["default", "variant", "variant2"], "default": "default" },
 			"item-border": { "default": false }
 		},
