@@ -226,7 +226,11 @@
 						],
 						'linkText' => [
 							'extends'     => 'pagewizard/fields/link-text',
-							'placeholder' => 'kirbyblock-cardlets.item.cta'
+							'placeholder' => 'kirbyblock-cardlets.item.cta',
+							'width'       => '2/3'
+						],
+						'linkAlign' => [
+							'extends' => 'pagewizard/fields/link-align'
 						],
 						'ariaLabel' => [
 							'extends' => 'pagewizard/fields/link-aria-label'

@@ -83,12 +83,17 @@ section[data-block="cardlets"][data-style="variant2"] [data-block="item"] :is([d
 	link-style="button" → filled pill button
 -----------------------------------------------------------------------------*/
 section[data-block="cardlets"] [data-block="item"] [data-field="cta"] {
-	display: inline-flex;
+	display: flex;
+	width: max-content;
 	align-items: center;
 	gap: 0.4em;
 	margin-top: 0.5em;
 	font-weight: 500;
 }
+/* Horizontal alignment via margin-auto (works on block-level flex containers) */
+section[data-block="cardlets"] [data-block="item"] [data-field="cta"][data-align="left"]   { margin-right: auto; }
+section[data-block="cardlets"] [data-block="item"] [data-field="cta"][data-align="center"] { margin-left: auto; margin-right: auto; }
+section[data-block="cardlets"] [data-block="item"] [data-field="cta"][data-align="right"]  { margin-left: auto; }
 
 /* Text style: trailing arrow */
 section[data-block="cardlets"] [data-block="item"][data-link-style="text"] [data-field="cta"] {

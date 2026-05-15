@@ -184,10 +184,11 @@ if ($items->count() > 0):
 				// non-interactive <span>. Rendered only when a link is set.
 				// User-entered linkText wins; otherwise fall back to the translation.
 				if (!empty($link)):
-					$ctaText = $item->linkText()->isNotEmpty()
+					$ctaText  = $item->linkText()->isNotEmpty()
 						? $item->linkText()->value()
 						: t('kirbyblock-cardlets.item.cta', 'Read more');
-					echo '<span data-field="cta">'.esc($ctaText).'</span>'."\n";
+					$ctaAlign = $item->linkAlign()->or('left')->value();
+					echo '<span data-field="cta" data-align="'.$ctaAlign.'">'.esc($ctaText).'</span>'."\n";
 				endif;
 
 			echo '</div>'."\n"; // End Content
