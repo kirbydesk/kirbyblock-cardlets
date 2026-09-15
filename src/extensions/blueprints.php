@@ -1,113 +1,55 @@
-<?php return [ 'blocks/pwcardlets' => function () {
+<?php
 
-    /* -------------- Config --------------*/
-    $config       = pwConfig::load('pwcardlets');
-		$settings     = $config['content'];
-		$tabSettings  = $config['tabs'];
-		$defaults     = $config['defaults'];
-		$fields       = $config['fields'];
-		$editor       = $config['editor'];
-		$fieldOptions = $config['field-options'];
+$columnsField = fn(string $breakpoint, $default) => [
+	'extends' => 'pagewizard/fields/columns',
+	'default' => $default,
+	'label'   => 'pw.field.columns.' . $breakpoint,
+	'help'    => 'pw.field.columns.' . $breakpoint . '.help',
+];
 
+$radiusToggle = fn(string $slug, $default) => [
+	'extends' => 'pagewizard/fields/toggle',
+	'default' => $default,
+	'label'   => 'pw.field.radius-' . $slug,
+	'help'    => 'kirbyblock-cardlets.item.radius-' . $slug . '.help',
+];
 
-		/* -------------- Tabs --------------*/
-    $tabs = [];
+return [
 
-		/* -------------- Content Tab --------------*/
-		$contentFields = [
-			'headlineContent' => ['extends' => 'pagewizard/headlines/content'],
-		];
+	/* ============================================================================
+	   Main Block
+	============================================================================ */
 
-		/* -------------- Tagline --------------*/
-		if (!empty($settings['tagline'])) {
-			$contentFields['tagline'] = [
-				'extends'      => 'pagewizard/fields/tagline',
-				'align'        => $fields['align-tagline'],
-				'alignOptions' => $fieldOptions['tagline']['align'] ?? null,
-			];
-		}
-		/* -------------- Heading --------------*/
-		if (!empty($settings['heading'])) {
-			$contentFields['heading'] = [
-				'extends'      => 'pagewizard/fields/heading',
-				'align'        => $fields['align-heading'],
-				'level'        => $fields['level-heading'] ?? null,
-				'size'         => $fields['size-heading'] ?? null,
-				'sizeOptions'  => $fieldOptions['heading']['sizes'] ?? null,
-				'alignOptions' => $fieldOptions['heading']['align'] ?? null,
-				'levelOptions' => $fieldOptions['heading']['level'] ?? null,
-				'textbackground'        => $fields['textbackground-heading'] ?? null,
-				'textbackgroundOptions' => $fieldOptions['heading']['textbackground'] ?? null,
-			];
-		}
-		/* -------------- Editor --------------*/
-		if (!empty($settings['editor'])) {
-			$contentFields['editor'] = pwEditor::contentField($editor, $settings);
-			$contentFields['editor']['align']        = $fields['align-editor'] ?? null;
-			$contentFields['editor']['size']         = $fields['size-editor'] ?? null;
-			$contentFields['editor']['alignOptions'] = $fieldOptions['editor']['align'] ?? null;
-			$contentFields['editor']['sizeOptions']  = $fieldOptions['editor']['sizes'] ?? null;
-			$contentFields['editor']['defaultMode'] = $fields['mode-editor'] ?? null;
-		}
-		/* -------------- Blocks --------------*/
-		$contentFields['blocks'] = [
-			'extends'   => 'pagewizard/fields/blocks',
-			'label'   => 'kirbyblock-cardlets.items',
-			'fieldsets' => ['pwcardletsitem'],
-		];
-
-		$tabs['content'] = [
-			'label'  => 'pw.tab.content',
-			'fields' => $contentFields,
-		];
-
-		/* -------------- Layout Tab --------------*/
-		pwConfig::addTab($tabs, 'layout', $tabSettings['layout'] ?? true, pwLayout::options('pwcardlets', $defaults, [
-		'headlineColumns' => ['extends' => 'pagewizard/headlines/columns'],
-			'columnsSm' => [
-				'extends' => 'pagewizard/fields/columns',
-				'default' => $defaults['columns-sm'],
-				'label' => 'pw.field.columns.sm',
-				'help' => 'pw.field.columns.sm.help'
-			],
-			'columnsMd' => [
-				'extends' => 'pagewizard/fields/columns',
-				'default' => $defaults['columns-md'],
-				'label' => 'pw.field.columns.md',
-				'help' => 'pw.field.columns.md.help'
-			],
-			'columnsLg' => [
-				'extends' => 'pagewizard/fields/columns',
-				'default' => $defaults['columns-lg'],
-				'label' => 'pw.field.columns.lg',
-				'help' => 'pw.field.columns.lg.help'
-			],
-			'columnsXl' => [
-				'extends' => 'pagewizard/fields/columns',
-				'default' => $defaults['columns-xl'],
-				'label' => 'pw.field.columns.xl',
-				'help' => 'pw.field.columns.xl.help'
-			]
-		], $config['layout'] ?? []));
-
-		/* -------------- Style Tab --------------*/
-		pwConfig::addTab($tabs, 'style', $tabSettings['style'] ?? true, pwStyle::options('pwcardlets', $defaults, [], $config['style'] ?? []));
-
-		/* -------------- Grid Tab --------------*/
-		pwConfig::addTab($tabs, 'grid', $tabSettings['grid'] ?? false, pwGrid::layout('pwcardlets', $defaults));
-
-		/* -------------- Settings Tab --------------*/
-		pwConfig::addTab($tabs, 'settings', $tabSettings['settings'] ?? true, pwSettings::options('pwcardlets', $defaults, [], $config['settings'] ?? []));
-
-		/* -------------- Blueprint --------------*/
+	'blocks/pwcardlets' => pwBlueprint::main('pwcardlets', function ($cfg) use ($columnsField) {
+		$defaults = $cfg['defaults'];
 		return [
-			'name'	=> 'kirbyblock-cardlets.name',
-			'icon'  => 'cardlets',
-			'tabs'	=> $tabs
+			'name' => 'kirbyblock-cardlets.name',
+			'icon' => 'cardlets',
+			'contentFields' => array_merge(
+				pwBlueprint::stdContent($cfg, ['tagline', 'heading', 'editor']),
+				[
+					'blocks' => [
+						'extends'   => 'pagewizard/fields/blocks',
+						'label'     => 'kirbyblock-cardlets.items',
+						'fieldsets' => ['pwcardletsitem'],
+					],
+				]
+			),
+			'layoutExtras' => [
+				'headlineColumns' => ['extends' => 'pagewizard/headlines/columns'],
+				'columnsSm'       => $columnsField('sm', $defaults['columns-sm']),
+				'columnsMd'       => $columnsField('md', $defaults['columns-md']),
+				'columnsLg'       => $columnsField('lg', $defaults['columns-lg']),
+				'columnsXl'       => $columnsField('xl', $defaults['columns-xl']),
+			],
 		];
-	},
+	}),
 
-	'blocks/pwcardletsitem' => function () {
+	/* ============================================================================
+	   Item Blueprint
+	============================================================================ */
+
+	'blocks/pwcardletsitem' => function () use ($radiusToggle) {
 
 		$config       = pwConfig::load('pwcardlets');
 		$fields       = $config['fields'];
@@ -121,7 +63,6 @@
 			'headlineContent' => ['extends' => 'pagewizard/headlines/content'],
 		];
 
-		/* -------------- Tagline --------------*/
 		if (!empty($settings['item-tagline'])) {
 			$itemFields['tagline'] = [
 				'extends'      => 'pagewizard/fields/tagline',
@@ -131,7 +72,6 @@
 			];
 		}
 
-		/* -------------- Heading --------------*/
 		if (!empty($settings['item-heading'])) {
 			$itemFields['heading'] = [
 				'extends'      => 'pagewizard/fields/heading',
@@ -147,7 +87,6 @@
 			];
 		}
 
-		/* -------------- Editor (description) --------------*/
 		if (!empty($settings['item-editor'])) {
 			$itemEditorSettings = array_merge($settings, ['editor' => $settings['item-editor']]);
 			$itemFields['description'] = pwEditor::contentField($editor, $itemEditorSettings);
@@ -171,34 +110,14 @@
 					'label'  => 'pw.tab.layout',
 					'fields' => [
 						'headlineCardletRadius' => [
-							'type' => 'headline',
+							'type'  => 'headline',
 							'label' => 'kirbyblock-cardlets.item.headline.radius',
-							'help' => 'kirbyblock-cardlets.item.headline.radius.help'
+							'help'  => 'kirbyblock-cardlets.item.headline.radius.help'
 						],
-						'radiusTopLeft' => [
-							'extends' => 'pagewizard/fields/toggle',
-							'default' => $defaults['item-radius-top-left'] ?? false,
-							'label' => 'pw.field.radius-top-left',
-							'help' => 'kirbyblock-cardlets.item.radius-top-left.help'
-						],
-						'radiusTopRight' => [
-							'extends' => 'pagewizard/fields/toggle',
-							'default' => $defaults['item-radius-top-right'] ?? false,
-							'label' => 'pw.field.radius-top-right',
-							'help' => 'kirbyblock-cardlets.item.radius-top-right.help'
-						],
-						'radiusBottomLeft' => [
-							'extends' => 'pagewizard/fields/toggle',
-							'default' => $defaults['item-radius-bottom-left'] ?? false,
-							'label' => 'pw.field.radius-bottom-left',
-							'help' => 'kirbyblock-cardlets.item.radius-bottom-left.help'
-						],
-						'radiusBottomRight' => [
-							'extends' => 'pagewizard/fields/toggle',
-							'default' => $defaults['item-radius-bottom-right'] ?? false,
-							'label' => 'pw.field.radius-bottom-right',
-							'help' => 'kirbyblock-cardlets.item.radius-bottom-right.help'
-						]
+						'radiusTopLeft'     => $radiusToggle('top-left',     $defaults['item-radius-top-left']     ?? false),
+						'radiusTopRight'    => $radiusToggle('top-right',    $defaults['item-radius-top-right']    ?? false),
+						'radiusBottomLeft'  => $radiusToggle('bottom-left',  $defaults['item-radius-bottom-left']  ?? false),
+						'radiusBottomRight' => $radiusToggle('bottom-right', $defaults['item-radius-bottom-right'] ?? false),
 					],
 				]] : []),
 				'style' => [
@@ -207,21 +126,19 @@
 						'headlineStyle' => ['extends' => 'pagewizard/headlines/style'],
 						'image' => [
 							'extends' => 'pagewizard/fields/image',
-							'label' => 'pw.file.image',
+							'label'   => 'pw.file.image',
 							'uploads' => 'pwImage',
-							'query' => 'page.images.template("pwImage")'
+							'query'   => 'page.images.template("pwImage")'
 						],
 					],
 				],
 				'link' => [
 					'label'  => 'pw.tab.link',
 					'fields' => [
-						'headlineLink' => [
-							'extends' => 'pagewizard/headlines/link'
-						],
+						'headlineLink' => ['extends' => 'pagewizard/headlines/link'],
 						'linkInternal' => [
-  						'extends' => 'pagewizard/fields/link-internal',
-							'width' => '1/1',
+							'extends'  => 'pagewizard/fields/link-internal',
+							'width'    => '1/1',
 							'required' => false
 						],
 						'linkText' => [
@@ -229,15 +146,9 @@
 							'placeholder' => 'kirbyblock-cardlets.item.cta',
 							'width'       => '2/3'
 						],
-						'linkAlign' => [
-							'extends' => 'pagewizard/fields/link-align'
-						],
-						'ariaLabel' => [
-							'extends' => 'pagewizard/fields/link-aria-label'
-						],
-						'ariaDescribedby' => [
-							'extends' => 'pagewizard/fields/link-aria-describedby'
-						],
+						'linkAlign'       => ['extends' => 'pagewizard/fields/link-align'],
+						'ariaLabel'       => ['extends' => 'pagewizard/fields/link-aria-label'],
+						'ariaDescribedby' => ['extends' => 'pagewizard/fields/link-aria-describedby'],
 					],
 				],
 			],
