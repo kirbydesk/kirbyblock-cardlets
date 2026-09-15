@@ -1,4 +1,6 @@
 {
 	"name": "kirbyblock-cardlets",
+	"description": "Cardlets",
+	"icon": "cardlets",
 	"version": "1.0.46"
 }
