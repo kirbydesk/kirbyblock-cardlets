@@ -342,3 +342,52 @@ section[data-block="cardlets"] {
 	section[data-block="cardlets"] div[data-block="items"][data-columns-xl="5"] { grid-template-columns: repeat(5, 1fr); }
 	section[data-block="cardlets"] div[data-block="items"][data-columns-xl="6"] { grid-template-columns: repeat(6, 1fr); }
 }
+
+
+/* -------------- Variant 3 (mirror of variant2) --------------*/
+section[data-block="cardlets"][data-style="variant3"] [data-block="item"] {
+	background-color: var(--pwcardlets-item-background-variant3);
+	&[data-border="true"] {
+		border-color: var(--pwcardlets-item-border-color-variant3);
+	}
+}
+section[data-block="cardlets"][data-style="variant3"] [data-block="item"] [data-field="tagline"] {
+	color: var(--pwcardlets-item-tagline-text-variant3);
+}
+section[data-block="cardlets"][data-style="variant3"] [data-block="item"] [data-field="heading"] {
+	color: var(--pwcardlets-item-heading-text-variant3);
+}
+section[data-block="cardlets"][data-style="variant3"] [data-block="item"] :is([data-field="textarea"], [data-field="writer"], [data-field="markdown"]) {
+	color: var(--pwcardlets-item-editor-text-variant3);
+}
+section[data-block="cardlets"][data-style="variant3"] [data-block="item"][data-link-style="text"] [data-field="cta"] {
+	color: var(--pwcardlets-item-link-variant3);
+}
+section[data-block="cardlets"][data-style="variant3"] [data-block="item"][data-link-style="text"]:hover [data-field="cta"] {
+	color: var(--pwcardlets-item-link-hover-variant3);
+}
+section[data-block="cardlets"] [data-block="item"][data-link-style="button"][data-button-style="variant3"] [data-field="cta"] {
+	color: var(--element-button-text-variant3);
+	background-color: var(--element-button-background-variant3);
+	border-color: var(--element-button-border-variant3);
+}
+section[data-block="cardlets"] [data-block="item"][data-link-style="button"][data-button-style="variant3"]:hover [data-field="cta"] {
+	color: var(--element-button-text-hover-variant3);
+	background-color: var(--element-button-background-hover-variant3);
+	border-color: var(--element-button-border-hover-variant3);
+}
+section[data-block="cardlets"] [data-block="item"][data-link-style="button"][data-button-style="variant3"]:active [data-field="cta"] {
+	color: var(--element-button-text-active-variant3);
+	background-color: var(--element-button-background-active-variant3);
+	border-color: var(--element-button-border-active-variant3);
+}
+section[data-block="cardlets"][data-style="variant3"] [data-block="item"] a:not(.pw-card-link) {
+	color: var(--pwcardlets-item-link-variant3);
+}
+section[data-block="cardlets"][data-style="variant3"] [data-block="item"] a:not(.pw-card-link):hover {
+	color: var(--pwcardlets-item-link-hover-variant3);
+}
+section[data-block="cardlets"][data-style="variant3"] [data-block="item"] a:not(.pw-card-link):active {
+	color: var(--pwcardlets-item-link-active-variant3);
+}
+
