@@ -1,6 +1,7 @@
 <?php return array(
 
 	'kirbyblock-cardlets.name' => 'Cardlets',
+	'kirbyblock-cardlets.ai' => 'A grid of cards, each with tagline, title and short description. Use it for several parallel topics, offers or areas of equal weight, typically three to six cards.',
 	'kirbyblock-cardlets.item' => 'Cardlet',
 	'kirbyblock-cardlets.item.tagline' => 'Cardlet tagline',
 	'kirbyblock-cardlets.item.tagline.placeholder' => 'Tagline...',

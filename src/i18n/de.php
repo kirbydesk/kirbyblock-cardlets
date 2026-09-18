@@ -1,6 +1,7 @@
 <?php return array(
 
 	'kirbyblock-cardlets.name' => 'Cardlets',
+	'kirbyblock-cardlets.ai' => 'Ein Raster aus Karten mit Tagline, Titel und kurzer Beschreibung. Für mehrere gleichwertige Themen, Angebote oder Bereiche, meist drei bis sechs Karten.',
 	'kirbyblock-cardlets.item' => 'Cardlet',
 	'kirbyblock-cardlets.item.tagline' => 'Tagline des Cardlets',
 	'kirbyblock-cardlets.item.tagline.placeholder' => 'Tagline …',
