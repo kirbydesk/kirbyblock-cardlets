@@ -137,16 +137,15 @@ return [
 					'fields' => [
 						'headlineLink' => ['extends' => 'pagewizard/headlines/link'],
 						'linkInternal' => [
-							'extends'  => 'pagewizard/fields/link-internal',
-							'width'    => '1/1',
-							'required' => false
+							'extends' => 'pagewizard/fields/link-internal',
+							'width'   => '1/1'
 						],
 						'linkText' => [
 							'extends'     => 'pagewizard/fields/link-text',
 							'placeholder' => 'kirbyblock-cardlets.item.cta',
 							'width'       => '2/3'
 						],
-						'linkAlign'       => ['extends' => 'pagewizard/fields/link-align'],
+						'linkAlign'       => ['extends' => 'pagewizard/fields/link-align', 'required' => false],
 						'ariaLabel'       => ['extends' => 'pagewizard/fields/link-aria-label'],
 						'ariaDescribedby' => ['extends' => 'pagewizard/fields/link-aria-describedby'],
 					],
