@@ -222,7 +222,9 @@
 					"default": "normal"
 				}
 			},
-			"blocks": "enabled",
+			"blocks": {
+				"locked": true
+			},
 			"item-tagline": {
 				"align": {
 					"options": [
