@@ -110,6 +110,7 @@ if ($items->count() > 0):
 					echo ' data-link-decoration="'.($defaults['item-link-decoration'] ?? 'none').'"';
 				endif;
 				echo ' data-border="'.(!empty($defaults['item-border']) ? 'true' : 'false').'"';
+				echo ' data-shadow="'.($defaults['item-shadow'] ?? 'none').'"';
 				// Radius enabled ?
 			echo '>'."\n";
 

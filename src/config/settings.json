@@ -445,6 +445,16 @@
 			"item-border": {
 				"default": false
 			},
+			"item-shadow": {
+				"label": "kirbyblock-cardlets.item-shadow",
+				"options": [
+					"none",
+					"sm",
+					"md",
+					"lg"
+				],
+				"default": "none"
+			},
 			"item-spacing": {
 				"label": "pw.field.item-spacing",
 				"options": [
