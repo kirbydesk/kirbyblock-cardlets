@@ -34,7 +34,7 @@ if ($items->count() > 0):
 
 	echo '<div data-block="items"';
 	// the cards' form: square or round with the radii (Project Wizard → Design)
-	echo ' data-shape="'.($defaults['item-shape'] ?? 'custom').'"';
+	echo ' data-shape="'.($defaults['item-shape'] ?? 'square').'"';
 	// the cards' display: image above the texts, the texts on the image
 	// (their position, the cards' ratio per device), or the image standing
 	// out of the card at the top (Project Wizard → Design › Display)

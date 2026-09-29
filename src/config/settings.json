@@ -423,7 +423,7 @@
 					"square",
 					"custom"
 				],
-				"default": "custom"
+				"default": "square"
 			},
 			"item-link-style": {
 				"label": "kirbyblock-cardlets.item-link-style",
