@@ -111,6 +111,7 @@ if ($items->count() > 0):
 				endif;
 				echo ' data-border="'.(!empty($defaults['item-border']) ? 'true' : 'false').'"';
 				echo ' data-shadow="'.($defaults['item-shadow'] ?? 'none').'"';
+				echo ' data-link-position="'.($defaults['item-link-position'] ?? 'bottom').'"';
 				// Radius enabled ?
 			echo '>'."\n";
 

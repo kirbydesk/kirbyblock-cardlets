@@ -406,6 +406,14 @@
 				],
 				"default": "text"
 			},
+			"item-link-position": {
+				"label": "kirbyblock-cardlets.item-link-position",
+				"options": [
+					"bottom",
+					"inline"
+				],
+				"default": "bottom"
+			},
 			"item-link-decoration": {
 				"label": "kirbyblock-cardlets.item-link-decoration",
 				"options": [

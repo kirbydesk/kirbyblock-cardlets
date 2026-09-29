@@ -49,4 +49,7 @@
 	'kirbyblock-cardlets.item-link-decoration.underline' => 'Underlined',
 	'kirbyblock-cardlets.item-link-icon' => 'Icon',
 	'kirbyblock-cardlets.item-button-style' => 'Variant',
+	'kirbyblock-cardlets.item-link-position' => 'Position',
+	'kirbyblock-cardlets.item-link-position.bottom' => 'Bottom',
+	'kirbyblock-cardlets.item-link-position.inline' => 'After the text',
 );
