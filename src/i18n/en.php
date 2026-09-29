@@ -50,6 +50,6 @@
 	'kirbyblock-cardlets.item-link-icon' => 'Icon',
 	'kirbyblock-cardlets.item-button-style' => 'Variant',
 	'kirbyblock-cardlets.item-link-position' => 'Position',
-	'kirbyblock-cardlets.item-link-position.bottom' => 'Bottom',
-	'kirbyblock-cardlets.item-link-position.inline' => 'After the text',
+	'kirbyblock-cardlets.item-link-position.bottom' => 'Card footer',
+	'kirbyblock-cardlets.item-link-position.inline' => 'Below the text',
 );

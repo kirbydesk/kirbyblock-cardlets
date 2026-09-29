@@ -50,6 +50,6 @@
 	'kirbyblock-cardlets.item-link-icon' => 'Icon',
 	'kirbyblock-cardlets.item-button-style' => 'Variante',
 	'kirbyblock-cardlets.item-link-position' => 'Position',
-	'kirbyblock-cardlets.item-link-position.bottom' => 'Unten',
-	'kirbyblock-cardlets.item-link-position.inline' => 'Nach dem Text',
+	'kirbyblock-cardlets.item-link-position.bottom' => 'Kartenfuß',
+	'kirbyblock-cardlets.item-link-position.inline' => 'Unter dem Text',
 );
