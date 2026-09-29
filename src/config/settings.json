@@ -399,6 +399,7 @@
 				"default": "custom"
 			},
 			"item-link-style": {
+				"label": "kirbyblock-cardlets.item-link-style",
 				"options": [
 					"text",
 					"button"
@@ -406,6 +407,7 @@
 				"default": "text"
 			},
 			"item-link-decoration": {
+				"label": "kirbyblock-cardlets.item-link-decoration",
 				"options": [
 					"none",
 					"underline"
@@ -413,6 +415,7 @@
 				"default": "none"
 			},
 			"item-link-icon": {
+				"label": "kirbyblock-cardlets.item-link-icon",
 				"type": "icon-select",
 				"default": "arrow",
 				"options": [
@@ -435,6 +438,7 @@
 				]
 			},
 			"item-button-style": {
+				"label": "kirbyblock-cardlets.item-button-style",
 				"options": [
 					"default",
 					"variant",

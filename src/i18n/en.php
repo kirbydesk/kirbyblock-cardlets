@@ -41,4 +41,12 @@
 	'kirbyblock-cardlets.item-shape.custom' => 'Round',
 	'kirbyblock-cardlets.item-shadow' => 'Shadow',
 	'kirbyblock-cardlets.item-border' => 'Border',
+	'kirbyblock-cardlets.item-link-style' => 'Display',
+	'kirbyblock-cardlets.item-link-style.text' => 'Text',
+	'kirbyblock-cardlets.item-link-style.button' => 'Button',
+	'kirbyblock-cardlets.item-link-decoration' => 'Underline',
+	'kirbyblock-cardlets.item-link-decoration.none' => 'None',
+	'kirbyblock-cardlets.item-link-decoration.underline' => 'Underlined',
+	'kirbyblock-cardlets.item-link-icon' => 'Icon',
+	'kirbyblock-cardlets.item-button-style' => 'Variant',
 );
