@@ -7,12 +7,6 @@ $columnsField = fn(string $breakpoint, $default) => [
 	'help'    => 'pw.field.columns.' . $breakpoint . '.help',
 ];
 
-$radiusToggle = fn(string $slug, $default) => [
-	'extends' => 'pagewizard/fields/toggle',
-	'default' => $default,
-	'label'   => 'pw.field.radius-' . $slug,
-	'help'    => 'kirbyblock-cardlets.item.radius-' . $slug . '.help',
-];
 
 return [
 
@@ -49,7 +43,7 @@ return [
 	   Item Blueprint
 	============================================================================ */
 
-	'blocks/pwcardletsitem' => function () use ($radiusToggle) {
+	'blocks/pwcardletsitem' => function () {
 
 		$config       = pwConfig::load('pwcardlets');
 		$fields       = $config['fields'];
@@ -106,20 +100,6 @@ return [
 					'label'  => 'pw.tab.content',
 					'fields' => $itemFields,
 				],
-				...(!empty($layoutVis['item-radius']) ? ['layout' => [
-					'label'  => 'pw.tab.layout',
-					'fields' => [
-						'headlineCardletRadius' => [
-							'type'  => 'headline',
-							'label' => 'kirbyblock-cardlets.item.headline.radius',
-							'help'  => 'kirbyblock-cardlets.item.headline.radius.help'
-						],
-						'radiusTopLeft'     => $radiusToggle('top-left',     $defaults['item-radius-top-left']     ?? false),
-						'radiusTopRight'    => $radiusToggle('top-right',    $defaults['item-radius-top-right']    ?? false),
-						'radiusBottomLeft'  => $radiusToggle('bottom-left',  $defaults['item-radius-bottom-left']  ?? false),
-						'radiusBottomRight' => $radiusToggle('bottom-right', $defaults['item-radius-bottom-right'] ?? false),
-					],
-				]] : []),
 				'style' => [
 					'label'  => 'pw.tab.style',
 					'fields' => [

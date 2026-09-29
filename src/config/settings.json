@@ -390,18 +390,13 @@
 			"radius-bottom-right": {
 				"default": false
 			},
-			"item-radius": "enabled",
-			"item-radius-top-left": {
-				"default": false
-			},
-			"item-radius-top-right": {
-				"default": false
-			},
-			"item-radius-bottom-left": {
-				"default": false
-			},
-			"item-radius-bottom-right": {
-				"default": false
+			"item-shape": {
+				"label": "kirbyblock-cardlets.item-shape",
+				"options": [
+					"square",
+					"custom"
+				],
+				"default": "custom"
 			},
 			"item-link-style": {
 				"options": [

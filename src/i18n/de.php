@@ -9,12 +9,6 @@
 	'kirbyblock-cardlets.item.heading.placeholder' => 'Titel …',
 	'kirbyblock-cardlets.item.description' => 'Beschreibung des Cardlets',
 	'kirbyblock-cardlets.item.description.placeholder' => 'Beschreibung …',
-	'kirbyblock-cardlets.item.headline.radius' => 'Eckenradius',
-	'kirbyblock-cardlets.item.headline.radius.help' => 'Legt den Eckenradius dieses Cardlets fest.',
-	'kirbyblock-cardlets.item.radius-bottom-left.help' => 'Legt den Radius der unteren linken Ecke dieses Cardlets fest.',
-	'kirbyblock-cardlets.item.radius-bottom-right.help' => 'Legt den Radius der unteren rechten Ecke dieses Cardlets fest.',
-	'kirbyblock-cardlets.item.radius-top-left.help' => 'Legt den Radius der oberen linken Ecke dieses Cardlets fest.',
-	'kirbyblock-cardlets.item.radius-top-right.help' => 'Legt den Radius der oberen rechten Ecke dieses Cardlets fest.',
 	'kirbyblock-cardlets.items' => 'Cardlets',
 	'kirbyblock-cardlets.item.cta' => 'Weiterlesen',
 
@@ -42,4 +36,7 @@
 	'prw.prop.item-cta-gap' => 'Zum Link',
 	'prw.prop.item-padding-x' => 'Innenabstand horizontal',
 	'prw.prop.item-padding-y' => 'Innenabstand vertikal',
+	'kirbyblock-cardlets.item-shape' => 'Form',
+	'kirbyblock-cardlets.item-shape.square' => 'Eckig',
+	'kirbyblock-cardlets.item-shape.custom' => 'Rund',
 );

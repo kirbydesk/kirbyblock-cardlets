@@ -33,6 +33,8 @@ $items = $block->blocks()->toBlocks();
 if ($items->count() > 0):
 
 	echo '<div data-block="items"';
+	// the cards' form: square or round with the radii (Project Wizard → Design)
+	echo ' data-shape="'.($defaults['item-shape'] ?? 'custom').'"';
 	echo ' data-columns-sm="'.$block->columnssm()->value().'"';
 	echo ' data-columns-md="'.$block->columnsmd()->value().'"';
 	echo ' data-columns-lg="'.$block->columnslg()->value().'"';
@@ -109,12 +111,6 @@ if ($items->count() > 0):
 				endif;
 				echo ' data-border="'.(!empty($defaults['item-border']) ? 'true' : 'false').'"';
 				// Radius enabled ?
-				if (!empty($layoutVis['item-radius'])):
-					echo ' data-radius-top-left="'.($item->radiustopleft()->toBool() ? 'true' : 'false').'"';
-					echo ' data-radius-top-right="'.($item->radiustopright()->toBool() ? 'true' : 'false').'"';
-					echo ' data-radius-bottom-left="'.($item->radiusbottomleft()->toBool() ? 'true' : 'false').'"';
-					echo ' data-radius-bottom-right="'.($item->radiusbottomright()->toBool() ? 'true' : 'false').'"';
-				endif;
 			echo '>'."\n";
 
 			// Image (sits flush against the card edge — no padding)

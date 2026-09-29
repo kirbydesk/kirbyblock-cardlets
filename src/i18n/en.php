@@ -9,12 +9,6 @@
 	'kirbyblock-cardlets.item.heading.placeholder' => 'Title...',
 	'kirbyblock-cardlets.item.description' => 'Cardlet description',
 	'kirbyblock-cardlets.item.description.placeholder' => 'Description...',
-	'kirbyblock-cardlets.item.headline.radius' => 'Radius',
-	'kirbyblock-cardlets.item.headline.radius.help' => 'Defines the radius of this cardlet.',
-	'kirbyblock-cardlets.item.radius-bottom-left.help' => 'Defines the radius of the bottom left corner of this cardlet.',
-	'kirbyblock-cardlets.item.radius-bottom-right.help' => 'Defines the radius of the bottom right corner of this cardlet.',
-	'kirbyblock-cardlets.item.radius-top-left.help' => 'Defines the radius of the top left corner of this cardlet.',
-	'kirbyblock-cardlets.item.radius-top-right.help' => 'Defines the radius of the top right corner of this cardlet.',
 	'kirbyblock-cardlets.items' => 'Cardlets',
 	'kirbyblock-cardlets.item.cta' => 'Read more',
 
@@ -42,4 +36,7 @@
 	'prw.prop.item-cta-gap' => 'To the link',
 	'prw.prop.item-padding-x' => 'Horizontal padding',
 	'prw.prop.item-padding-y' => 'Vertical padding',
+	'kirbyblock-cardlets.item-shape' => 'Shape',
+	'kirbyblock-cardlets.item-shape.square' => 'Square',
+	'kirbyblock-cardlets.item-shape.custom' => 'Round',
 );
