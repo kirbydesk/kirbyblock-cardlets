@@ -88,7 +88,8 @@ section[data-block="cardlets"] [data-block="item"] [data-field="cta"] {
 	align-items: center;
 	gap: 0.4em;
 	margin-top: auto;
-	font-weight: 500;
+	/* medium, or bold as the block links (Project → Blocks › Links) */
+	font-weight: var(--block-link-cta-font-weight);
 }
 /* Horizontal alignment via margin-auto (works on block-level flex containers) */
 section[data-block="cardlets"] [data-block="item"] [data-field="cta"][data-align="left"]   { margin-right: auto; }
