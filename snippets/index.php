@@ -35,6 +35,16 @@ if ($items->count() > 0):
 	echo '<div data-block="items"';
 	// the cards' form: square or round with the radii (Project Wizard → Design)
 	echo ' data-shape="'.($defaults['item-shape'] ?? 'custom').'"';
+	// the cards' display: image above the texts, or the texts on the image
+	// (their position, the cards' ratio, the overlay's strength)
+	$cardDisplay = $block->carddisplay()->or($defaults['card-display'] ?? 'stacked')->value();
+	echo ' data-display="'.$cardDisplay.'"';
+	if ($cardDisplay === 'overlay'):
+		$cardRatio   = $block->cardratio()->or($defaults['card-ratio'] ?? '4/5')->value();
+		$cardOverlay = intval($block->cardoverlay()->or($defaults['card-overlay'] ?? '50')->value()) / 100;
+		echo ' data-text-position="'.$block->cardtextposition()->or($defaults['card-text-position'] ?? 'bottom')->value().'"';
+		echo ' style="--card-ratio:'.$cardRatio.';--card-overlay:'.$cardOverlay.'"';
+	endif;
 	echo ' data-columns-sm="'.$block->columnssm()->value().'"';
 	echo ' data-columns-md="'.$block->columnsmd()->value().'"';
 	echo ' data-columns-lg="'.$block->columnslg()->value().'"';

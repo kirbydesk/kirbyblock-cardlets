@@ -161,6 +161,12 @@
 					"variant": "#E0E0E0",
 					"variant2": "#FFFFFF40",
 					"variant3": "#FFFFFF40"
+				},
+				"item-overlay": {
+					"default": "#FFFFFF",
+					"variant": "#FFFFFF",
+					"variant2": "#000000",
+					"variant3": "#000000"
 				}
 			}
 		}
@@ -489,6 +495,61 @@
 				],
 				"required": true,
 				"default": "default"
+			},
+			"card-display": {
+				"label": "kirbyblock-cardlets.card-display",
+				"options": [
+					"stacked",
+					"overlay"
+				],
+				"required": true,
+				"fixed": true,
+				"default": "stacked"
+			},
+			"card-text-position": {
+				"label": "kirbyblock-cardlets.card-text-position",
+				"options": [
+					"top",
+					"bottom"
+				],
+				"required": true,
+				"fixed": true,
+				"default": "bottom",
+				"when": {
+					"card-display": "overlay"
+				}
+			},
+			"card-ratio": {
+				"label": "kirbyblock-cardlets.card-ratio",
+				"options": [
+					"1/1",
+					"4/5",
+					"3/4",
+					"2/3",
+					"4/3",
+					"16/9"
+				],
+				"required": true,
+				"fixed": true,
+				"default": "4/5",
+				"when": {
+					"card-display": "overlay"
+				}
+			},
+			"card-overlay": {
+				"label": "kirbyblock-cardlets.card-overlay",
+				"options": [
+					"0",
+					"25",
+					"50",
+					"75"
+				],
+				"required": true,
+				"fixed": true,
+				"default": "50",
+				"when": {
+					"card-display": "overlay"
+				}
 			}
 		},
 		"grid": {

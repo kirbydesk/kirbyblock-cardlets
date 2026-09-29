@@ -29,6 +29,46 @@ return [
 					],
 				]
 			),
+			// the cards: image above the texts, or the texts on the image (then
+			// their position, the cards' ratio and the overlay's strength)
+			'styleExtras' => [
+				'cardDisplay' => [
+					'label'   => 'kirbyblock-cardlets.card-display',
+					'type'    => 'toggles',
+					'default' => $defaults['card-display'] ?? 'stacked',
+					'options' => [
+						['value' => 'stacked', 'text' => ['*' => 'kirbyblock-cardlets.card-display.stacked']],
+						['value' => 'overlay', 'text' => ['*' => 'kirbyblock-cardlets.card-display.overlay']],
+					],
+				],
+				'cardTextPosition' => [
+					'label'   => 'kirbyblock-cardlets.card-text-position',
+					'type'    => 'toggles',
+					'default' => $defaults['card-text-position'] ?? 'bottom',
+					'options' => [
+						['value' => 'top',    'text' => ['*' => 'pw.option.top']],
+						['value' => 'bottom', 'text' => ['*' => 'pw.option.bottom']],
+					],
+					'width'   => '1/2',
+					'when'    => ['cardDisplay' => 'overlay'],
+				],
+				'cardRatio' => [
+					'label'   => 'kirbyblock-cardlets.card-ratio',
+					'type'    => 'toggles',
+					'default' => $defaults['card-ratio'] ?? '4/5',
+					'options' => array_map(fn($r) => ['value' => $r, 'text' => str_replace('/', ':', $r)], ['1/1', '4/5', '3/4', '2/3', '4/3', '16/9']),
+					'width'   => '1/2',
+					'when'    => ['cardDisplay' => 'overlay'],
+				],
+				'cardOverlay' => [
+					'label'   => 'kirbyblock-cardlets.card-overlay',
+					'type'    => 'toggles',
+					'default' => $defaults['card-overlay'] ?? '50',
+					'options' => array_map(fn($v) => ['value' => $v, 'text' => $v . ' %'], ['0', '25', '50', '75']),
+					'help'    => 'kirbyblock-cardlets.card-overlay.help',
+					'when'    => ['cardDisplay' => 'overlay'],
+				],
+			],
 			'layoutExtras' => [
 				'headlineColumns' => ['extends' => 'pagewizard/headlines/columns'],
 				'columnsSm'       => $columnsField('sm', $defaults['columns-sm']),
