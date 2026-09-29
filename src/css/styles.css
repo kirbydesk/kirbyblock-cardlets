@@ -603,3 +603,9 @@ section[data-block="cardlets"][data-style="variant3"] [data-block="item"] a:not(
 	color: var(--pwcardlets-item-link-active-variant3);
 }
 
+/* the intro's last element: no space below of its own before the cards –
+   there only the gap to the intro applies (Project Wizard → Design ›
+   Spacing); the elements' space below applies within the intro */
+section[data-block="cardlets"][data-block] :is([data-field="tagline"], [data-field="heading"], [data-field="textarea"], [data-field="writer"], [data-field="markdown"]):has(+ [data-block="items"]):not([data-block="item"] *) {
+	margin-bottom: 0;
+}
