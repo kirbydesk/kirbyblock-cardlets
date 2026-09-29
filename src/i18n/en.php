@@ -69,4 +69,7 @@
 	'kirbyblock-cardlets.card-display.overhang' => 'Image stands out',
 	'prw.prop.item-overhang' => 'Overhang',
 	'prw.prop.item-overlay-strength' => 'Overlay',
+	'kirbyblock-cardlets.card-ratio.auto' => 'Original',
+	'kirbyblock-cardlets.card-ratio.3/2' => '3:2',
+	'kirbyblock-cardlets.card-ratio.21/9' => '21:9',
 );

@@ -290,6 +290,42 @@ section[data-block="cardlets"] {
 }
 
 /*-----------------------------------------------------------------------------
+	Display "image above": the images' ratio per device (Project Wizard →
+	Design › Display); a device on Original keeps the file's own ratio
+-----------------------------------------------------------------------------*/
+section[data-block="cardlets"] [data-block="items"][data-image-ratio] {
+	--card-image-ratio: var(--card-image-ratio-sm);
+}
+@media (min-width: 1024px) {
+	section[data-block="cardlets"] [data-block="items"][data-image-ratio] {
+		--card-image-ratio: var(--card-image-ratio-lg);
+	}
+}
+@media (min-width: 1280px) {
+	section[data-block="cardlets"] [data-block="items"][data-image-ratio] {
+		--card-image-ratio: var(--card-image-ratio-xl);
+	}
+}
+section[data-block="cardlets"] [data-block="items"][data-image-ratio] figure[data-ratio="1/1"] > div { --card-file-ratio: 1 / 1; }
+section[data-block="cardlets"] [data-block="items"][data-image-ratio] figure[data-ratio="16/9"] > div { --card-file-ratio: 16 / 9; }
+section[data-block="cardlets"] [data-block="items"][data-image-ratio] figure[data-ratio="10/8"] > div { --card-file-ratio: 10 / 8; }
+section[data-block="cardlets"] [data-block="items"][data-image-ratio] figure[data-ratio="21/9"] > div { --card-file-ratio: 21 / 9; }
+section[data-block="cardlets"] [data-block="items"][data-image-ratio] figure[data-ratio="7/5"] > div { --card-file-ratio: 7 / 5; }
+section[data-block="cardlets"] [data-block="items"][data-image-ratio] figure[data-ratio="4/3"] > div { --card-file-ratio: 4 / 3; }
+section[data-block="cardlets"] [data-block="items"][data-image-ratio] figure[data-ratio="5/3"] > div { --card-file-ratio: 5 / 3; }
+section[data-block="cardlets"] [data-block="items"][data-image-ratio] figure[data-ratio="3/2"] > div { --card-file-ratio: 3 / 2; }
+section[data-block="cardlets"] [data-block="items"][data-image-ratio] figure[data-ratio="3/1"] > div { --card-file-ratio: 3 / 1; }
+section[data-block="cardlets"] [data-block="items"][data-image-ratio] [data-block="item"] > [data-field="image"] figure > div {
+	aspect-ratio: var(--card-image-ratio, var(--card-file-ratio, auto));
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+/*-----------------------------------------------------------------------------
 	Display "on the image": the image fills the card (its ratio), the texts
 	lie on it at the top or bottom, an overlay in the variant's colour
 	(Project Wizard → Design › Colours) fades in from their side
