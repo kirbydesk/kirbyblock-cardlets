@@ -40,10 +40,14 @@ if ($items->count() > 0):
 	// out of the card at the top (Project Wizard → Design › Display)
 	$cardDisplay = $block->carddisplay()->or($defaults['card-display'] ?? 'stacked')->value();
 	echo ' data-display="'.$cardDisplay.'"';
-	// image above: the images' ratio per device (Original: the file's own)
-	$imageRatios = [$defaults['item-image-ratio'] ?? 'auto', $defaults['item-image-ratio-lg'] ?? 'auto', $defaults['item-image-ratio-xl'] ?? 'auto'];
-	$imageCover  = $cardDisplay === 'stacked' && array_filter($imageRatios, fn($r) => $r !== 'auto');
-	if ($imageCover):
+	// image above / standing out: the images' ratio per device (Original:
+	// the file's own); above cropped at the focus point, standing out the
+	// whole cut-out image at the bottom of its box
+	$ratioKey    = ['stacked' => 'item-image-ratio', 'overhang' => 'item-cutout-ratio'][$cardDisplay] ?? null;
+	$imageRatios = $ratioKey ? [$defaults[$ratioKey] ?? 'auto', $defaults[$ratioKey.'-lg'] ?? 'auto', $defaults[$ratioKey.'-xl'] ?? 'auto'] : [];
+	$imageRatio  = (bool) array_filter($imageRatios, fn($r) => $r !== 'auto');
+	$imageCover  = $imageRatio && $cardDisplay === 'stacked';
+	if ($imageRatio):
 		$ratioVar = fn($r) => $r === 'auto' ? 'initial' : $r;
 		echo ' data-image-ratio';
 		echo ' style="--card-image-ratio-sm:'.$ratioVar($imageRatios[0]).';--card-image-ratio-lg:'.$ratioVar($imageRatios[1]).';--card-image-ratio-xl:'.$ratioVar($imageRatios[2]).'"';

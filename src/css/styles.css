@@ -290,8 +290,9 @@ section[data-block="cardlets"] {
 }
 
 /*-----------------------------------------------------------------------------
-	Display "image above": the images' ratio per device (Project Wizard →
-	Design › Display); a device on Original keeps the file's own ratio
+	Displays "image above" and "image stands out": the images' ratio per
+	device (Project Wizard → Design › Display); a device on Original keeps
+	the file's own ratio
 -----------------------------------------------------------------------------*/
 section[data-block="cardlets"] [data-block="items"][data-image-ratio] {
 	--card-image-ratio: var(--card-image-ratio-sm);
@@ -323,6 +324,12 @@ section[data-block="cardlets"] [data-block="items"][data-image-ratio] [data-bloc
 		height: 100%;
 		object-fit: cover;
 	}
+}
+/* standing out: the whole cut-out image, at the bottom of its box (over
+   the focus point the image snippet sets inline for cropped files) */
+section[data-block="cardlets"] [data-block="items"][data-display="overhang"][data-image-ratio] [data-block="item"] > [data-field="image"] figure > div img {
+	object-fit: contain;
+	object-position: center bottom !important;
 }
 
 /*-----------------------------------------------------------------------------
