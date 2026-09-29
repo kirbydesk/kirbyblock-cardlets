@@ -438,7 +438,8 @@
 				"options": [
 					"default",
 					"variant",
-					"variant2"
+					"variant2",
+					"variant3"
 				],
 				"default": "default"
 			},

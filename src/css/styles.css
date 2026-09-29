@@ -152,6 +152,11 @@ section[data-block="cardlets"] [data-block="item"][data-link-style="button"][dat
 	background-color: var(--element-button-background-variant2);
 	border-color: var(--element-button-border-variant2);
 }
+section[data-block="cardlets"] [data-block="item"][data-link-style="button"][data-button-style="variant3"] [data-field="cta"] {
+	color: var(--element-button-text-variant3);
+	background-color: var(--element-button-background-variant3);
+	border-color: var(--element-button-border-variant3);
+}
 
 section[data-block="cardlets"] [data-block="item"][data-link-style="button"]:hover [data-field="cta"] {
 	color: var(--element-button-text-hover);
@@ -168,6 +173,11 @@ section[data-block="cardlets"] [data-block="item"][data-link-style="button"][dat
 	background-color: var(--element-button-background-hover-variant2);
 	border-color: var(--element-button-border-hover-variant2);
 }
+section[data-block="cardlets"] [data-block="item"][data-link-style="button"][data-button-style="variant3"]:hover [data-field="cta"] {
+	color: var(--element-button-text-hover-variant3);
+	background-color: var(--element-button-background-hover-variant3);
+	border-color: var(--element-button-border-hover-variant3);
+}
 
 section[data-block="cardlets"] [data-block="item"][data-link-style="button"]:active [data-field="cta"] {
 	color: var(--element-button-text-active);
@@ -183,6 +193,11 @@ section[data-block="cardlets"] [data-block="item"][data-link-style="button"][dat
 	color: var(--element-button-text-active-variant2);
 	background-color: var(--element-button-background-active-variant2);
 	border-color: var(--element-button-border-active-variant2);
+}
+section[data-block="cardlets"] [data-block="item"][data-link-style="button"][data-button-style="variant3"]:active [data-field="cta"] {
+	color: var(--element-button-text-active-variant3);
+	background-color: var(--element-button-background-active-variant3);
+	border-color: var(--element-button-border-active-variant3);
 }
 section[data-block="cardlets"][data-style="variant2"] [data-block="item"] a:not(.pw-card-link) {
 	color: var(--pwcardlets-item-link-variant2);
