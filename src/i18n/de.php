@@ -37,4 +37,7 @@
 	'prw.prop.item-button-style' => 'Button-Stil',
 	'prw.prop.item-border' => 'Rahmen',
 	'kirbyblock-cardlets.item-text-gap' => 'Abstand zur Einleitung',
+	'prw.prop.item-tagline-spacing' => 'Nach der Tagline',
+	'prw.prop.item-heading-spacing' => 'Nach der Überschrift',
+	'prw.prop.item-cta-gap' => 'Zum Link',
 );

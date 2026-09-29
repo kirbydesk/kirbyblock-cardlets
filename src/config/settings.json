@@ -72,6 +72,27 @@
 					"min": 0,
 					"max": 8
 				},
+				"item-tagline-spacing": {
+					"value": "0.5rem",
+					"unit": "rem",
+					"step": 0.1,
+					"min": 0,
+					"max": 6
+				},
+				"item-heading-spacing": {
+					"value": "0.5rem",
+					"unit": "rem",
+					"step": 0.1,
+					"min": 0,
+					"max": 6
+				},
+				"item-cta-gap": {
+					"value": "1rem",
+					"unit": "rem",
+					"step": 0.1,
+					"min": 0,
+					"max": 6
+				},
 				"item-text-gap": {
 					"label": "kirbyblock-cardlets.item-text-gap",
 					"value": "2rem",

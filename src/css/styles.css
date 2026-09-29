@@ -262,11 +262,17 @@ section[data-block="cardlets"] {
 				padding-bottom: var(--pwcardlets-item-padding-bottom);
 				padding-left:   var(--pwcardlets-item-padding-left);
 
-				/* Minimum gap between the last text element and the CTA (matches
-				   the content's bottom padding for a symmetric feel). margin-top:
-				   auto on the CTA still drives the bottom-alignment across items. */
+				/* the gaps inside the card (Project Wizard → Design): below the
+				   tagline, below the heading, and the minimum gap before the link
+				   (margin-top: auto on the link still aligns it to the bottom) */
+				> [data-field="tagline"]:not(:last-child):not(:has(+ [data-field="cta"])) {
+					margin-bottom: var(--pwcardlets-item-tagline-spacing);
+				}
+				> [data-field="heading"]:not(:last-child):not(:has(+ [data-field="cta"])) {
+					margin-bottom: var(--pwcardlets-item-heading-spacing);
+				}
 				> *:has(+ [data-field="cta"]) {
-					margin-bottom: var(--pwcardlets-item-padding-bottom);
+					margin-bottom: var(--pwcardlets-item-cta-gap);
 				}
 			}
 		}
