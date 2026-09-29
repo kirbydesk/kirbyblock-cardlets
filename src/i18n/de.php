@@ -36,4 +36,5 @@
 	'prw.prop.item-link-icon' => 'Link-Icon',
 	'prw.prop.item-button-style' => 'Button-Stil',
 	'prw.prop.item-border' => 'Rahmen',
+	'kirbyblock-cardlets.item-text-gap' => 'Abstand zur Einleitung',
 );

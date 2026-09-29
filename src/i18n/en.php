@@ -36,4 +36,5 @@
 	'prw.prop.item-link-icon'       => 'Link icon',
 	'prw.prop.item-button-style'    => 'Button style',
 	'prw.prop.item-border'         => 'Border'
+	'kirbyblock-cardlets.item-text-gap' => 'Gap to the intro',
 );

@@ -198,13 +198,13 @@ section[data-block="cardlets"] {
 	/* -------------- Tagline Margins--------------*/
 	[data-field="tagline"] {
 		+ [data-block="items"] {
-			margin-top: 1rem;
+			margin-top: var(--pwcardlets-item-text-gap);
 		}
 	}
 	/* -------------- Heading Margins--------------*/
 	[data-field="heading"] {
 		+ [data-block="items"] {
-			margin-top: 1.2rem;
+			margin-top: var(--pwcardlets-item-text-gap);
 		}
 	}
 	/* -------------- Texts Margins--------------*/
@@ -212,7 +212,7 @@ section[data-block="cardlets"] {
 	[data-field="writer"],
 	[data-field="markdown"] {
 		+ [data-block="items"] {
-			margin-top: 2rem;
+			margin-top: var(--pwcardlets-item-text-gap);
 		}
 	}
 
@@ -221,8 +221,13 @@ section[data-block="cardlets"] {
 		[data-block="item"] {
 			display: flex;
 			flex-direction: column;
-			margin-bottom: 1.5rem;
+			margin-bottom: var(--pwcardlets-item-gap);
 			overflow: hidden;
+
+			/* the gap only between the cards, not below the last one */
+			&:last-child {
+				margin-bottom: 0;
+			}
 
 			/* Stick the CTA to the bottom of the item so all links / buttons
 			   in a row line up on the same baseline (grid stretches items). */
@@ -272,8 +277,7 @@ section[data-block="cardlets"] {
 @media (min-width: 640px) {
 	section[data-block="cardlets"] div[data-block="items"] {
 		display: grid;
-		gap: 1.5rem;
-		margin-bottom: 1.5rem;
+		gap: var(--pwcardlets-item-gap);
 
 		[data-block="item"] {
 			margin-bottom: 0;
@@ -290,8 +294,7 @@ section[data-block="cardlets"] {
 /* Columns - Medium (from 768px) */
 @media (min-width: 768px) {
 	section[data-block="cardlets"] div[data-block="items"] {
-		gap: 2rem;
-		margin-bottom: 2rem;
+		gap: var(--pwcardlets-item-gap);
 	}
 	section[data-block="cardlets"] div[data-block="items"][data-columns-md="1"] { grid-template-columns: repeat(1, 1fr); }
 	section[data-block="cardlets"] div[data-block="items"][data-columns-md="2"] { grid-template-columns: repeat(2, 1fr); }
@@ -304,8 +307,7 @@ section[data-block="cardlets"] {
 /* Columns - Large (from 1024px) */
 @media (min-width: 1024px) {
 	section[data-block="cardlets"] div[data-block="items"] {
-		gap: 2.5rem;
-		margin-bottom: 2.5rem;
+		gap: var(--pwcardlets-item-gap);
 	}
 	section[data-block="cardlets"] div[data-block="items"][data-columns-lg="1"] { grid-template-columns: repeat(1, 1fr); }
 	section[data-block="cardlets"] div[data-block="items"][data-columns-lg="2"] { grid-template-columns: repeat(2, 1fr); }
@@ -318,8 +320,7 @@ section[data-block="cardlets"] {
 /* Columns - Extra Large (from 1280px) */
 @media (min-width: 1280px) {
 	section[data-block="cardlets"] div[data-block="items"] {
-		gap: 2.5rem;
-		margin-bottom: 2.5rem;
+		gap: var(--pwcardlets-item-gap);
 	}
 	section[data-block="cardlets"] div[data-block="items"][data-columns-xl="1"] { grid-template-columns: repeat(1, 1fr); }
 	section[data-block="cardlets"] div[data-block="items"][data-columns-xl="2"] { grid-template-columns: repeat(2, 1fr); }
