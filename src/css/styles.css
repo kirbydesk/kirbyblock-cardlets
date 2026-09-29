@@ -257,10 +257,8 @@ section[data-block="cardlets"] {
 
 			/* Content wrapper carries the 4-side padding (drives spacing to image + edges) */
 			[data-field="content"] {
-				padding-top:    var(--pwcardlets-item-padding-top);
-				padding-right:  var(--pwcardlets-item-padding-right);
-				padding-bottom: var(--pwcardlets-item-padding-bottom);
-				padding-left:   var(--pwcardlets-item-padding-left);
+				/* vertical and horizontal padding (Project Wizard → Design) */
+				padding: var(--pwcardlets-item-padding-y) var(--pwcardlets-item-padding-x);
 
 				/* the gaps inside the card (Project Wizard → Design): below the
 				   tagline, below the heading, and the minimum gap before the link

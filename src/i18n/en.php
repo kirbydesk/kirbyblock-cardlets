@@ -40,4 +40,6 @@
 	'prw.prop.item-tagline-spacing' => 'After the tagline',
 	'prw.prop.item-heading-spacing' => 'After the heading',
 	'prw.prop.item-cta-gap' => 'To the link',
+	'prw.prop.item-padding-x' => 'Horizontal padding',
+	'prw.prop.item-padding-y' => 'Vertical padding',
 );

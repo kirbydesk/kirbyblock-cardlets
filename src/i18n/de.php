@@ -40,4 +40,6 @@
 	'prw.prop.item-tagline-spacing' => 'Nach der Tagline',
 	'prw.prop.item-heading-spacing' => 'Nach der Überschrift',
 	'prw.prop.item-cta-gap' => 'Zum Link',
+	'prw.prop.item-padding-x' => 'Innenabstand horizontal',
+	'prw.prop.item-padding-y' => 'Innenabstand vertikal',
 );

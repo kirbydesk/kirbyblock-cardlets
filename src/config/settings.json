@@ -8,29 +8,19 @@
 	"values": {
 		"items": {
 			"vars": {
-				"item-padding": {
-					"value": [
-						"1rem",
-						"1rem",
-						"1rem",
-						"1rem"
-					],
+				"item-padding-x": {
+					"value": "1rem",
 					"unit": "rem",
 					"step": 0.1,
 					"min": 0,
-					"max": 20,
-					"suffixes": [
-						"-top",
-						"-right",
-						"-bottom",
-						"-left"
-					],
-					"labels": [
-						"pw.option.top",
-						"pw.option.right",
-						"pw.option.bottom",
-						"pw.option.left"
-					]
+					"max": 8
+				},
+				"item-padding-y": {
+					"value": "1rem",
+					"unit": "rem",
+					"step": 0.1,
+					"min": 0,
+					"max": 8
 				},
 				"item-radius": {
 					"value": [
