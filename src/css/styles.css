@@ -341,6 +341,84 @@ section[data-block="cardlets"] [data-block="items"][data-display="overlay"] [dat
 	margin-top: 0;
 }
 
+/*-----------------------------------------------------------------------------
+	Display "image stands out": the card begins below the image's top edge
+	(the overhang, px or % of the image's height), the image stands out of
+	it at the top. The card is drawn in two pieces – behind the image from
+	the overhang down, then the content – with the card's colours, border,
+	corners and shadow (each piece clipped at the joint so it stays seamless)
+-----------------------------------------------------------------------------*/
+section[data-block="cardlets"] [data-block="item"]                        { --pw-card-background: var(--pwcardlets-item-background);          --pw-card-border-color: var(--pwcardlets-item-border-color); }
+section[data-block="cardlets"][data-style="variant"] [data-block="item"]  { --pw-card-background: var(--pwcardlets-item-background-variant);  --pw-card-border-color: var(--pwcardlets-item-border-color-variant); }
+section[data-block="cardlets"][data-style="variant2"] [data-block="item"] { --pw-card-background: var(--pwcardlets-item-background-variant2); --pw-card-border-color: var(--pwcardlets-item-border-color-variant2); }
+section[data-block="cardlets"][data-style="variant3"] [data-block="item"] { --pw-card-background: var(--pwcardlets-item-background-variant3); --pw-card-border-color: var(--pwcardlets-item-border-color-variant3); }
+
+section[data-block="cardlets"] [data-block="items"][data-shape="custom"] [data-block="item"] {
+	--pw-card-radius-top: var(--pwcardlets-item-radius-top-left) var(--pwcardlets-item-radius-top-right) 0 0;
+	--pw-card-radius-bottom: 0 0 var(--pwcardlets-item-radius-bottom-right) var(--pwcardlets-item-radius-bottom-left);
+}
+section[data-block="cardlets"] [data-block="item"][data-border="true"] { --pw-card-border-width: var(--pwcardlets-item-border-width); }
+section[data-block="cardlets"] [data-block="item"][data-shadow="sm"] { --pw-card-shadow: 0 1px 2px rgba(0, 0, 0, 0.12); }
+section[data-block="cardlets"] [data-block="item"][data-shadow="md"] { --pw-card-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); }
+section[data-block="cardlets"] [data-block="item"][data-shadow="lg"] { --pw-card-shadow: 0 10px 24px rgba(0, 0, 0, 0.18); }
+
+section[data-block="cardlets"] [data-block="items"][data-display="overhang"] [data-block="item"] {
+	overflow: visible;
+	background: none;
+	border-width: 0;
+	border-radius: 0;
+	box-shadow: none;
+
+	> [data-field="image"] {
+		position: relative;
+		isolation: isolate;
+		margin: 0;
+
+		figure, img {
+			border-radius: 0;
+		}
+		/* no media background behind a cut-out image: the card shows through */
+		figure > div {
+			background: none;
+		}
+	}
+	/* the upper piece: behind the image, from the overhang down */
+	> [data-field="image"]::before {
+		content: "";
+		position: absolute;
+		inset: var(--pwcardlets-item-overhang) 0 0 0;
+		z-index: -1;
+		background-color: var(--pw-card-background);
+		border: var(--pw-card-border-width, 0) solid var(--pw-card-border-color);
+		border-bottom-width: 0;
+		border-radius: var(--pw-card-radius-top, 0);
+		box-shadow: var(--pw-card-shadow, none);
+		clip-path: inset(-3rem -3rem 0 -3rem);
+	}
+	/* the lower piece: the content */
+	> [data-field="content"] {
+		background-color: var(--pw-card-background);
+		border: var(--pw-card-border-width, 0) solid var(--pw-card-border-color);
+		border-top-width: 0;
+		border-radius: var(--pw-card-radius-bottom, 0);
+		box-shadow: var(--pw-card-shadow, none);
+		clip-path: inset(0 -3rem -3rem -3rem);
+	}
+	/* without an image: the content is the whole card */
+	&:not(:has(> [data-field="image"])) > [data-field="content"] {
+		border-top-width: var(--pw-card-border-width, 0);
+		border-radius:
+			var(--pwcardlets-item-radius-top-left)
+			var(--pwcardlets-item-radius-top-right)
+			var(--pwcardlets-item-radius-bottom-right)
+			var(--pwcardlets-item-radius-bottom-left);
+		clip-path: none;
+	}
+}
+section[data-block="cardlets"] [data-block="items"][data-display="overhang"][data-shape="square"] [data-block="item"]:not(:has(> [data-field="image"])) > [data-field="content"] {
+	border-radius: 0;
+}
+
 /* Shadow of the cards (Project Wizard → Design › Style), as the buttons' steps */
 section[data-block="cardlets"] [data-block="item"][data-shadow="sm"] { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12); }
 section[data-block="cardlets"] [data-block="item"][data-shadow="md"] { box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); }

@@ -72,4 +72,6 @@
 	'kirbyblock-cardlets.card-overlay.25' => '25 %',
 	'kirbyblock-cardlets.card-overlay.50' => '50 %',
 	'kirbyblock-cardlets.card-overlay.75' => '75 %',
+	'kirbyblock-cardlets.card-display.overhang' => 'Bild ragt heraus',
+	'prw.prop.item-overhang' => 'Überstand',
 );

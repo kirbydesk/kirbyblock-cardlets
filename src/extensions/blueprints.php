@@ -29,8 +29,9 @@ return [
 					],
 				]
 			),
-			// the cards: image above the texts, or the texts on the image (then
-			// their position, the cards' ratio and the overlay's strength)
+			// the cards: image above the texts, the texts on the image (then
+			// their position, the cards' ratio and the overlay's strength), or
+			// the image standing out of the card at the top
 			'styleExtras' => [
 				'cardDisplay' => [
 					'label'   => 'kirbyblock-cardlets.card-display',
@@ -39,6 +40,7 @@ return [
 					'options' => [
 						['value' => 'stacked', 'text' => ['*' => 'kirbyblock-cardlets.card-display.stacked']],
 						['value' => 'overlay', 'text' => ['*' => 'kirbyblock-cardlets.card-display.overlay']],
+						['value' => 'overhang', 'text' => ['*' => 'kirbyblock-cardlets.card-display.overhang']],
 					],
 				],
 				'cardTextPosition' => [
