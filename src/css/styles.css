@@ -303,6 +303,16 @@ section[data-block="cardlets"] [data-block="items"][data-display="overlay"] [dat
 	position: relative;
 	aspect-ratio: var(--card-ratio);
 }
+@media (min-width: 1024px) {
+	section[data-block="cardlets"] [data-block="items"][data-display="overlay"] [data-block="item"] {
+		aspect-ratio: var(--card-ratio-lg);
+	}
+}
+@media (min-width: 1280px) {
+	section[data-block="cardlets"] [data-block="items"][data-display="overlay"] [data-block="item"] {
+		aspect-ratio: var(--card-ratio-xl);
+	}
+}
 section[data-block="cardlets"] [data-block="items"][data-display="overlay"] [data-block="item"] > [data-field="image"] {
 	position: absolute;
 	inset: 0;
@@ -323,10 +333,10 @@ section[data-block="cardlets"] [data-block="items"][data-display="overlay"] [dat
 	inset: 0;
 	z-index: 1;
 	pointer-events: none;
-	background: linear-gradient(to top, color-mix(in srgb, var(--pw-card-overlay) calc(var(--card-overlay) * 100%), transparent), transparent);
+	background: linear-gradient(to top, color-mix(in srgb, var(--pw-card-overlay) var(--pwcardlets-item-overlay-strength), transparent), transparent);
 }
 section[data-block="cardlets"] [data-block="items"][data-display="overlay"][data-text-position="top"] [data-block="item"]::before {
-	background: linear-gradient(to bottom, color-mix(in srgb, var(--pw-card-overlay) calc(var(--card-overlay) * 100%), transparent), transparent);
+	background: linear-gradient(to bottom, color-mix(in srgb, var(--pw-card-overlay) var(--pwcardlets-item-overlay-strength), transparent), transparent);
 }
 section[data-block="cardlets"] [data-block="items"][data-display="overlay"] [data-block="item"] [data-field="content"] {
 	position: relative;

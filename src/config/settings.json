@@ -67,6 +67,13 @@
 					"min": 0,
 					"max": 300
 				},
+				"item-overlay-strength": {
+					"value": "50%",
+					"unit": "%",
+					"step": 5,
+					"min": 0,
+					"max": 100
+				},
 				"item-gap": {
 					"default": "1.5rem",
 					"lg": "2.5rem",
@@ -496,6 +503,50 @@
 					"own"
 				],
 				"default": "global"
+			},
+			"item-text-position": {
+				"label": "kirbyblock-cardlets.card-text-position",
+				"options": [
+					"top",
+					"bottom"
+				],
+				"default": "bottom"
+			},
+			"item-ratio": {
+				"label": "kirbyblock-cardlets.card-ratio",
+				"options": [
+					"1/1",
+					"4/5",
+					"3/4",
+					"2/3",
+					"4/3",
+					"16/9"
+				],
+				"default": "4/5"
+			},
+			"item-ratio-lg": {
+				"label": "kirbyblock-cardlets.card-ratio",
+				"options": [
+					"1/1",
+					"4/5",
+					"3/4",
+					"2/3",
+					"4/3",
+					"16/9"
+				],
+				"default": "4/5"
+			},
+			"item-ratio-xl": {
+				"label": "kirbyblock-cardlets.card-ratio",
+				"options": [
+					"1/1",
+					"4/5",
+					"3/4",
+					"2/3",
+					"4/3",
+					"16/9"
+				],
+				"default": "4/5"
 			}
 		},
 		"style": {
@@ -520,51 +571,6 @@
 				"required": true,
 				"fixed": true,
 				"default": "stacked"
-			},
-			"card-text-position": {
-				"label": "kirbyblock-cardlets.card-text-position",
-				"options": [
-					"top",
-					"bottom"
-				],
-				"required": true,
-				"fixed": true,
-				"default": "bottom",
-				"when": {
-					"card-display": "overlay"
-				}
-			},
-			"card-ratio": {
-				"label": "kirbyblock-cardlets.card-ratio",
-				"options": [
-					"1/1",
-					"4/5",
-					"3/4",
-					"2/3",
-					"4/3",
-					"16/9"
-				],
-				"required": true,
-				"fixed": true,
-				"default": "4/5",
-				"when": {
-					"card-display": "overlay"
-				}
-			},
-			"card-overlay": {
-				"label": "kirbyblock-cardlets.card-overlay",
-				"options": [
-					"0",
-					"25",
-					"50",
-					"75"
-				],
-				"required": true,
-				"fixed": true,
-				"default": "50",
-				"when": {
-					"card-display": "overlay"
-				}
 			}
 		},
 		"grid": {

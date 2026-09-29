@@ -36,15 +36,13 @@ if ($items->count() > 0):
 	// the cards' form: square or round with the radii (Project Wizard → Design)
 	echo ' data-shape="'.($defaults['item-shape'] ?? 'custom').'"';
 	// the cards' display: image above the texts, the texts on the image
-	// (their position, the cards' ratio, the overlay's strength), or the
-	// image standing out of the card at the top
+	// (their position, the cards' ratio per device), or the image standing
+	// out of the card at the top (Project Wizard → Design › Display)
 	$cardDisplay = $block->carddisplay()->or($defaults['card-display'] ?? 'stacked')->value();
 	echo ' data-display="'.$cardDisplay.'"';
 	if ($cardDisplay === 'overlay'):
-		$cardRatio   = $block->cardratio()->or($defaults['card-ratio'] ?? '4/5')->value();
-		$cardOverlay = intval($block->cardoverlay()->or($defaults['card-overlay'] ?? '50')->value()) / 100;
-		echo ' data-text-position="'.$block->cardtextposition()->or($defaults['card-text-position'] ?? 'bottom')->value().'"';
-		echo ' style="--card-ratio:'.$cardRatio.';--card-overlay:'.$cardOverlay.'"';
+		echo ' data-text-position="'.($defaults['item-text-position'] ?? 'bottom').'"';
+		echo ' style="--card-ratio:'.($defaults['item-ratio'] ?? '4/5').';--card-ratio-lg:'.($defaults['item-ratio-lg'] ?? '4/5').';--card-ratio-xl:'.($defaults['item-ratio-xl'] ?? '4/5').'"';
 	endif;
 	echo ' data-columns-sm="'.$block->columnssm()->value().'"';
 	echo ' data-columns-md="'.$block->columnsmd()->value().'"';
