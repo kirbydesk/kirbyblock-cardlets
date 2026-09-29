@@ -40,4 +40,5 @@
 	'kirbyblock-cardlets.item-shape.square' => 'Square',
 	'kirbyblock-cardlets.item-shape.custom' => 'Round',
 	'kirbyblock-cardlets.item-shadow' => 'Shadow',
+	'kirbyblock-cardlets.item-border' => 'Border',
 );

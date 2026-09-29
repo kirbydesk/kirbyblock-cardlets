@@ -443,6 +443,7 @@
 				"default": "default"
 			},
 			"item-border": {
+				"label": "kirbyblock-cardlets.item-border",
 				"default": false
 			},
 			"item-shadow": {

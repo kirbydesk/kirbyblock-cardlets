@@ -40,4 +40,5 @@
 	'kirbyblock-cardlets.item-shape.square' => 'Eckig',
 	'kirbyblock-cardlets.item-shape.custom' => 'Rund',
 	'kirbyblock-cardlets.item-shadow' => 'Schatten',
+	'kirbyblock-cardlets.item-border' => 'Rahmen',
 );
