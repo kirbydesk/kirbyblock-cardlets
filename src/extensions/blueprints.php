@@ -98,7 +98,7 @@ return [
 			$itemFields['description']['defaultMode']  = $fields['mode-item-editor'] ?? $fields['mode-editor'] ?? null;
 		}
 
-		return [
+		$item = [
 			'name' => 'kirbyblock-cardlets.item',
 			'icon' => 'item',
 			'tabs' => [
@@ -152,5 +152,13 @@ return [
 				],
 			],
 		];
+
+		// the card's fields hidden from the editors (Project Wizard → Visibility,
+		// its items: item-tagline, item-heading, item-editor) keep their values
+		$itemNames = ['item-tagline' => 'tagline', 'item-heading' => 'heading', 'item-editor' => 'description'];
+		$hidden    = array_values(array_intersect_key($itemNames, array_flip($config['hidden'] ?? [])));
+		$item['tabs'] = pwBlueprint::hideFields($item['tabs'], $hidden);
+
+		return $item;
 	},
 ];
