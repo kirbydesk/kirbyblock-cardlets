@@ -177,8 +177,10 @@ if ($items->count() > 0):
 					if (!empty($text)):
 						$eSize  = $itemEditor['size']  ?? 'normal';
 						$eAlign = $itemEditor['align'] ?? null;
-						$rendered = $mode === 'markdown' ? kirbytext($text) : $text;
-						echo '<div data-field="'.$mode.'" data-align="'.$eAlign.'" data-editor-size="'.$eSize.'">'.$rendered.'</div>'."\n";
+						// (the writer's HTML as it is; plain text masked, its line breaks kept)
+						$isWriter = $mode === 'writer';
+						$rendered = $isWriter ? $text : nl2br(esc($text), false);
+						echo '<div data-field="'.($isWriter ? 'writer' : 'textarea').'" data-align="'.$eAlign.'" data-editor-size="'.$eSize.'">'.$rendered.'</div>'."\n";
 					endif;
 				endif;
 
