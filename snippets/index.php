@@ -72,6 +72,7 @@ if ($items->count() > 0):
 
 		$htmltag = 'div';
 		$link = null;
+		$described = ['attr' => '', 'html' => ''];
 
 		// Link Available?
 		$link = $item->linkinternal()->value();
@@ -108,7 +109,9 @@ if ($items->count() > 0):
 
 			// Aria attributes
 			$ariaLabel = $item->arialabel()->isNotEmpty() ? ' aria-label="' . esc($item->arialabel()->value()) . '"' : '';
-			$ariaDescribedby = $item->ariadescribedby()->isNotEmpty() ? ' aria-describedby="' . esc($item->ariadescribedby()->value()) . '"' : '';
+			// (the additional description: a hidden element the link points to)
+			$described = pwSnippet::describedBy($item->ariadescribedby()->value());
+			$ariaDescribedby = $described['attr'];
 
 			// Build link
 			$htmltag 	= 'a';
@@ -215,6 +218,7 @@ if ($items->count() > 0):
 			echo '</div>'."\n"; // End Content
 
 			echo '</'.$htmltag.'>'."\n"; // End Item
+			if (!empty($described['html'])) echo $described['html']."\n";
 
 		endif; // End Item output
 
