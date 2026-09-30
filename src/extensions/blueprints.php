@@ -4,7 +4,6 @@ $columnsField = fn(string $breakpoint, $default) => [
 	'extends' => 'pagewizard/fields/columns',
 	'default' => $default,
 	'label'   => 'pw.field.columns.' . $breakpoint,
-	'help'    => 'pw.field.columns.' . $breakpoint . '.help',
 ];
 
 
