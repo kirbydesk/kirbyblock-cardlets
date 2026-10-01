@@ -113,6 +113,10 @@ section[data-block="cardlets"] [data-block="item"] [data-field="cta"] svg[data-f
 	height: 1em;
 	flex: 0 0 auto;
 }
+/* the stroke chosen in the Project Wizard over the drawing's own */
+section[data-block="cardlets"] [data-block="item"] [data-field="cta"] svg[data-field="cta-icon"] [stroke] {
+	stroke-width: var(--pw-card-icon-stroke, 2);
+}
 section[data-block="cardlets"][data-style="variant"] [data-block="item"][data-link-style="text"] [data-field="cta"] {
 	color: var(--pwcardlets-item-link-variant);
 }

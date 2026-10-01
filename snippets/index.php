@@ -217,7 +217,9 @@ if ($items->count() > 0):
 					echo '<span data-field="cta" data-align="'.$ctaAlign.'">';
 					echo esc($ctaText);
 					if (!empty($iconSvg)):
-						echo '<svg viewBox="0 0 24 24" data-field="cta-icon" aria-hidden="true">'.$iconSvg.'</svg>';
+						// (its stroke as chosen in the Project Wizard)
+						$iconStroke = ['thin' => 1.25, 'normal' => 2, 'bold' => 2.75][$defaults['item-link-icon-stroke'] ?? 'normal'] ?? 2;
+						echo '<svg viewBox="0 0 24 24" data-field="cta-icon" aria-hidden="true" style="--pw-card-icon-stroke:'.$iconStroke.'">'.$iconSvg.'</svg>';
 					endif;
 					echo '</span>'."\n";
 				endif;
