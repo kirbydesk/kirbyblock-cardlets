@@ -90,8 +90,11 @@ return [
 				'sizeOptions'  => $fieldOptions['item-heading']['sizes'] ?? $fieldOptions['heading']['sizes'] ?? null,
 				'alignOptions' => $fieldOptions['item-heading']['align'] ?? $fieldOptions['heading']['align'] ?? null,
 				'levelOptions' => $fieldOptions['item-heading']['level'] ?? $fieldOptions['heading']['level'] ?? null,
-				'textbackground'        => $fields['textbackground-item-heading'] ?? $fields['textbackground-heading'] ?? null,
-				'textbackgroundOptions' => $fieldOptions['item-heading']['textbackground'] ?? $fieldOptions['heading']['textbackground'] ?? null,
+				// the marking: not in cards (a box in a box, several cards
+				// all marked); only its own setting, a project exception may
+				// switch it on
+				'textbackground'        => $fields['textbackground-item-heading'] ?? null,
+				'textbackgroundOptions' => $fieldOptions['item-heading']['textbackground'] ?? null,
 			];
 		}
 
