@@ -223,13 +223,13 @@ section[data-block="cardlets"] {
 	/* -------------- Tagline Margins--------------*/
 	[data-field="tagline"] {
 		+ [data-block="items"] {
-			margin-top: var(--pwcardlets-item-text-gap);
+			padding-top: var(--pwcardlets-item-text-gap);
 		}
 	}
 	/* -------------- Heading Margins--------------*/
 	[data-field="heading"] {
 		+ [data-block="items"] {
-			margin-top: var(--pwcardlets-item-text-gap);
+			padding-top: var(--pwcardlets-item-text-gap);
 		}
 	}
 	/* -------------- Texts Margins--------------*/
@@ -237,7 +237,7 @@ section[data-block="cardlets"] {
 	[data-field="writer"],
 	[data-field="markdown"] {
 		+ [data-block="items"] {
-			margin-top: var(--pwcardlets-item-text-gap);
+			padding-top: var(--pwcardlets-item-text-gap);
 		}
 	}
 
@@ -607,9 +607,3 @@ section[data-block="cardlets"][data-style="variant3"] [data-block="item"] a:not(
 	color: var(--pwcardlets-item-link-active-variant3);
 }
 
-/* the intro's last element: no space below of its own before the cards –
-   there only the gap to the intro applies (Project Wizard → Design ›
-   Spacing); the elements' space below applies within the intro */
-section[data-block="cardlets"][data-block] :is([data-field="tagline"], [data-field="heading"], [data-field="textarea"], [data-field="writer"], [data-field="markdown"]):has(+ [data-block="items"]):not([data-block="item"] *) {
-	margin-bottom: 0;
-}
