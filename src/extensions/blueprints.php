@@ -72,7 +72,9 @@ return [
 					? ['type' => 'hidden', 'default' => $defaults['card-overlay'] ?? '50']
 					: [
 						'label'   => 'kirbyblock-cardlets.card-overlay',
-						'type'    => 'toggles',
+						// (each step with a swatch in the variant's overlay colour)
+						'type'    => 'pwoverlay',
+						'block'   => 'pwcardlets',
 						'default' => $defaults['card-overlay'] ?? '50',
 						'options' => $overlays,
 						'when'    => ['cardDisplay' => 'overlay'],
