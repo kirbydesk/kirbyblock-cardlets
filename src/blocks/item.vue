@@ -19,6 +19,12 @@
 					<div v-if="descriptionIsHtml" v-html="parsedDescription"></div>
 					<div v-else class="pwPlain">{{ parsedDescription }}</div>
 				</div>
+
+				<!-- the link's text (with a link set) -->
+				<div v-if="content.linkinternal && content.linktext" class="linktext pwLink">
+					<k-icon type="url" />
+					<span>{{ content.linktext }}</span>
+				</div>
 			</div>
 
 		</div>
@@ -125,6 +131,9 @@ div.item {
     padding: 0 !important;
   }
 
+	div.pwLink {
+		font-weight: var(--font-semi);
+	}
 	div.pwPlain {
 		white-space: pre-line;
 	}
