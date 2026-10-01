@@ -20,10 +20,11 @@
 					<div v-else class="pwPlain">{{ parsedDescription }}</div>
 				</div>
 
-				<!-- the link's text (with a link set) -->
-				<div v-if="content.linkinternal && content.linktext" class="linktext pwLink">
+				<!-- the link's text (with a link set; none of its own: the
+				     frontend's "Read more") -->
+				<div v-if="content.linkinternal" class="linktext pwLink">
 					<k-icon type="url" />
-					<span>{{ content.linktext }}</span>
+					<span>{{ content.linktext || $t('kirbyblock-cardlets.item.cta') }}</span>
 				</div>
 			</div>
 
