@@ -511,14 +511,6 @@
 				],
 				"default": "global"
 			},
-			"item-text-position": {
-				"label": "kirbyblock-cardlets.card-text-position",
-				"options": [
-					"top",
-					"bottom"
-				],
-				"default": "bottom"
-			},
 			"item-ratio": {
 				"label": "kirbyblock-cardlets.card-ratio",
 				"options": [
@@ -650,6 +642,14 @@
 				"required": true,
 				"fixed": true,
 				"default": "stacked"
+			},
+			"card-text-position": {
+				"label": "kirbyblock-cardlets.card-text-position",
+				"options": [
+					"top",
+					"bottom"
+				],
+				"default": "bottom"
 			}
 		},
 		"grid": {

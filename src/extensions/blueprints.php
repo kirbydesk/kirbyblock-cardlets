@@ -15,6 +15,14 @@ return [
 
 	'blocks/pwcardlets' => pwBlueprint::main('pwcardlets', function ($cfg) use ($columnsField) {
 		$defaults = $cfg['defaults'];
+		// the texts' position on the image: the options the project allows
+		$textPositions = array_values(array_intersect_key(
+			[
+				'top'    => ['value' => 'top',    'text' => ['*' => 'kirbyblock-cardlets.card-text-position.top']],
+				'bottom' => ['value' => 'bottom', 'text' => ['*' => 'kirbyblock-cardlets.card-text-position.bottom']],
+			],
+			array_flip($cfg['style']['card-text-position']['options'] ?? ['top', 'bottom'])
+		));
 		return [
 			'name' => 'kirbyblock-cardlets.name',
 			'icon' => 'cardlets',
@@ -42,6 +50,17 @@ return [
 						['value' => 'overhang', 'text' => ['*' => 'kirbyblock-cardlets.card-display.overhang']],
 					],
 				],
+				// on the image: the texts at the top or bottom (the block's own –
+				// it depends on its images; one option allowed: fixed, no field)
+				'cardTextPosition' => count($textPositions) <= 1
+					? ['type' => 'hidden', 'default' => $defaults['card-text-position'] ?? 'bottom']
+					: [
+						'label'   => 'kirbyblock-cardlets.card-text-position',
+						'type'    => 'toggles',
+						'default' => $defaults['card-text-position'] ?? 'bottom',
+						'options' => $textPositions,
+						'when'    => ['cardDisplay' => 'overlay'],
+					],
 			],
 			'layoutExtras' => [
 				'headlineColumns' => ['extends' => 'pagewizard/headlines/columns'],

@@ -53,7 +53,7 @@ if ($items->count() > 0):
 		echo ' style="--card-image-ratio-sm:'.$ratioVar($imageRatios[0]).';--card-image-ratio-lg:'.$ratioVar($imageRatios[1]).';--card-image-ratio-xl:'.$ratioVar($imageRatios[2]).'"';
 	endif;
 	if ($cardDisplay === 'overlay'):
-		echo ' data-text-position="'.($defaults['item-text-position'] ?? 'bottom').'"';
+		echo ' data-text-position="'.$block->cardtextposition()->or($defaults['card-text-position'] ?? 'bottom')->value().'"';
 		echo ' style="--card-ratio:'.($defaults['item-ratio'] ?? '4/5').';--card-ratio-lg:'.($defaults['item-ratio-lg'] ?? '4/5').';--card-ratio-xl:'.($defaults['item-ratio-xl'] ?? '4/5').'"';
 	endif;
 	echo ' data-columns-sm="'.$block->columnssm()->value().'"';
