@@ -23,11 +23,6 @@ return [
 			],
 			array_flip($cfg['style']['card-text-position']['options'] ?? ['top', 'bottom'])
 		));
-		// the overlay's strength on the image: the steps the project allows
-		$overlays = array_map(
-			fn($v) => ['value' => $v, 'text' => $v . ' %'],
-			array_values($cfg['style']['card-overlay']['options'] ?? ['0', '25', '50', '75'])
-		);
 		return [
 			'name' => 'kirbyblock-cardlets.name',
 			'icon' => 'cardlets',
@@ -67,18 +62,18 @@ return [
 						'when'    => ['cardDisplay' => 'overlay'],
 					],
 				// on the image: the overlay's strength (the block's own – it
-				// depends on its images; its colour stays the project's)
-				'cardOverlay' => count($overlays) <= 1
-					? ['type' => 'hidden', 'default' => $defaults['card-overlay'] ?? '50']
-					: [
-						'label'   => 'kirbyblock-cardlets.card-overlay',
-						// (each step with a swatch in the variant's overlay colour)
-						'type'    => 'pwoverlay',
-						'block'   => 'pwcardlets',
-						'default' => $defaults['card-overlay'] ?? '50',
-						'options' => $overlays,
-						'when'    => ['cardDisplay' => 'overlay'],
-					],
+				// depends on its images; empty: the project's value; its colour
+				// stays the variant's, shown as a square)
+				'cardOverlay' => [
+					'label' => 'kirbyblock-cardlets.card-overlay',
+					'type'  => 'pwoverlay',
+					'block' => 'pwcardlets',
+					'min'   => 0,
+					'max'   => 100,
+					'step'  => 5,
+					'after' => '%',
+					'when'  => ['cardDisplay' => 'overlay'],
+				],
 			],
 			'layoutExtras' => [
 				'headlineColumns' => ['extends' => 'pagewizard/headlines/columns'],
