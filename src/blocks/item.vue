@@ -3,11 +3,10 @@
 		<div class="item" @dblclick="open">
 
 			<!-- Image -->
-			<pwImage class="pwImage" v-if="content?.image"
-				:src="content?.image?.[0]?.url || ''"
-				:srcset="content?.image?.[0]?.image?.srcset || ''"
-				:image="content?.image?.[0] || null"
-			/>
+			<!-- (a small picture of the image) -->
+			<div v-if="content?.image?.[0]?.url" class="pwImage">
+				<img :src="content.image[0].url" alt="" />
+			</div>
 
 			<div class="pwContent">
 				<!-- (only what is filled in: no placeholders) -->
@@ -33,12 +32,8 @@
 </template>
 
 <script>
-import pwImage from '@/../../kirby-pagewizard/src/components/image.vue'
 
 export default {
-	components: {
-		pwImage,
-	},
 	props: {
 		content: Object
 	},
@@ -110,6 +105,13 @@ div.item {
   div.pwImage {
     flex: 0 0 100px;
     align-self: flex-start;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--rounded-sm);
+    }
   }
 
 	div.pwContent {
