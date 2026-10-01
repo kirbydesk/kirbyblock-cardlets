@@ -54,7 +54,9 @@ if ($items->count() > 0):
 	endif;
 	if ($cardDisplay === 'overlay'):
 		echo ' data-text-position="'.$block->cardtextposition()->or($defaults['card-text-position'] ?? 'bottom')->value().'"';
-		echo ' style="--card-ratio:'.($defaults['item-ratio'] ?? '4/5').';--card-ratio-lg:'.($defaults['item-ratio-lg'] ?? '4/5').';--card-ratio-xl:'.($defaults['item-ratio-xl'] ?? '4/5').'"';
+		// (the overlay's strength: the block's own, else the start value)
+		$overlay = intval($block->cardoverlay()->or($defaults['card-overlay'] ?? '50')->value());
+		echo ' style="--card-ratio:'.($defaults['item-ratio'] ?? '4/5').';--card-ratio-lg:'.($defaults['item-ratio-lg'] ?? '4/5').';--card-ratio-xl:'.($defaults['item-ratio-xl'] ?? '4/5').';--pwcardlets-item-overlay-strength:'.$overlay.'%"';
 	endif;
 	echo ' data-columns-sm="'.$block->columnssm()->value().'"';
 	echo ' data-columns-md="'.$block->columnsmd()->value().'"';

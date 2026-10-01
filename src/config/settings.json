@@ -67,13 +67,6 @@
 					"min": 0,
 					"max": 300
 				},
-				"item-overlay-strength": {
-					"value": "50%",
-					"unit": "%",
-					"step": 5,
-					"min": 0,
-					"max": 100
-				},
 				"item-gap": {
 					"default": "1.5rem",
 					"lg": "2.5rem",
@@ -650,6 +643,16 @@
 					"bottom"
 				],
 				"default": "bottom"
+			},
+			"card-overlay": {
+				"label": "kirbyblock-cardlets.card-overlay",
+				"options": [
+					"0",
+					"25",
+					"50",
+					"75"
+				],
+				"default": "50"
 			}
 		},
 		"grid": {

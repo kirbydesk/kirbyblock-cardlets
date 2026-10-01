@@ -23,6 +23,11 @@ return [
 			],
 			array_flip($cfg['style']['card-text-position']['options'] ?? ['top', 'bottom'])
 		));
+		// the overlay's strength on the image: the steps the project allows
+		$overlays = array_map(
+			fn($v) => ['value' => $v, 'text' => $v . ' %'],
+			array_values($cfg['style']['card-overlay']['options'] ?? ['0', '25', '50', '75'])
+		);
 		return [
 			'name' => 'kirbyblock-cardlets.name',
 			'icon' => 'cardlets',
@@ -59,6 +64,17 @@ return [
 						'type'    => 'toggles',
 						'default' => $defaults['card-text-position'] ?? 'bottom',
 						'options' => $textPositions,
+						'when'    => ['cardDisplay' => 'overlay'],
+					],
+				// on the image: the overlay's strength (the block's own – it
+				// depends on its images; its colour stays the project's)
+				'cardOverlay' => count($overlays) <= 1
+					? ['type' => 'hidden', 'default' => $defaults['card-overlay'] ?? '50']
+					: [
+						'label'   => 'kirbyblock-cardlets.card-overlay',
+						'type'    => 'toggles',
+						'default' => $defaults['card-overlay'] ?? '50',
+						'options' => $overlays,
 						'when'    => ['cardDisplay' => 'overlay'],
 					],
 			],
