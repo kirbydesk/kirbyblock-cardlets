@@ -95,6 +95,8 @@ export default {
 div.item {
   display: flex;
   flex-wrap: nowrap;
+  /* (between the image and the texts, as the other entries) */
+  gap: var(--spacing-4);
 	padding: var(--spacing-3) !important;
 	font-size: var(--text-sm);
 
