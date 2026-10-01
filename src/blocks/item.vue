@@ -116,8 +116,10 @@ div.item {
     letter-spacing: 0.05em;
   }
 
+  /* (a step larger than the text: stands out from bold in it) */
   div.pwHeading {
-		font-size: var(--text-sm);
+		font-size: var(--text-md);
+		font-weight: var(--font-bold);
     padding: 0 !important;
   }
 
