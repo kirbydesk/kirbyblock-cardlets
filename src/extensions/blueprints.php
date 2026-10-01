@@ -23,6 +23,18 @@ return [
 			],
 			array_flip($cfg['style']['card-text-position']['options'] ?? ['top', 'bottom'])
 		));
+		// the overlay's start value: the project's strength (Project Wizard ›
+		// Cards › Design), else the plugin's
+		$values = pwConfig::loadValues('pwcardlets');
+		$overlayStart = $values['overrides']['item-overlay-strength'] ?? null;
+		if ($overlayStart === null || $overlayStart === '') {
+			foreach ($values['defaults'] as $group) {
+				if (isset($group['vars']['item-overlay-strength']['value'])) {
+					$overlayStart = $group['vars']['item-overlay-strength']['value'];
+				}
+			}
+		}
+		$overlayStart = intval($overlayStart ?? 50);
 		return [
 			'name' => 'kirbyblock-cardlets.name',
 			'icon' => 'cardlets',
@@ -62,12 +74,13 @@ return [
 						'when'    => ['cardDisplay' => 'overlay'],
 					],
 				// on the image: the overlay's strength (the block's own – it
-				// depends on its images; empty: the project's value; its colour
-				// stays the variant's, shown as a square)
+				// depends on its images; a new block starts with the project's
+				// value; its colour stays the variant's, shown as a square)
 				'cardOverlay' => [
-					'label' => 'kirbyblock-cardlets.card-overlay',
-					'type'  => 'pwoverlay',
-					'block' => 'pwcardlets',
+					'label'   => 'kirbyblock-cardlets.card-overlay',
+					'type'    => 'pwoverlay',
+					'block'   => 'pwcardlets',
+					'default' => $overlayStart,
 					'min'   => 0,
 					'max'   => 100,
 					'step'  => 5,
