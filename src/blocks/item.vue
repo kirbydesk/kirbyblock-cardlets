@@ -131,8 +131,11 @@ div.item {
     padding: 0 !important;
   }
 
+	/* in the panel's link colour (the icon too) */
 	div.pwLink {
 		font-weight: var(--font-semi);
+		color: var(--link-color);
+		--icon-color: var(--link-color);
 	}
 	div.pwPlain {
 		white-space: pre-line;
