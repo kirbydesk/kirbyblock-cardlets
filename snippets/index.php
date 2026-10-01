@@ -148,6 +148,9 @@ if ($items->count() > 0):
 				'alignment' => null,
 				// a fixed ratio of the cards: cropped at the focus point
 				'cover' => (bool) $imageCover,
+				// no zoom in cards (a linked card: its lightbox link would sit
+				// inside the card's link)
+				'noZoom' => true,
 			]);
 
 			//Content (the four item-padding-* values apply HERE so they steer
