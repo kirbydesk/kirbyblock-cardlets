@@ -4,11 +4,8 @@
 	'kirbyblock-cardlets.ai' => 'Ein Raster aus Karten mit Tagline, Titel und kurzer Beschreibung. Für mehrere gleichwertige Themen, Angebote oder Bereiche, meist drei bis sechs Karten.',
 	'kirbyblock-cardlets.item' => 'Cardlet',
 	'kirbyblock-cardlets.item.tagline' => 'Tagline des Cardlets',
-	'kirbyblock-cardlets.item.tagline.placeholder' => 'Tagline …',
 	'kirbyblock-cardlets.item.heading' => 'Titel des Cardlets',
-	'kirbyblock-cardlets.item.heading.placeholder' => 'Titel …',
 	'kirbyblock-cardlets.item.description' => 'Beschreibung des Cardlets',
-	'kirbyblock-cardlets.item.description.placeholder' => 'Beschreibung …',
 	'kirbyblock-cardlets.items' => 'Cardlets',
 	'kirbyblock-cardlets.item.cta' => 'Weiterlesen',
 

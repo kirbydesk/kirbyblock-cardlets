@@ -4,11 +4,8 @@
 	'kirbyblock-cardlets.ai' => 'A grid of cards, each with tagline, title and short description. Use it for several parallel topics, offers or areas of equal weight, typically three to six cards.',
 	'kirbyblock-cardlets.item' => 'Cardlet',
 	'kirbyblock-cardlets.item.tagline' => 'Cardlet tagline',
-	'kirbyblock-cardlets.item.tagline.placeholder' => 'Tagline...',
 	'kirbyblock-cardlets.item.heading' => 'Cardlet title',
-	'kirbyblock-cardlets.item.heading.placeholder' => 'Title...',
 	'kirbyblock-cardlets.item.description' => 'Cardlet description',
-	'kirbyblock-cardlets.item.description.placeholder' => 'Description...',
 	'kirbyblock-cardlets.items' => 'Cardlets',
 	'kirbyblock-cardlets.item.cta' => 'Read more',
 
