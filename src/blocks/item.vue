@@ -10,23 +10,14 @@
 			/>
 
 			<div class="pwContent">
-				<div v-if="settings['item-tagline'] !== false" class="pwTagline">
-					<span v-if="parsedTagline">{{ parsedTagline }}</span>
-					<span v-else class="placeholder">{{ $t('kirbyblock-cardlets.item.tagline.placeholder') }}</span>
-				</div>
+				<!-- (only what is filled in: no placeholders) -->
+				<div v-if="settings['item-tagline'] !== false && parsedTagline" class="pwTagline">{{ parsedTagline }}</div>
 
-				<div v-if="settings['item-heading'] !== false" class="pwHeading">
-					<div v-if="parsedHeading">{{ parsedHeading }}</div>
-					<div v-else class="placeholder">
-						{{ $t('kirbyblock-cardlets.item.heading.placeholder') }}
-					</div>
-				</div>
+				<div v-if="settings['item-heading'] !== false && parsedHeading" class="pwHeading">{{ parsedHeading }}</div>
 
-				<div v-if="settings['item-editor'] !== false" class="pwText">
-					<div v-if="parsedDescription" v-html="parsedDescription"></div>
-					<div v-else class="placeholder">
-						{{ $t('kirbyblock-cardlets.item.description.placeholder') }}
-					</div>
+				<div v-if="settings['item-editor'] !== false && parsedDescription" class="pwText">
+					<div v-if="descriptionIsHtml" v-html="parsedDescription"></div>
+					<div v-else class="pwPlain">{{ parsedDescription }}</div>
 				</div>
 			</div>
 
@@ -68,6 +59,14 @@ export default {
 				return d.text || '';
 			} catch(e) {
 				return raw;
+			}
+		},
+		// the writer's HTML; plain text as it is (masked)
+		descriptionIsHtml() {
+			try {
+				return (JSON.parse(this.content.description || '{}').mode || 'textarea') === 'writer';
+			} catch(e) {
+				return false;
 			}
 		},
 		parsedDescription() {
@@ -122,6 +121,9 @@ div.item {
     padding: 0 !important;
   }
 
+	div.pwPlain {
+		white-space: pre-line;
+	}
 	div.pwText {
 		line-height: 1.2rem;
 		opacity: 0.8;
