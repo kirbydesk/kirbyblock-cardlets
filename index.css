@@ -1,1 +1,88 @@
-div.blockinfo div[data-v-3fa934d0]{display:none;position:absolute;top:0;margin-top:calc(-1.75rem + 2px);margin-left:var(--spacing-3);font-size:var(--text-sm);height:30px;box-sizing:border-box;padding:0 var(--spacing-2) 0 var(--spacing-1);border-radius:var(--rounded-md);box-shadow:var(--shadow-xl);font-weight:var(--font-thin);align-items:center;z-index:var(--z-toolbar);color:#fff;background-color:var(--color-blue-600)}div.blockinfo div[data-v-3fa934d0] svg[data-v-3fa934d0]{display:block;height:var(--text-md);fill:#c4dff9}div.blockinfo div.is-link[data-v-3fa934d0]{cursor:pointer}div.blockinfo div.is-link[data-v-3fa934d0]:hover{background-color:var(--color-blue-700, #1d4ed8)}div.item[data-v-aee93f27]{display:flex;flex-wrap:nowrap;gap:var(--spacing-4);padding:var(--spacing-3)!important;font-size:var(--text-sm)}div.item[data-v-aee93f27] div.pwImage[data-v-aee93f27]{flex:0 0 100px;align-self:flex-start}div.item[data-v-aee93f27] div.pwImage[data-v-aee93f27] img[data-v-aee93f27]{display:block;width:100%;height:auto;border-radius:var(--rounded-sm)}div.item[data-v-aee93f27] div.pwContent[data-v-aee93f27]{flex:1;display:flex;flex-direction:column;gap:var(--spacing-2)}div.item[data-v-aee93f27] div.pwTagline[data-v-aee93f27]{font-size:var(--text-xs);opacity:.6;text-transform:uppercase;letter-spacing:.05em}div.item[data-v-aee93f27] div.pwHeading[data-v-aee93f27]{font-size:var(--text-md);font-weight:var(--font-bold);padding:0!important}div.item[data-v-aee93f27] div.pwLink[data-v-aee93f27]{font-weight:var(--font-semi);color:var(--link-color);--icon-color: var(--link-color)}div.item[data-v-aee93f27] div.pwPlain[data-v-aee93f27]{white-space:pre-line}div.item[data-v-aee93f27] div.pwText[data-v-aee93f27]{line-height:1.2rem;opacity:.8;word-break:break-word;overflow-wrap:anywhere}
+
+div.blockinfo div[data-v-26526d24] {
+  display: none;
+  position: absolute;
+  top: 0;
+  /* as high and as placed as Kirby's block toolbar on the right (30px,
+     its border included; above the block) */
+  margin-top: calc(-1.75rem + 2px);
+  /* (as far from the edge as the toolbar on the right) */
+  margin-left: var(--spacing-3);
+  font-size: var(--text-sm);
+  height: 30px;
+  box-sizing: border-box;
+  padding: 0 var(--spacing-2) 0 var(--spacing-1);
+  border-radius: var(--rounded-md);
+  box-shadow: var(--shadow-xl);
+  font-weight: var(--font-thin);
+  align-items: center;
+  z-index: var(--z-toolbar);
+	color: white;
+	background-color: var(--color-blue-600);
+svg[data-v-26526d24] {
+    display: block;
+    height: var(--text-md);
+		fill: #c4dff9
+}
+}
+/* the label as a link to the design */
+div.blockinfo div.is-link[data-v-26526d24] {
+  cursor: pointer;
+}
+div.blockinfo div.is-link[data-v-26526d24]:hover {
+  background-color: var(--color-blue-700, #1d4ed8);
+}
+
+div.item[data-v-1e428e0a] {
+  display: flex;
+  flex-wrap: nowrap;
+  /* (between the image and the texts, as the other entries) */
+  gap: var(--spacing-4);
+	padding: var(--spacing-3) !important;
+	font-size: var(--text-sm);
+div.pwImage[data-v-1e428e0a] {
+    flex: 0 0 100px;
+    align-self: flex-start;
+img[data-v-1e428e0a] {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: var(--rounded-sm);
+}
+}
+div.pwContent[data-v-1e428e0a] {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: var(--spacing-2);
+}
+div.pwTagline[data-v-1e428e0a] {
+    font-size: var(--text-xs);
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+  /* (a step larger than the text: stands out from bold in it) */
+div.pwHeading[data-v-1e428e0a] {
+		font-size: var(--text-md);
+		font-weight: var(--font-bold);
+    padding: 0 !important;
+}
+
+	/* in the panel's link colour (the icon too) */
+div.pwLink[data-v-1e428e0a] {
+		font-weight: var(--font-semi);
+		color: var(--link-color);
+		--icon-color: var(--link-color);
+}
+div.pwPlain[data-v-1e428e0a] {
+		white-space: pre-line;
+}
+div.pwText[data-v-1e428e0a] {
+		line-height: 1.2rem;
+		opacity: 0.8;
+		word-break: break-word;
+		overflow-wrap: anywhere;
+}
+}

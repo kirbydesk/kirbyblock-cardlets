@@ -1,12 +1,12 @@
 <?php return array(
 
-	'kirbyblock-cardlets.name' => 'Cardlets',
+	'kirbyblock-cardlets.name' => 'Karten',
 	'kirbyblock-cardlets.ai' => 'Ein Raster aus Karten mit Tagline, Titel und kurzer Beschreibung. Für mehrere gleichwertige Themen, Angebote oder Bereiche, meist drei bis sechs Karten.',
-	'kirbyblock-cardlets.item' => 'Cardlet',
-	'kirbyblock-cardlets.item.tagline' => 'Tagline des Cardlets',
-	'kirbyblock-cardlets.item.heading' => 'Titel des Cardlets',
-	'kirbyblock-cardlets.item.description' => 'Beschreibung des Cardlets',
-	'kirbyblock-cardlets.items' => 'Cardlets',
+	'kirbyblock-cardlets.item' => 'Karte',
+	'kirbyblock-cardlets.item.tagline' => 'Tagline der Karte',
+	'kirbyblock-cardlets.item.heading' => 'Titel der Karte',
+	'kirbyblock-cardlets.item.description' => 'Beschreibung der Karte',
+	'kirbyblock-cardlets.items' => 'Karten',
 	'kirbyblock-cardlets.item.cta' => 'Weiterlesen',
 
 	/* -------------- Layout-Tab labels (rendered by pw-block-values) --------------*/
