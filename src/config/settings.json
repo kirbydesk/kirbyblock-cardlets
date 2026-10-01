@@ -478,7 +478,8 @@
 						"svg": "<path d='M8 5l8 7-8 7z' fill='currentColor'/>"
 					}
 				],
-				"with": "item-link-icon-stroke"
+				"with": "item-link-icon-stroke",
+				"empty": "none"
 			},
 			"item-link-icon-stroke": {
 				"label": "kirbyblock-cardlets.item-link-icon-stroke",
