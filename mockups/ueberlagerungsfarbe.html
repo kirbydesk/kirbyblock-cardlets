@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Überlagerungsfarbe</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #2a2a2e; color: #16171a; padding: 24px 16px 60px; }
+  h1 { font-size: 18px; color: #f2f2f4; font-weight: 600; }
+  .lead { color: #a8a8ae; margin: 4px 0 12px; max-width: 1100px; }
+  .switch { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+  .switch button { border: 0; background: #3a3a40; color: #f2f2f4; font: inherit; font-size: 13px; padding: 4px 10px; border-radius: 6px; cursor: pointer; }
+  .switch button.on { background: #0a84ff; }
+  .wrap { max-width: 1100px; display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; margin-top: 10px; }
+  @media (max-width: 860px) { .wrap { grid-template-columns: 1fr; } }
+  .drawer { background: #efefef; border-radius: 10px; padding: 18px 22px 26px; }
+  .dtabs { display: flex; gap: 4px; margin-bottom: 18px; border-bottom: 1px solid #ddd; }
+  .dtabs span { padding: 6px 12px; font-size: 13px; color: #6b6f76; }
+  .dtabs span.on { color: #16171a; border-bottom: 2px solid #16171a; font-weight: 500; }
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px 16px; }
+  .f { min-width: 0; } .f.full { grid-column: 1 / -1; }
+  .f.new { outline: 2px dashed #ff9f0a; outline-offset: 6px; border-radius: 4px; }
+  .lab { font-weight: 500; font-size: 13px; margin-bottom: 6px; }
+  .help { font-size: 12px; color: #6b6f76; margin-top: 6px; line-height: 1.45; }
+  .inp { background: #fff; border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,.08); height: 36px; display: flex; align-items: center; gap: 8px; padding: 0 8px; font: 13px ui-monospace, Menlo, monospace; }
+  .sw { width: 22px; height: 22px; border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.12); flex: none; }
+  .tog { display: inline-flex; background: #fff; border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,.08); padding: 2px; gap: 2px; flex-wrap: wrap; }
+  .tog span { font-size: 12px; padding: 5px 10px; border-radius: 3px; cursor: pointer; }
+  .tog span.on { background: #16171a; color: #fff; }
+  .row { display: flex; align-items: center; gap: 8px; }
+  .big { width: 36px; height: 36px; border-radius: 4px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.1); flex: none; position: relative; }
+  .big.click { cursor: pointer; }
+  .big.click::after { content: "▾"; position: absolute; right: 2px; bottom: -1px; font-size: 10px; color: rgba(0,0,0,.55); text-shadow: 0 0 2px #fff; }
+  .range { flex: 1; background: #fff; height: 36px; border-radius: 4px; box-shadow: 0 1px 2px rgba(0,0,0,.08); display: flex; align-items: center; padding: 0 10px; gap: 10px; }
+  .range input { flex: 1; }
+  .range b { font: 13px ui-monospace, Menlo, monospace; font-weight: 400; min-width: 34px; text-align: right; }
+  .pop { margin-top: 8px; background: #fff; border-radius: 6px; box-shadow: 0 6px 24px rgba(0,0,0,.18); padding: 10px; width: 230px; }
+  .pop .sp { height: 110px; border-radius: 4px; background: linear-gradient(to top, #000, transparent), linear-gradient(to right, #fff, #0b3d6b); }
+  .pop .hue { height: 10px; margin: 8px 0; border-radius: 5px; background: linear-gradient(to right, red, yellow, lime, cyan, blue, magenta, red); }
+  .pop .inp { box-shadow: inset 0 0 0 1px #e3e3e3; height: 30px; }
+  /* Vorschau */
+  .prev { background: #fff; border-radius: 10px; padding: 18px; }
+  .prev h4 { font-size: 11px; letter-spacing: .04em; text-transform: uppercase; color: #6b6f76; font-weight: 500; margin-bottom: 10px; }
+  .sec { border-radius: 8px; padding: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .card { aspect-ratio: 4/5; border-radius: 8px; position: relative; overflow: hidden; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 50'%3E%3Cdefs%3E%3ClinearGradient id='g' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f4b860'/%3E%3Cstop offset='1' stop-color='%23c0587e'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='40' height='50' fill='url(%23g)'/%3E%3Ccircle cx='28' cy='14' r='7' fill='%23ffe7a8'/%3E%3Cpath d='M0 38 L14 24 L26 34 L40 22 V50 H0Z' fill='%234a6a8a'/%3E%3C/svg%3E") center/cover; }
+  .card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, var(--ov) 0%, var(--ov) 35%, transparent 85%); }
+  .card div { position: absolute; left: 10px; right: 10px; bottom: 10px; font-size: 12px; line-height: 1.3; }
+  .card b { display: block; font-size: 13px; }
+  .notes { max-width: 1100px; color: #ff9f0a; font-size: 12.5px; margin-top: 12px; }
+  .notes p + p { margin-top: 6px; }
+</style>
+</head>
+<body>
+<h1>Cardlets – Überlagerungsfarbe in „Benutzerdefiniert“</h1>
+<p class="lead">Block „Cardlets“ › Reiter „Stil“, Darstellung „Auf dem Bild“. Oben Variante und Farbvariante wählen. Rechts die Wirkung. Erläuterungen in Orange gehören nicht zum Plugin.</p>
+<div class="switch" id="var"></div>
+<div class="switch" id="theme"></div>
+<div class="wrap">
+  <div class="drawer">
+    <div class="dtabs"><span>Inhalt</span><span class="on">Stil</span><span>Layout</span></div>
+    <div class="grid" id="form"></div>
+  </div>
+  <div class="prev"><h4>Vorschau</h4><div class="sec" id="prev"></div></div>
+</div>
+<div class="notes" id="notes"></div>
+<script>
+  const S = { var: 'A', theme: 'custom', bg: '#0b3d6b', text: '#ffffff', ov: '#0b3d6b', strength: 60, pop: false };
+  const themes = { default: ['Standard', '#ffffff', '#16171a', '#ffffff'], variant: ['Variante', '#f3f3f3', '#16171a', '#ffffff'], custom: ['Benutzerdefiniert'] };
+  const ovNow = () => S.theme === 'custom' ? S.ov : themes[S.theme][3];
+  const tog = (opts, on) => `<span class="tog">${opts.map(([v, t]) => `<span class="${v === on ? 'on' : ''}" data-theme="${v}">${t}</span>`).join('')}</span>`;
+  const color = (label, val, help, cls = '') => `<div class="f ${cls}"><div class="lab">${label}</div><div class="inp"><span class="sw" style="background:${val}"></span>${val}</div>${help ? `<div class="help">${help}</div>` : ''}</div>`;
+  const slider = (click) => `<div class="f full ${click ? 'new' : ''}"><div class="lab">Überlagerung</div><div class="row"><span class="big ${click ? 'click' : ''}" id="sw" style="background:${ovNow()}" title="${ovNow()}"></span><div class="range"><input type="range" min="0" max="100" step="5" value="${S.strength}" id="rng"><b>${S.strength} %</b></div></div>${click && S.pop ? `<div class="pop"><div class="sp"></div><div class="hue"></div><div class="inp"><span class="sw" style="background:${S.ov}"></span>${S.ov}</div></div>` : ''}${click ? '<div class="help">Klick auf das Farbfeld wählt die Farbe der Überlagerung.</div>' : ''}</div>`;
+  function form() {
+    const custom = S.theme === 'custom';
+    let h = `<div class="f full"><div class="lab">Theme</div>${tog(Object.entries(themes).map(([k, v]) => [k, v[0]]), S.theme)}</div>`;
+    if (custom) {
+      h += color('Textfarbe', S.text, 'Lege eine einheitliche Textfarbe für diesen Block fest.');
+      h += color('Hintergrundfarbe', S.bg, 'Lege eine Hintergrundfarbe für diesen Block fest.');
+      h += S.var === 'A' ? color('Überlagerungsfarbe', S.ov, 'Die Farbe über den Bildern, hinter den Texten.', 'new') : '<div class="f"></div>';
+    }
+    h += `<div class="f full"><div class="lab">Darstellung</div><span class="tog"><span>Bild oben</span><span class="on">Auf dem Bild</span><span>Bild ragt heraus</span></span></div>`;
+    h += `<div class="f full"><div class="lab">Textposition</div><span class="tog"><span>Oben</span><span class="on">Unten</span></span></div>`;
+    h += slider(custom && S.var === 'B');
+    return h;
+  }
+  function prev() {
+    const custom = S.theme === 'custom';
+    const bg = custom ? S.bg : themes[S.theme][1], text = custom ? S.text : themes[S.theme][2];
+    const ov = `color-mix(in srgb, ${ovNow()} ${S.strength}%, transparent)`;
+    const card = (t) => `<div class="card" style="--ov:${ov};color:${text}"><div><b>${t}</b>Kurzer Text auf dem Bild.</div></div>`;
+    return { html: card('Anlagenbau') + card('Ver- und Entsorgung'), bg };
+  }
+  const V = {
+    A: { k: 'A · Eigenes Farbfeld neben Text- und Hintergrundfarbe',
+      n: '<p>Dritte Farbe in der Zeile von Text- und Hintergrundfarbe, genauso bedient wie die beiden (1/3 Breite). Erscheint nur bei „Benutzerdefiniert“ <b>und</b> „Auf dem Bild“. Das Quadrat am Regler zeigt die gewählte Farbe.</p>' },
+    B: { k: 'B · Klick auf das Farbquadrat am Regler',
+      n: '<p>Keine neue Zeile: Bei „Benutzerdefiniert“ wird das Quadrat links am Regler „Überlagerung“ anklickbar und öffnet Kirbys Farbwähler. Farbe und Stärke stehen zusammen. Bei den anderen Varianten bleibt das Quadrat wie heute (nur Anzeige).</p>' },
+  };
+  const common = '<p>Für beide: Ein neuer Block startet mit der <b>Hintergrundfarbe</b> als Überlagerungsfarbe – die Texte stehen dann wie auf der Karte. Bestehende Blöcke ohne eigene Farbe bleiben, wie sie sind (Farbe von „Standard“, meist Weiß) – auf Live-Seiten ändert sich nichts. Gilt nur für „Benutzerdefiniert“; die anderen Varianten nehmen weiter ihre Farbe aus Project Wizard › Design › Farben.</p><p>Der Hero hat dasselbe Problem: In „Benutzerdefiniert“ nimmt er die Überlagerungsfarbe von „Standard“. Auf Wunsch gleich mit.</p>';
+  const vb = document.getElementById('var'), tb = document.getElementById('theme');
+  Object.entries(V).forEach(([k, v]) => { const b = document.createElement('button'); b.textContent = v.k; b.onclick = () => { S.var = k; S.pop = false; render(); }; b.dataset.k = k; vb.appendChild(b); });
+  Object.entries(themes).forEach(([k, v]) => { const b = document.createElement('button'); b.textContent = v[0]; b.onclick = () => { S.theme = k; render(); }; b.dataset.k = k; tb.appendChild(b); });
+  document.getElementById('form').addEventListener('click', (e) => {
+    if (e.target.dataset.theme) { S.theme = e.target.dataset.theme; render(); }
+    if (e.target.id === 'sw' && e.target.classList.contains('click')) { S.pop = !S.pop; render(); }
+  });
+  document.getElementById('form').addEventListener('input', (e) => { if (e.target.id === 'rng') { S.strength = +e.target.value; render(); document.getElementById('rng').focus(); } });
+  function render() {
+    [...vb.children].forEach((b) => b.classList.toggle('on', b.dataset.k === S.var));
+    [...tb.children].forEach((b) => b.classList.toggle('on', b.dataset.k === S.theme));
+    document.getElementById('form').innerHTML = form();
+    const p = prev(); const el = document.getElementById('prev'); el.innerHTML = p.html; el.style.background = p.bg;
+    document.getElementById('notes').innerHTML = V[S.var].n + common;
+  }
+  render();
+</script>
+</body>
+</html>

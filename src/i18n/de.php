@@ -58,6 +58,8 @@
 	'kirbyblock-cardlets.card-display.stacked' => 'Bild oben',
 	'kirbyblock-cardlets.card-display.overlay' => 'Auf dem Bild',
 	'prw.prop.item-overlay-strength' => 'Überlagerung',
+	'kirbyblock-cardlets.card-overlay-color' => 'Überlagerungsfarbe',
+	'kirbyblock-cardlets.card-overlay-color.help' => 'Die Farbe über den Bildern, hinter den Texten.',
 	'kirbyblock-cardlets.card-overlay' => 'Überlagerung',
 	'kirbyblock-cardlets.card-text-position' => 'Textposition',
 	'kirbyblock-cardlets.card-ratio' => 'Seitenverhältnis',

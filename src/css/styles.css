@@ -339,7 +339,8 @@ section[data-block="cardlets"] [data-block="items"][data-display="overhang"][dat
 /*-----------------------------------------------------------------------------
 	Display "on the image": the image fills the card (its ratio), the texts
 	lie on it at the top or bottom, an overlay in the variant's colour
-	(Project Wizard → Design › Colours) fades in from their side
+	(Project Wizard → Design › Colours; custom: the block's own, set inline
+	on the items) fades in from their side
 -----------------------------------------------------------------------------*/
 section[data-block="cardlets"]                        { --pw-card-overlay: var(--pwcardlets-item-overlay); }
 section[data-block="cardlets"][data-style="variant"]  { --pw-card-overlay: var(--pwcardlets-item-overlay-variant); }

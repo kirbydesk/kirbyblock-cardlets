@@ -52,6 +52,15 @@ return [
 			// image standing out of the card at the top (their values: Project
 			// Wizard → Design › Display)
 			'styleExtras' => [
+				// custom variant, on the image: the overlay's own colour, next to
+				// the text and background colour (a new block starts with the
+				// background colour's default)
+				'cardOverlayColor' => [
+					'extends' => 'pagewizard/fields/background-color',
+					'label'   => 'kirbyblock-cardlets.card-overlay-color',
+					'help'    => 'kirbyblock-cardlets.card-overlay-color.help',
+					'when'    => ['theme' => 'custom', 'cardDisplay' => 'overlay'],
+				],
 				'cardDisplay' => [
 					'label'   => 'kirbyblock-cardlets.card-display',
 					'type'    => 'toggles',
@@ -80,6 +89,7 @@ return [
 					'label'   => 'kirbyblock-cardlets.card-overlay',
 					'type'    => 'pwoverlay',
 					'block'   => 'pwcardlets',
+					'color'   => 'cardOverlayColor',
 					'default' => $overlayStart,
 					'min'   => 0,
 					'max'   => 100,

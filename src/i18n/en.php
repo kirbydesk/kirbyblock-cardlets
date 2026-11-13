@@ -58,6 +58,8 @@
 	'kirbyblock-cardlets.card-display.stacked' => 'Image on top',
 	'kirbyblock-cardlets.card-display.overlay' => 'On the image',
 	'prw.prop.item-overlay-strength' => 'Overlay',
+	'kirbyblock-cardlets.card-overlay-color' => 'Overlay color',
+	'kirbyblock-cardlets.card-overlay-color.help' => 'The color over the images, behind the texts.',
 	'kirbyblock-cardlets.card-overlay' => 'Overlay',
 	'kirbyblock-cardlets.card-text-position' => 'Text position',
 	'kirbyblock-cardlets.card-ratio' => 'Aspect ratio',

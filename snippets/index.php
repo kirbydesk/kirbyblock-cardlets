@@ -56,6 +56,11 @@ if ($items->count() > 0):
 		echo ' data-text-position="'.$block->cardtextposition()->or($defaults['card-text-position'] ?? 'bottom')->value().'"';
 		// (the overlay's strength: the block's own, else the project's value)
 		$overlay = $block->cardoverlay()->isNotEmpty() ? ';--pwcardlets-item-overlay-strength:'.intval($block->cardoverlay()->value()).'%' : '';
+		// (custom variant: the block's own overlay colour, else the default's)
+		$overlayColor = (string) $block->cardoverlaycolor()->value();
+		if ($block->theme()->value() === 'custom' && preg_match('/^[#a-z0-9(),.%\s\/-]+$/i', $overlayColor)) {
+			$overlay .= ';--pw-card-overlay:'.$overlayColor;
+		}
 		echo ' style="--card-ratio:'.($defaults['item-ratio'] ?? '4/5').';--card-ratio-lg:'.($defaults['item-ratio-lg'] ?? '4/5').';--card-ratio-xl:'.($defaults['item-ratio-xl'] ?? '4/5').$overlay.'"';
 	endif;
 	echo ' data-columns-sm="'.$block->columnssm()->value().'"';
