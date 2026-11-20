@@ -195,6 +195,13 @@
 					"variant": "#FFFFFF",
 					"variant2": "#000000",
 					"variant3": "#000000"
+				},
+				"item-glow": {
+					"label": "kirbyblock-cardlets.glow-custom",
+					"default": "#1D548B",
+					"variant": "#1D548B",
+					"variant2": "#8CBAE7",
+					"variant3": "#8CBAE7"
 				}
 			}
 		}
@@ -513,6 +520,150 @@
 					"lg"
 				],
 				"default": "none"
+			},
+			"item-glow": {
+				"label": "kirbyblock-cardlets.glow",
+				"options": [
+					"off",
+					"always",
+					"hover"
+				],
+				"default": "off"
+			},
+			"item-glow-variant": {
+				"label": "kirbyblock-cardlets.glow",
+				"options": [
+					"off",
+					"always",
+					"hover"
+				],
+				"default": "off"
+			},
+			"item-glow-variant2": {
+				"label": "kirbyblock-cardlets.glow",
+				"options": [
+					"off",
+					"always",
+					"hover"
+				],
+				"default": "off"
+			},
+			"item-glow-variant3": {
+				"label": "kirbyblock-cardlets.glow",
+				"options": [
+					"off",
+					"always",
+					"hover"
+				],
+				"default": "off"
+			},
+			"item-glow-color": {
+				"label": "kirbyblock-cardlets.glow-color",
+				"options": [
+					"cyan",
+					"pink",
+					"violet",
+					"amber",
+					"custom"
+				],
+				"default": "cyan"
+			},
+			"item-glow-color-variant": {
+				"label": "kirbyblock-cardlets.glow-color",
+				"options": [
+					"cyan",
+					"pink",
+					"violet",
+					"amber",
+					"custom"
+				],
+				"default": "cyan"
+			},
+			"item-glow-color-variant2": {
+				"label": "kirbyblock-cardlets.glow-color",
+				"options": [
+					"cyan",
+					"pink",
+					"violet",
+					"amber",
+					"custom"
+				],
+				"default": "cyan"
+			},
+			"item-glow-color-variant3": {
+				"label": "kirbyblock-cardlets.glow-color",
+				"options": [
+					"cyan",
+					"pink",
+					"violet",
+					"amber",
+					"custom"
+				],
+				"default": "cyan"
+			},
+			"item-glow-direction": {
+				"label": "kirbyblock-cardlets.glow-direction",
+				"options": [
+					"around",
+					"down"
+				],
+				"default": "around"
+			},
+			"item-glow-direction-variant": {
+				"label": "kirbyblock-cardlets.glow-direction",
+				"options": [
+					"around",
+					"down"
+				],
+				"default": "around"
+			},
+			"item-glow-direction-variant2": {
+				"label": "kirbyblock-cardlets.glow-direction",
+				"options": [
+					"around",
+					"down"
+				],
+				"default": "around"
+			},
+			"item-glow-direction-variant3": {
+				"label": "kirbyblock-cardlets.glow-direction",
+				"options": [
+					"around",
+					"down"
+				],
+				"default": "around"
+			},
+			"item-glow-strength": {
+				"label": "kirbyblock-cardlets.glow-strength",
+				"options": [
+					"subtle",
+					"strong"
+				],
+				"default": "subtle"
+			},
+			"item-glow-strength-variant": {
+				"label": "kirbyblock-cardlets.glow-strength",
+				"options": [
+					"subtle",
+					"strong"
+				],
+				"default": "subtle"
+			},
+			"item-glow-strength-variant2": {
+				"label": "kirbyblock-cardlets.glow-strength",
+				"options": [
+					"subtle",
+					"strong"
+				],
+				"default": "subtle"
+			},
+			"item-glow-strength-variant3": {
+				"label": "kirbyblock-cardlets.glow-strength",
+				"options": [
+					"subtle",
+					"strong"
+				],
+				"default": "subtle"
 			},
 			"item-spacing": {
 				"label": "pw.field.item-spacing",

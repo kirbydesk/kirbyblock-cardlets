@@ -608,3 +608,55 @@ section[data-block="cardlets"][data-style="variant3"] [data-block="item"] a:not(
 	color: var(--pwcardlets-item-link-active-variant3);
 }
 
+
+/*-----------------------------------------------------------------------------
+	The glow (Project Wizard › Blocks, per variant): a fine line at the rim and
+	a soft light around the card (or below it) – always (stronger
+	on hover and focus) or on hover only. Three layers in every state, so the
+	change fades; the chosen shadow stays behind them
+-----------------------------------------------------------------------------*/
+section[data-block="cardlets"] [data-block="items"][data-glow] { --pw-glow-color: #22d3ee; --pw-glow-down: 0; --pw-glow-k: 1; }
+section[data-block="cardlets"] [data-block="items"][data-glow][data-glow-color="pink"]   { --pw-glow-color: #ec4899; }
+section[data-block="cardlets"] [data-block="items"][data-glow][data-glow-color="violet"] { --pw-glow-color: #a78bfa; }
+section[data-block="cardlets"] [data-block="items"][data-glow][data-glow-color="amber"]  { --pw-glow-color: #f59e0b; }
+section[data-block="cardlets"]                        [data-block="items"][data-glow][data-glow-color="custom"] { --pw-glow-color: var(--pwcardlets-item-glow, #22d3ee); }
+section[data-block="cardlets"][data-style="variant"]  [data-block="items"][data-glow][data-glow-color="custom"] { --pw-glow-color: var(--pwcardlets-item-glow-variant, #22d3ee); }
+section[data-block="cardlets"][data-style="variant2"] [data-block="items"][data-glow][data-glow-color="custom"] { --pw-glow-color: var(--pwcardlets-item-glow-variant2, #22d3ee); }
+section[data-block="cardlets"][data-style="variant3"] [data-block="items"][data-glow][data-glow-color="custom"] { --pw-glow-color: var(--pwcardlets-item-glow-variant3, #22d3ee); }
+section[data-block="cardlets"] [data-block="items"][data-glow][data-glow-direction="down"] { --pw-glow-down: 1; }
+section[data-block="cardlets"] [data-block="items"][data-glow][data-glow-strength="strong"] { --pw-glow-k: 1.6; }
+
+section[data-block="cardlets"] [data-block="items"][data-glow] [data-block="item"] {
+	--pw-glow-rest: 0 0 0 1px transparent, 0 0 0 0 transparent, 0 0 0 0 transparent;
+	--pw-glow-on: 0 0 0 1px var(--pw-glow-color), 0 calc(var(--pw-glow-down) * 6px) calc(8px * var(--pw-glow-k)) 0 color-mix(in srgb, var(--pw-glow-color) min(100%, calc(65% * var(--pw-glow-k))), transparent), 0 calc(var(--pw-glow-down) * 20px) calc(36px * var(--pw-glow-k)) calc(var(--pw-glow-down) * -8px) color-mix(in srgb, var(--pw-glow-color) min(100%, calc(40% * var(--pw-glow-k))), transparent);
+	--pw-glow: var(--pw-glow-rest);
+}
+section[data-block="cardlets"] [data-block="items"][data-glow="always"] [data-block="item"] {
+	--pw-glow-rest: 0 0 0 1px color-mix(in srgb, var(--pw-glow-color) 60%, transparent), 0 calc(var(--pw-glow-down) * 4px) calc(6px * var(--pw-glow-k)) 0 color-mix(in srgb, var(--pw-glow-color) min(100%, calc(45% * var(--pw-glow-k))), transparent), 0 calc(var(--pw-glow-down) * 14px) calc(24px * var(--pw-glow-k)) calc(var(--pw-glow-down) * -6px) color-mix(in srgb, var(--pw-glow-color) min(100%, calc(28% * var(--pw-glow-k))), transparent);
+}
+section[data-block="cardlets"] [data-block="items"][data-glow] [data-block="item"]:is(:focus-visible, :focus-within) { --pw-glow: var(--pw-glow-on); }
+@media (hover: hover) {
+	section[data-block="cardlets"] [data-block="items"][data-glow] [data-block="item"]:hover { --pw-glow: var(--pw-glow-on); }
+}
+section[data-block="cardlets"] [data-block="items"][data-glow]:not([data-display="overhang"]) [data-block="item"] {
+	box-shadow: var(--pw-glow), var(--pw-card-shadow, 0 0 #0000);
+	transition: box-shadow 0.35s ease;
+}
+/* image standing out: the two pieces glow (their clip a little wider for the light) */
+section[data-block="cardlets"] [data-block="items"][data-display="overhang"][data-glow] [data-block="item"] {
+	> [data-field="image"]::before {
+		box-shadow: var(--pw-glow), var(--pw-card-shadow, 0 0 #0000);
+		clip-path: inset(-5rem -5rem 0 -5rem);
+		transition: box-shadow 0.35s ease;
+	}
+	> [data-field="content"] {
+		box-shadow: var(--pw-glow), var(--pw-card-shadow, 0 0 #0000);
+		clip-path: inset(0 -5rem -5rem -5rem);
+		transition: box-shadow 0.35s ease;
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	section[data-block="cardlets"] [data-block="items"][data-glow] [data-block="item"],
+	section[data-block="cardlets"] [data-block="items"][data-glow] [data-block="item"] > [data-field="image"]::before,
+	section[data-block="cardlets"] [data-block="items"][data-glow] [data-block="item"] > [data-field="content"] { transition: none; }
+}

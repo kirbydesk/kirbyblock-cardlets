@@ -63,6 +63,16 @@ if ($items->count() > 0):
 		}
 		echo ' style="--card-ratio:'.($defaults['item-ratio'] ?? '4/5').';--card-ratio-lg:'.($defaults['item-ratio-lg'] ?? '4/5').';--card-ratio-xl:'.($defaults['item-ratio-xl'] ?? '4/5').$overlay.'"';
 	endif;
+	// the glow (Project Wizard › Blocks, per variant; the custom variant: the default's)
+	$glowSuffix = in_array($block->theme()->value(), ['variant', 'variant2', 'variant3'], true) ? '-' . $block->theme()->value() : '';
+	$glowValue  = fn (string $key, array $allowed) => in_array($v = $defaults[$key . $glowSuffix] ?? $defaults[$key] ?? $allowed[0], $allowed, true) ? $v : $allowed[0];
+	$glow       = $glowValue('item-glow', ['off', 'always', 'hover']);
+	if ($glow !== 'off'):
+		echo ' data-glow="'.$glow.'"';
+		echo ' data-glow-color="'.$glowValue('item-glow-color', ['cyan', 'pink', 'violet', 'amber', 'custom']).'"';
+		if ($glowValue('item-glow-direction', ['around', 'down']) === 'down') echo ' data-glow-direction="down"';
+		if ($glowValue('item-glow-strength', ['subtle', 'strong']) === 'strong') echo ' data-glow-strength="strong"';
+	endif;
 	echo ' data-columns-sm="'.$block->columnssm()->value().'"';
 	echo ' data-columns-md="'.$block->columnsmd()->value().'"';
 	echo ' data-columns-lg="'.$block->columnslg()->value().'"';
